@@ -66,7 +66,7 @@ class MineController: UIViewController {
         button.frame = CGRect(x:0, y:0, width:30, height: 30)
         button.setImage(UIImage(named: "set"), for: UIControl.State.normal)
         button.addTarget(self, action: #selector(rightBarButtonClick), for: UIControl.Event.touchUpInside)
-        print("test")
+        print("test1")
         return button
     }()
     
