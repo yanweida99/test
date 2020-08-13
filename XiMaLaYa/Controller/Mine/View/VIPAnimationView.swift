@@ -1,5 +1,5 @@
 //
-//  VipAnimationView.swift
+//  VIPAnimationView.swift
 //  XiMaLaYa
 //
 //  Created by rcadmin on 2020/8/11.
@@ -9,7 +9,7 @@
 import UIKit
 import LTScrollView
 
-class VipAnimationView: UIView {
+class VIPAnimationView: UIView {
     // 图片
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -27,7 +27,7 @@ class VipAnimationView: UIView {
     }()
     
     // 介绍
-    private lazy var desLabel:UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "免费领取7天会员"
         label.textColor = UIColor.gray
@@ -36,7 +36,7 @@ class VipAnimationView: UIView {
     }()
     
     // 箭头
-    private lazy var arrowsLabel:UILabel = {
+    private lazy var arrowsLabel: UILabel = {
         let label = UILabel()
         label.text = ">"
         label.font = UIFont.systemFont(ofSize: 20)
@@ -52,21 +52,21 @@ class VipAnimationView: UIView {
     
     func setUpLayout(){
         self.addSubview(self.imageView)
-        self.imageView.snp.makeConstraints { (make) in
+        self.imageView.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(5)
             make.width.height.equalTo(30)
         }
         
         self.addSubview(self.titleLabel)
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.equalTo(self.imageView.snp.right).offset(5)
             make.width.equalTo(100)
             make.height.equalTo(20)
             make.centerY.equalTo(self.imageView)
         }
         
-        self.addSubview(self.desLabel)
-        self.desLabel.snp.makeConstraints { (make) in
+        self.addSubview(self.descriptionLabel)
+        self.descriptionLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(5)
             make.top.equalTo(self.imageView.snp.bottom).offset(5)
             make.width.equalTo(180)
@@ -74,7 +74,7 @@ class VipAnimationView: UIView {
         }
         
         self.addSubview(self.arrowsLabel)
-        self.arrowsLabel.snp.makeConstraints { (make) in
+        self.arrowsLabel.snp.makeConstraints { make in
             make.right.equalToSuperview()
             make.width.height.equalTo(20)
             make.top.equalTo(20)
@@ -87,12 +87,10 @@ class VipAnimationView: UIView {
         super.init(coder: aDecoder)
     }
     
-    /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         // Drawing code
     }
-    */
-
+    
 }

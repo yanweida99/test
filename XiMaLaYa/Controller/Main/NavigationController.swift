@@ -19,7 +19,7 @@ class NavigationController: UINavigationController {
     
     func setupNavBarAppearence() {
         // 设置导航栏默认的背景颜色
-        WRNavigationBar.defaultNavBarBarTintColor = UIColor.init(red: 245/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1)
+        WRNavigationBar.defaultNavBarBarTintColor = UIColor.init(red: 245 / 255.0, green: 245 / 255.0, blue: 245 / 255.0, alpha: 1)
         
         // 设置导航栏所有按钮的
         WRNavigationBar.defaultNavBarTintColor = ButtonColor
@@ -41,7 +41,6 @@ class NavigationController: UINavigationController {
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -49,6 +48,5 @@ class NavigationController: UINavigationController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }

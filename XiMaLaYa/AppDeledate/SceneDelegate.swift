@@ -14,19 +14,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
-    // 加载tabbar样式
+    // 加载标签栏tabBar
     func setupTabBarStyle(delegate: UITabBarControllerDelegate?) -> ESTabBarController {
         let tabBarController = ESTabBarController()
         tabBarController.delegate = delegate
         tabBarController.title = "Irregularity"
         tabBarController.tabBar.shadowImage = UIImage(named: "transparent")
-        tabBarController.shouldHijackHandler = { tabBarController, viewController, index in
+        tabBarController.shouldHijackHandler = { (tabBarController, viewController, index) in
             if index == 2 {
                 return true
             }
             return false
         }
-        tabBarController.didHijackHandler = { tabBarController, viewController, index in
+        tabBarController.didHijackHandler = { (tabBarController, viewController, index) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 let warning = MessageView.viewFromNib(layout: .cardView)
                 warning.configureTheme(.warning)
@@ -38,8 +38,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 var warningConfig = SwiftMessages.defaultConfig
                 warningConfig.presentationContext = .window(windowLevel: UIWindow.Level.statusBar)
                 SwiftMessages.show(config: warningConfig, view: warning)
-                //                let vc = FMPlayController()
-                //                tabBarController?.present(vc, animated: true, completion: nil)
+//                let vc = FMPlayController()
+//                tabBarController?.present(vc, animated: true, completion: nil)
             }
         }
         
@@ -64,8 +64,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         play.title = "播放"
         find.title = "发现"
         mine.title = "我的"
-        
-        //homeNav, listenNav, playNav, findNav,
+
         tabBarController.viewControllers = [homeNav, listenNav, playNav, findNav, mineNav]
         return tabBarController
     }
@@ -76,9 +75,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         // 加载tabbar样式
-        let tabbar = setupTabBarStyle(delegate: self as? UITabBarControllerDelegate)
+        let tabBarController = setupTabBarStyle(delegate: self as? UITabBarControllerDelegate)
         window?.backgroundColor = UIColor.white
-        window?.rootViewController = tabbar
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
 

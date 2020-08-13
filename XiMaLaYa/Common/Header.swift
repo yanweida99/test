@@ -18,8 +18,8 @@ import SwiftMessages
 let ScreenWidth = UIScreen.main.bounds.size.width
 let ScreenHeight = UIScreen.main.bounds.size.height
 
-let ButtonColor = UIColor(red: 242/255.0, green: 77/255.0, blue: 51/255.0, alpha: 1)
-let DownColor = UIColor.init(red: 240/255.0, green: 241/255.0, blue: 244/255.0, alpha: 1)
+let ButtonColor = UIColor(red: 242 / 255.0, green: 77 / 255.0, blue: 51 / 255.0, alpha: 1)
+let DownColor = UIColor.init(red: 240 / 255.0, green: 241 / 255.0, blue: 244 / 255.0, alpha: 1)
 
 
 // iphone X

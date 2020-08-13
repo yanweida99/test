@@ -30,33 +30,30 @@ class MineSetController: UIViewController {
     
     // 懒加载TableView
     private lazy var tableView : UITableView = {
-        let tableView = UITableView.init(frame:CGRect(x:0, y:0, width:ScreenWidth, height:ScreenHeight), style: UITableView.Style.plain)
+        let tableView = UITableView.init(frame:CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight), style: UITableView.Style.plain)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = DownColor
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return tableView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self.navigationItem.title = "设置"
         self.view.addSubview(self.tableView)
     }
     
-
-    /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
-
+    
 }
 
 extension MineSetController : UITableViewDelegate, UITableViewDataSource {
@@ -75,10 +72,10 @@ extension MineSetController : UITableViewDelegate, UITableViewDataSource {
         let sectionArray = dataSource[indexPath.section]
         let dict: [String: String] = sectionArray[indexPath.row]
         cell.textLabel?.text = dict["title"]
-        if indexPath.section == 3 && indexPath.row == 1{
+        if indexPath.section == 3 && indexPath.row == 1 {
             let cellSwitch = UISwitch.init()
             cell.accessoryView = cellSwitch
-        }else {
+        } else {
             cell.accessoryType = .disclosureIndicator
         }
         return cell

@@ -54,7 +54,7 @@ class RadarLayerView: UIView {
         
         // 给CAShapeLayer添加组合动画
         let groupAnimation = CAAnimationGroup()
-        groupAnimation.animations = [opacityAnimation,scaleAnimation]
+        groupAnimation.animations = [opacityAnimation, scaleAnimation]
         // 持续时间
         groupAnimation.duration = 3
         // 循环效果
@@ -67,12 +67,11 @@ class RadarLayerView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
+    
+    // Only override draw() if you perform custom drawing.
+    // An empty implementation adversely affects performance during animation.
+    override func draw(_ rect: CGRect) {
+        // Drawing code
+    }
     
 }
