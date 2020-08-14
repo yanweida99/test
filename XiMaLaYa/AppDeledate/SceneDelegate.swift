@@ -46,7 +46,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let home = MineController()// LBFMHomeController()
         let listen = MineController()//LBFMListenController()
         let play = MineController()//LBFMPlayController()
-        let find = MineController()//LBFMFindController()
+        let find = FindController()
         let mine = MineController()
         
         home.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "首页", image: UIImage(named: "home"), selectedImage: UIImage(named: "home_1"))

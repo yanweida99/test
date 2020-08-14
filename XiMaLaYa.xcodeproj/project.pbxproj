@@ -17,6 +17,10 @@
 		4332BB0524E509A3007EE662 /* AttentionPictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB0424E509A3007EE662 /* AttentionPictureCollectionViewCell.swift */; };
 		4332BB0724E50C68007EE662 /* AttentionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB0624E50C68007EE662 /* AttentionTableViewCell.swift */; };
 		4332BB0A24E50EE6007EE662 /* AttentionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB0924E50EE6007EE662 /* AttentionViewModel.swift */; };
+		4332BB1E24E51942007EE662 /* AttentionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB1D24E51942007EE662 /* AttentionController.swift */; };
+		4332BB2024E52098007EE662 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB1F24E52098007EE662 /* CustomLabel.swift */; };
+		4332BB2F24E61C03007EE662 /* FindAttention.json in Resources */ = {isa = PBXBuildFile; fileRef = 4332BB2E24E61BD6007EE662 /* FindAttention.json */; };
+		4332BB3124E61F3C007EE662 /* RecommendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB3024E61F3C007EE662 /* RecommendController.swift */; };
 		43383E4F24DA9572006647A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43383E4E24DA9572006647A2 /* AppDelegate.swift */; };
 		43383E5124DA9572006647A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43383E5024DA9572006647A2 /* SceneDelegate.swift */; };
 		43383E5324DA9572006647A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43383E5224DA9572006647A2 /* ViewController.swift */; };
@@ -52,6 +56,10 @@
 		4332BB0424E509A3007EE662 /* AttentionPictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttentionPictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		4332BB0624E50C68007EE662 /* AttentionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttentionTableViewCell.swift; sourceTree = "<group>"; };
 		4332BB0924E50EE6007EE662 /* AttentionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttentionViewModel.swift; sourceTree = "<group>"; };
+		4332BB1D24E51942007EE662 /* AttentionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttentionController.swift; sourceTree = "<group>"; };
+		4332BB1F24E52098007EE662 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		4332BB2E24E61BD6007EE662 /* FindAttention.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FindAttention.json; sourceTree = "<group>"; };
+		4332BB3024E61F3C007EE662 /* RecommendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendController.swift; sourceTree = "<group>"; };
 		43383E4B24DA9572006647A2 /* XiMaLaYa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiMaLaYa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43383E4E24DA9572006647A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43383E5024DA9572006647A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +105,7 @@
 		4332BAF324E4E364007EE662 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4332BB0424E509A3007EE662 /* AttentionPictureCollectionViewCell.swift */,
 				4332BAF424E4E37C007EE662 /* CategoryView.swift */,
 				4332BAF624E4E88D007EE662 /* CategoryCollectionViewCell.swift */,
 			);
@@ -126,6 +135,9 @@
 		4332BB0024E508A1007EE662 /* RecommendController */ = {
 			isa = PBXGroup;
 			children = (
+				4332BB3324E62247007EE662 /* ViewModel */,
+				4332BB3224E6223D007EE662 /* View */,
+				4332BB3024E61F3C007EE662 /* RecommendController.swift */,
 			);
 			path = RecommendController;
 			sourceTree = "<group>";
@@ -135,6 +147,7 @@
 			children = (
 				4332BB0824E50EB7007EE662 /* ViewModel */,
 				4332BB0324E50910007EE662 /* View */,
+				4332BB1D24E51942007EE662 /* AttentionController.swift */,
 			);
 			path = AttentionController;
 			sourceTree = "<group>";
@@ -149,7 +162,6 @@
 		4332BB0324E50910007EE662 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4332BB0424E509A3007EE662 /* AttentionPictureCollectionViewCell.swift */,
 				4332BB0624E50C68007EE662 /* AttentionTableViewCell.swift */,
 			);
 			path = View;
@@ -159,6 +171,28 @@
 			isa = PBXGroup;
 			children = (
 				4332BB0924E50EE6007EE662 /* AttentionViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4332BB2D24E61B98007EE662 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4332BB2E24E61BD6007EE662 /* FindAttention.json */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		4332BB3224E6223D007EE662 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4332BB3324E62247007EE662 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -262,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				43F7CD8024E262820078D89E /* Header.swift */,
+				4332BB1F24E52098007EE662 /* CustomLabel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -279,6 +314,7 @@
 		43F7CD8324E264FD0078D89E /* Find */ = {
 			isa = PBXGroup;
 			children = (
+				4332BB2D24E61B98007EE662 /* API */,
 				4332BAFF24E507E7007EE662 /* Controller */,
 				4332BAF824E5030A007EE662 /* Model */,
 				4332BAF324E4E364007EE662 /* View */,
@@ -405,6 +441,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4332BB2F24E61C03007EE662 /* FindAttention.json in Resources */,
 				43383E5B24DA9573006647A2 /* LaunchScreen.storyboard in Resources */,
 				43383E5824DA9573006647A2 /* Assets.xcassets in Resources */,
 				43383E5624DA9572006647A2 /* Main.storyboard in Resources */,
@@ -477,9 +514,12 @@
 				43F7CD7E24E261AA0078D89E /* WRCycleCell.swift in Sources */,
 				43F7CD7624E2613A0078D89E /* WRNavigationBar.swift in Sources */,
 				4332BB0A24E50EE6007EE662 /* AttentionViewModel.swift in Sources */,
+				4332BB2024E52098007EE662 /* CustomLabel.swift in Sources */,
+				4332BB3124E61F3C007EE662 /* RecommendController.swift in Sources */,
 				4332BAFC24E50528007EE662 /* RecommendModel.swift in Sources */,
 				4332BB0524E509A3007EE662 /* AttentionPictureCollectionViewCell.swift in Sources */,
 				43F7CD8D24E274A40078D89E /* ProfileView.swift in Sources */,
+				4332BB1E24E51942007EE662 /* AttentionController.swift in Sources */,
 				4332BAF724E4E88D007EE662 /* CategoryCollectionViewCell.swift in Sources */,
 				43F7CD6D24E2467F0078D89E /* BouncesContentView.swift in Sources */,
 				43F7CD8F24E275D70078D89E /* VIPAnimationView.swift in Sources */,

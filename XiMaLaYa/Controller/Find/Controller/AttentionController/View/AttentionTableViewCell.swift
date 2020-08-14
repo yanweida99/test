@@ -48,14 +48,14 @@ class AttentionTableViewCell: UITableViewCell {
         return imageView
     }()
     // 评论
-    lazy var commnetLabel : LBFMCustomLabel = {
-        let label = LBFMCustomLabel()
+    lazy var commnetLabel: CustomLabel = {
+        let label = CustomLabel()
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor.lightGray
         return label
     }()
     
-    lazy var commentImageView:UIImageView = {
+    lazy var commentImageView: UIImageView = {
         let imageView = UIImageView()
         return imageView
     }()
@@ -68,7 +68,7 @@ class AttentionTableViewCell: UITableViewCell {
         collectionView.backgroundColor = UIColor.white
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(LBFMFindAttentionPicCell.self, forCellWithReuseIdentifier:"LBFMFindAttentionPicCell")
+        collectionView.register(AttentionPictureCollectionViewCell.self, forCellWithReuseIdentifier:"AttentionPictureCollectionViewCell")
         return collectionView
     }()
     
@@ -156,14 +156,15 @@ class AttentionTableViewCell: UITableViewCell {
             make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
             make.top.equalTo(self.desLabel.snp.bottom).offset(5)
-            make.height.equalTo((LBFMScreenWidth - 30) / 3 + 20)
+            make.height.equalTo((ScreenWidth - 30) / 3 + 20)
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
-    var eventInfosModel:LBFMEventInfosModel? {
+    
+    var eventInfosModel:EventInfosModel? {
         didSet {
             guard let model = eventInfosModel else {return}
             self.picView.kf.setImage(with: URL(string: (model.authorInfo?.avatarUrl!)!))
@@ -190,7 +191,7 @@ class AttentionTableViewCell: UITableViewCell {
             }else if picNum > 6{
                 num = 3
             }
-            let OnePicHeight = CGFloat((LBFMScreenWidth - 30) / 3)
+            let OnePicHeight = CGFloat((ScreenWidth - 30) / 3)
             let picHeight = num * OnePicHeight
             self.collectionView.snp.updateConstraints { (make) in
                 make.height.equalTo(picHeight+20)
@@ -199,14 +200,14 @@ class AttentionTableViewCell: UITableViewCell {
         }
     }
     
-    func height(for commentModel: LBFMFindAContentInfo?) -> CGFloat {
+    func height(for commentModel: FindAContentInfo?) -> CGFloat {
         var height: CGFloat = 30
         guard let model = commentModel else { return height }
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
         label.numberOfLines = 0
         label.text = model.text
-        height += label.sizeThatFits(CGSize(width: LBFMScreenWidth - 30, height: CGFloat.infinity)).height
+        height += label.sizeThatFits(CGSize(width: ScreenWidth - 30, height: CGFloat.infinity)).height
         return height
     }
     

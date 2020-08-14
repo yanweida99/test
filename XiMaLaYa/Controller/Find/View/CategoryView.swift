@@ -22,7 +22,7 @@ class CategoryView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = UIColor.white
-        collectionView.register(FindCell.self, forCellWithReuseIdentifier: "FindCell")
+        collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCollectionViewCell")
         return collectionView
     }()
     
@@ -31,18 +31,32 @@ class CategoryView: UIView {
         self.addSubview(self.collectionView)
         let footerView = UIView()
         footerView.backgroundColor = DownColor
-        footerView.snp.makeConstraints{ make in
+        footerView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
             make.height.equalTo(10)
         }
     }
     
-    /*
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         // Drawing code
     }
-    */
 
+}
+
+extension CategoryView: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return dataArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: CategoryCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
+        cell.dataString = self.dataArray[indexPath.row]
+        return cell
+    }
 }
