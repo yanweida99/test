@@ -31,6 +31,7 @@ class CategoryView: UIView {
         self.addSubview(self.collectionView)
         let footerView = UIView()
         footerView.backgroundColor = DownColor
+        self.addSubview(footerView)
         footerView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
             make.height.equalTo(10)

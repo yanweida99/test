@@ -1,31 +1,31 @@
 //
-//  FindController.swift
+//  ListenController.swift
 //  XiMaLaYa
 //
-//  Created by rcadmin on 2020/8/13.
+//  Created by rcadmin on 2020/8/18.
 //  Copyright © 2020 rcadmin. All rights reserved.
 //
 
 import UIKit
 import LTScrollView
 
-class FindController: UIViewController {
-
-    private lazy var categoryView: CategoryView = {
-        let view = CategoryView.init(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: 190))
+class ListenController: UIViewController {
+    
+    private lazy var headerView: ListenHeaderView = {
+        let view = ListenHeaderView.init(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: 120))
         view.backgroundColor = UIColor.white
         return view
     }()
     
     private lazy var viewControllers: [UIViewController] = {
-        let findAttentionVC = AttentionController()
-        let findRecommendVC = RecommendController()
-        let findDubbingVC = DubbingController()
-        return [findAttentionVC, findRecommendVC, findDubbingVC]
+        let listenSubscribeVC = SubscribeController()
+        let listenChannelVC = ChannelController()
+        let listenRecommendVC = ListenRecommendController()
+        return [listenSubscribeVC, listenChannelVC, listenRecommendVC]
     }()
     
     private lazy var titles: [String] = {
-        return ["关注动态", "推荐动态", "趣配音"]
+        return ["订阅", "一键听", "推荐"]
     }()
     
     private lazy var layout: LTLayout = {
@@ -42,15 +42,10 @@ class FindController: UIViewController {
     }()
     
     private lazy var advancedManager: LTAdvancedManager = {
-//        if #available(iOS 13.0, *) {
-//            let statusBarHeight = self.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-//        } else {
-//            let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
-//        }
         let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
         let advancedManager = LTAdvancedManager(frame: CGRect(x: 0, y: NavBarHeight, width: ScreenWidth, height: ScreenHeight - NavBarHeight), viewControllers: viewControllers, titles: titles, currentViewController: self, layout: layout, headerViewHandle: { [weak self] in
             guard let strongSelf = self else { return UIView() }
-            let headerView = strongSelf.categoryView
+            let headerView = strongSelf.headerView
             return headerView
         })
         // 设置代理 监听滚动
@@ -84,14 +79,14 @@ class FindController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.white
-//        if #available(iOS 11.0, *) {
-//            self.tableView.contentInsetAdjustmentBehavior = .never
-//        } else {
-            self.automaticallyAdjustsScrollViewInsets = false
-//        }
+        //        if #available(iOS 11.0, *) {
+        //            self.tableView.contentInsetAdjustmentBehavior = .never
+        //        } else {
+        self.automaticallyAdjustsScrollViewInsets = false
+        //        }
         view.addSubview(advancedManager)
         advancedManagerConfigure()
         
@@ -111,20 +106,20 @@ class FindController: UIViewController {
     }
     
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
-extension FindController: LTAdvancedScrollViewDelegate {
+extension ListenController: LTAdvancedScrollViewDelegate {
     // 具体使用请参考以下
     private func advancedManagerConfigure() {
         // 选中事件
@@ -137,4 +132,3 @@ extension FindController: LTAdvancedScrollViewDelegate {
         
     }
 }
-

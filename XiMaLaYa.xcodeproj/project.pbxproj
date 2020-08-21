@@ -21,6 +21,59 @@
 		4332BB2024E52098007EE662 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB1F24E52098007EE662 /* CustomLabel.swift */; };
 		4332BB2F24E61C03007EE662 /* FindAttention.json in Resources */ = {isa = PBXBuildFile; fileRef = 4332BB2E24E61BD6007EE662 /* FindAttention.json */; };
 		4332BB3124E61F3C007EE662 /* RecommendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB3024E61F3C007EE662 /* RecommendController.swift */; };
+		4332BB3524E62B7A007EE662 /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB3424E62B7A007EE662 /* RecommendTableViewCell.swift */; };
+		4332BB3724E62F50007EE662 /* RecommendPictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB3624E62F50007EE662 /* RecommendPictureCollectionViewCell.swift */; };
+		4332BB3924E6320C007EE662 /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB3824E6320C007EE662 /* RecommendViewModel.swift */; };
+		4332BB3E24E63576007EE662 /* DubbingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB3D24E63576007EE662 /* DubbingController.swift */; };
+		4332BB4C24EBA288007EE662 /* DubbingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB4B24EBA288007EE662 /* DubbingTableViewCell.swift */; };
+		4332BB4F24EBA963007EE662 /* FindRecommend.json in Resources */ = {isa = PBXBuildFile; fileRef = 4332BB4E24EBA845007EE662 /* FindRecommend.json */; };
+		4332BB5024EBA963007EE662 /* FindDubbing.json in Resources */ = {isa = PBXBuildFile; fileRef = 4332BB4D24EBA834007EE662 /* FindDubbing.json */; };
+		4332BB5324EBD11A007EE662 /* ListenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB5224EBD11A007EE662 /* ListenAPI.swift */; };
+		4332BB5824EBD41C007EE662 /* ListenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB5724EBD41C007EE662 /* ListenController.swift */; };
+		4332BB5B24ECCBA2007EE662 /* ListenHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB5A24ECCBA2007EE662 /* ListenHeaderView.swift */; };
+		4332BB5F24ECEC23007EE662 /* SubscribeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB5E24ECEC23007EE662 /* SubscribeController.swift */; };
+		4332BB6324ECEE57007EE662 /* ListenSubscribeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB6224ECEE57007EE662 /* ListenSubscribeViewModel.swift */; };
+		4332BB6624ECF085007EE662 /* ListenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB6524ECF085007EE662 /* ListenModel.swift */; };
+		4332BB6824ECF1F9007EE662 /* ListenFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB6724ECF1F9007EE662 /* ListenFooterView.swift */; };
+		4332BB6A24ECF4EE007EE662 /* ListenSubscribeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB6924ECF4EE007EE662 /* ListenSubscribeTableViewCell.swift */; };
+		4332BB6F24ECFDB5007EE662 /* ListenChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB6E24ECFDB5007EE662 /* ListenChannelTableViewCell.swift */; };
+		4332BB7124ED0418007EE662 /* OneKeyListenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB7024ED0418007EE662 /* OneKeyListenTableViewCell.swift */; };
+		4332BB7324ED06BB007EE662 /* ListenChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB7224ED06BB007EE662 /* ListenChannelViewModel.swift */; };
+		4332BB7524ED0921007EE662 /* ChannelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB7424ED0921007EE662 /* ChannelController.swift */; };
+		4332BB7824ED0FC3007EE662 /* ListenMoreChannelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB7724ED0FC3007EE662 /* ListenMoreChannelController.swift */; };
+		4332BB7D24ED1CA1007EE662 /* ListenRecommendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB7C24ED1CA1007EE662 /* ListenRecommendController.swift */; };
+		4332BB7F24ED1E3A007EE662 /* ListenTRecommendableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB7E24ED1E3A007EE662 /* ListenTRecommendableViewCell.swift */; };
+		4332BB8124ED1EBE007EE662 /* ListenRecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB8024ED1EBE007EE662 /* ListenRecommendViewModel.swift */; };
+		4332BB8224ED218D007EE662 /* ListenSubscribe.json in Resources */ = {isa = PBXBuildFile; fileRef = 4332BB5424EBD3A9007EE662 /* ListenSubscribe.json */; };
+		4332BB8324ED218D007EE662 /* ListenRecommend.json in Resources */ = {isa = PBXBuildFile; fileRef = 4332BB5524EBD3C1007EE662 /* ListenRecommend.json */; };
+		4332BB8424ED218D007EE662 /* ListenMoreChannel.json in Resources */ = {isa = PBXBuildFile; fileRef = 4332BB5624EBD3F8007EE662 /* ListenMoreChannel.json */; };
+		4332BB9924EE4F33007EE662 /* HomeBroadcastControllerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB9824EE4F33007EE662 /* HomeBroadcastControllerController.swift */; };
+		4332BBA024EE570F007EE662 /* HomeBroadcastAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BB9F24EE570F007EE662 /* HomeBroadcastAPI.swift */; };
+		4332BBA224EE5BBE007EE662 /* HomeBroadcastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBA124EE5BBE007EE662 /* HomeBroadcastModel.swift */; };
+		4332BBA424EE5E9B007EE662 /* HomeBroadcastListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBA324EE5E9B007EE662 /* HomeBroadcastListController.swift */; };
+		4332BBA724EE6124007EE662 /* URefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBA624EE6124007EE662 /* URefresh.swift */; };
+		4332BBAF24EE70A7007EE662 /* HomeBroadcastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBAE24EE70A7007EE662 /* HomeBroadcastViewModel.swift */; };
+		4332BBB124EE7351007EE662 /* HomeRadiosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBB024EE7351007EE662 /* HomeRadiosCell.swift */; };
+		4332BBB324EE73DF007EE662 /* RadioHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBB224EE73DF007EE662 /* RadioHeaderView.swift */; };
+		4332BBB524EE744E007EE662 /* RadioFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBB424EE744E007EE662 /* RadioFooterView.swift */; };
+		4332BBB724EE74CD007EE662 /* RadioCategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBB624EE74CD007EE662 /* RadioCategoriesCell.swift */; };
+		4332BBB924EE7888007EE662 /* RadioSquareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBB824EE7888007EE662 /* RadioSquareCell.swift */; };
+		4332BBBB24EE78BE007EE662 /* RadioSquareResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBBA24EE78BE007EE662 /* RadioSquareResultsCell.swift */; };
+		4332BBBE24EF71A6007EE662 /* HomeLiveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBBD24EF71A6007EE662 /* HomeLiveController.swift */; };
+		4332BBC524EF763C007EE662 /* HomeLiveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBC424EF763C007EE662 /* HomeLiveAPI.swift */; };
+		4332BBC724EF8E53007EE662 /* HomeLiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBC624EF8E53007EE662 /* HomeLiveModel.swift */; };
+		4332BBC924EF8EA4007EE662 /* LiveCategoryListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBC824EF8EA4007EE662 /* LiveCategoryListController.swift */; };
+		4332BBCB24EF8FCD007EE662 /* HomeLiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBCA24EF8FCD007EE662 /* HomeLiveViewModel.swift */; };
+		4332BBCD24EF9415007EE662 /* HomeLiveBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBCC24EF9415007EE662 /* HomeLiveBannerCell.swift */; };
+		4332BBCF24EF97D1007EE662 /* LiveHeaderGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBCE24EF97D1007EE662 /* LiveHeaderGridCell.swift */; };
+		4332BBD124EF9A13007EE662 /* HomeLiveGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBD024EF9A13007EE662 /* HomeLiveGridCell.swift */; };
+		4332BBD324EF9CDD007EE662 /* LiveRankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBD224EF9CDD007EE662 /* LiveRankCell.swift */; };
+		4332BBD524EF9D2B007EE662 /* HomeLiveRankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBD424EF9D2B007EE662 /* HomeLiveRankCell.swift */; };
+		4332BBD724EFA2EF007EE662 /* HomeLiveHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBD624EFA2EF007EE662 /* HomeLiveHeaderView.swift */; };
+		4332BBD924EFA3FD007EE662 /* RecommendLiveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBD824EFA3FD007EE662 /* RecommendLiveCell.swift */; };
+		4332BBDB24EFA4B2007EE662 /* ReplicatorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBDA24EFA4B2007EE662 /* ReplicatorLayer.swift */; };
+		4332BBDE24EFA7B9007EE662 /* HomeVIPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBDD24EFA7B9007EE662 /* HomeVIPController.swift */; };
+		4332BBE424EFABB3007EE662 /* HomeVIPAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BBE324EFABB3007EE662 /* HomeVIPAPI.swift */; };
 		43383E4F24DA9572006647A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43383E4E24DA9572006647A2 /* AppDelegate.swift */; };
 		43383E5124DA9572006647A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43383E5024DA9572006647A2 /* SceneDelegate.swift */; };
 		43383E5324DA9572006647A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43383E5224DA9572006647A2 /* ViewController.swift */; };
@@ -60,6 +113,59 @@
 		4332BB1F24E52098007EE662 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		4332BB2E24E61BD6007EE662 /* FindAttention.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FindAttention.json; sourceTree = "<group>"; };
 		4332BB3024E61F3C007EE662 /* RecommendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendController.swift; sourceTree = "<group>"; };
+		4332BB3424E62B7A007EE662 /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
+		4332BB3624E62F50007EE662 /* RecommendPictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendPictureCollectionViewCell.swift; sourceTree = "<group>"; };
+		4332BB3824E6320C007EE662 /* RecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewModel.swift; sourceTree = "<group>"; };
+		4332BB3D24E63576007EE662 /* DubbingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DubbingController.swift; sourceTree = "<group>"; };
+		4332BB4B24EBA288007EE662 /* DubbingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DubbingTableViewCell.swift; sourceTree = "<group>"; };
+		4332BB4D24EBA834007EE662 /* FindDubbing.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FindDubbing.json; sourceTree = "<group>"; };
+		4332BB4E24EBA845007EE662 /* FindRecommend.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FindRecommend.json; sourceTree = "<group>"; };
+		4332BB5224EBD11A007EE662 /* ListenAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenAPI.swift; sourceTree = "<group>"; };
+		4332BB5424EBD3A9007EE662 /* ListenSubscribe.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ListenSubscribe.json; sourceTree = "<group>"; };
+		4332BB5524EBD3C1007EE662 /* ListenRecommend.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ListenRecommend.json; sourceTree = "<group>"; };
+		4332BB5624EBD3F8007EE662 /* ListenMoreChannel.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ListenMoreChannel.json; sourceTree = "<group>"; };
+		4332BB5724EBD41C007EE662 /* ListenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenController.swift; sourceTree = "<group>"; };
+		4332BB5A24ECCBA2007EE662 /* ListenHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenHeaderView.swift; sourceTree = "<group>"; };
+		4332BB5E24ECEC23007EE662 /* SubscribeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeController.swift; sourceTree = "<group>"; };
+		4332BB6224ECEE57007EE662 /* ListenSubscribeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenSubscribeViewModel.swift; sourceTree = "<group>"; };
+		4332BB6524ECF085007EE662 /* ListenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenModel.swift; sourceTree = "<group>"; };
+		4332BB6724ECF1F9007EE662 /* ListenFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenFooterView.swift; sourceTree = "<group>"; };
+		4332BB6924ECF4EE007EE662 /* ListenSubscribeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenSubscribeTableViewCell.swift; sourceTree = "<group>"; };
+		4332BB6E24ECFDB5007EE662 /* ListenChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenChannelTableViewCell.swift; sourceTree = "<group>"; };
+		4332BB7024ED0418007EE662 /* OneKeyListenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneKeyListenTableViewCell.swift; sourceTree = "<group>"; };
+		4332BB7224ED06BB007EE662 /* ListenChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenChannelViewModel.swift; sourceTree = "<group>"; };
+		4332BB7424ED0921007EE662 /* ChannelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelController.swift; sourceTree = "<group>"; };
+		4332BB7724ED0FC3007EE662 /* ListenMoreChannelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenMoreChannelController.swift; sourceTree = "<group>"; };
+		4332BB7C24ED1CA1007EE662 /* ListenRecommendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenRecommendController.swift; sourceTree = "<group>"; };
+		4332BB7E24ED1E3A007EE662 /* ListenTRecommendableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenTRecommendableViewCell.swift; sourceTree = "<group>"; };
+		4332BB8024ED1EBE007EE662 /* ListenRecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenRecommendViewModel.swift; sourceTree = "<group>"; };
+		4332BB9824EE4F33007EE662 /* HomeBroadcastControllerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBroadcastControllerController.swift; sourceTree = "<group>"; };
+		4332BB9F24EE570F007EE662 /* HomeBroadcastAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBroadcastAPI.swift; sourceTree = "<group>"; };
+		4332BBA124EE5BBE007EE662 /* HomeBroadcastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBroadcastModel.swift; sourceTree = "<group>"; };
+		4332BBA324EE5E9B007EE662 /* HomeBroadcastListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBroadcastListController.swift; sourceTree = "<group>"; };
+		4332BBA624EE6124007EE662 /* URefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URefresh.swift; sourceTree = "<group>"; };
+		4332BBAE24EE70A7007EE662 /* HomeBroadcastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBroadcastViewModel.swift; sourceTree = "<group>"; };
+		4332BBB024EE7351007EE662 /* HomeRadiosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRadiosCell.swift; sourceTree = "<group>"; };
+		4332BBB224EE73DF007EE662 /* RadioHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioHeaderView.swift; sourceTree = "<group>"; };
+		4332BBB424EE744E007EE662 /* RadioFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioFooterView.swift; sourceTree = "<group>"; };
+		4332BBB624EE74CD007EE662 /* RadioCategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioCategoriesCell.swift; sourceTree = "<group>"; };
+		4332BBB824EE7888007EE662 /* RadioSquareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioSquareCell.swift; sourceTree = "<group>"; };
+		4332BBBA24EE78BE007EE662 /* RadioSquareResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioSquareResultsCell.swift; sourceTree = "<group>"; };
+		4332BBBD24EF71A6007EE662 /* HomeLiveController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLiveController.swift; sourceTree = "<group>"; };
+		4332BBC424EF763C007EE662 /* HomeLiveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLiveAPI.swift; sourceTree = "<group>"; };
+		4332BBC624EF8E53007EE662 /* HomeLiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLiveModel.swift; sourceTree = "<group>"; };
+		4332BBC824EF8EA4007EE662 /* LiveCategoryListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCategoryListController.swift; sourceTree = "<group>"; };
+		4332BBCA24EF8FCD007EE662 /* HomeLiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLiveViewModel.swift; sourceTree = "<group>"; };
+		4332BBCC24EF9415007EE662 /* HomeLiveBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLiveBannerCell.swift; sourceTree = "<group>"; };
+		4332BBCE24EF97D1007EE662 /* LiveHeaderGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveHeaderGridCell.swift; sourceTree = "<group>"; };
+		4332BBD024EF9A13007EE662 /* HomeLiveGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLiveGridCell.swift; sourceTree = "<group>"; };
+		4332BBD224EF9CDD007EE662 /* LiveRankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRankCell.swift; sourceTree = "<group>"; };
+		4332BBD424EF9D2B007EE662 /* HomeLiveRankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLiveRankCell.swift; sourceTree = "<group>"; };
+		4332BBD624EFA2EF007EE662 /* HomeLiveHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLiveHeaderView.swift; sourceTree = "<group>"; };
+		4332BBD824EFA3FD007EE662 /* RecommendLiveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendLiveCell.swift; sourceTree = "<group>"; };
+		4332BBDA24EFA4B2007EE662 /* ReplicatorLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicatorLayer.swift; sourceTree = "<group>"; };
+		4332BBDD24EFA7B9007EE662 /* HomeVIPController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVIPController.swift; sourceTree = "<group>"; };
+		4332BBE324EFABB3007EE662 /* HomeVIPAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVIPAPI.swift; sourceTree = "<group>"; };
 		43383E4B24DA9572006647A2 /* XiMaLaYa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiMaLaYa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43383E4E24DA9572006647A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43383E5024DA9572006647A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,7 +211,6 @@
 		4332BAF324E4E364007EE662 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4332BB0424E509A3007EE662 /* AttentionPictureCollectionViewCell.swift */,
 				4332BAF424E4E37C007EE662 /* CategoryView.swift */,
 				4332BAF624E4E88D007EE662 /* CategoryCollectionViewCell.swift */,
 			);
@@ -155,6 +260,8 @@
 		4332BB0224E508C8007EE662 /* DubbingController */ = {
 			isa = PBXGroup;
 			children = (
+				4332BB3D24E63576007EE662 /* DubbingController.swift */,
+				4332BB4B24EBA288007EE662 /* DubbingTableViewCell.swift */,
 			);
 			path = DubbingController;
 			sourceTree = "<group>";
@@ -162,6 +269,7 @@
 		4332BB0324E50910007EE662 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4332BB0424E509A3007EE662 /* AttentionPictureCollectionViewCell.swift */,
 				4332BB0624E50C68007EE662 /* AttentionTableViewCell.swift */,
 			);
 			path = View;
@@ -179,6 +287,8 @@
 			isa = PBXGroup;
 			children = (
 				4332BB2E24E61BD6007EE662 /* FindAttention.json */,
+				4332BB4E24EBA845007EE662 /* FindRecommend.json */,
+				4332BB4D24EBA834007EE662 /* FindDubbing.json */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -186,6 +296,8 @@
 		4332BB3224E6223D007EE662 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4332BB3624E62F50007EE662 /* RecommendPictureCollectionViewCell.swift */,
+				4332BB3424E62B7A007EE662 /* RecommendTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -193,8 +305,293 @@
 		4332BB3324E62247007EE662 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4332BB3824E6320C007EE662 /* RecommendViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4332BB5124EBD108007EE662 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4332BB5224EBD11A007EE662 /* ListenAPI.swift */,
+				4332BB5424EBD3A9007EE662 /* ListenSubscribe.json */,
+				4332BB5524EBD3C1007EE662 /* ListenRecommend.json */,
+				4332BB5624EBD3F8007EE662 /* ListenMoreChannel.json */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		4332BB5924ECCB5B007EE662 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4332BB5A24ECCBA2007EE662 /* ListenHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4332BB5C24ECEC03007EE662 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4332BB7924ED1B3A007EE662 /* Recommend */,
+				4332BB6B24ECFD09007EE662 /* Channel */,
+				4332BB5D24ECEC0D007EE662 /* Subscribe */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4332BB5D24ECEC0D007EE662 /* Subscribe */ = {
+			isa = PBXGroup;
+			children = (
+				4332BB6124ECEE2E007EE662 /* ViewModel */,
+				4332BB6024ECEE21007EE662 /* View */,
+				4332BB5E24ECEC23007EE662 /* SubscribeController.swift */,
+			);
+			path = Subscribe;
+			sourceTree = "<group>";
+		};
+		4332BB6024ECEE21007EE662 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4332BB6724ECF1F9007EE662 /* ListenFooterView.swift */,
+				4332BB6924ECF4EE007EE662 /* ListenSubscribeTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4332BB6124ECEE2E007EE662 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4332BB6224ECEE57007EE662 /* ListenSubscribeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4332BB6424ECF05A007EE662 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4332BB6524ECF085007EE662 /* ListenModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4332BB6B24ECFD09007EE662 /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				4332BB7624ED0F9C007EE662 /* Controller */,
+				4332BB6D24ECFD69007EE662 /* ViewModel */,
+				4332BB6C24ECFD62007EE662 /* View */,
+				4332BB7424ED0921007EE662 /* ChannelController.swift */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
+		4332BB6C24ECFD62007EE662 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4332BB6E24ECFDB5007EE662 /* ListenChannelTableViewCell.swift */,
+				4332BB7024ED0418007EE662 /* OneKeyListenTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4332BB6D24ECFD69007EE662 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4332BB7224ED06BB007EE662 /* ListenChannelViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4332BB7624ED0F9C007EE662 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4332BB7724ED0FC3007EE662 /* ListenMoreChannelController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4332BB7924ED1B3A007EE662 /* Recommend */ = {
+			isa = PBXGroup;
+			children = (
+				4332BB7B24ED1C86007EE662 /* ViewModel */,
+				4332BB7A24ED1C81007EE662 /* View */,
+				4332BB7C24ED1CA1007EE662 /* ListenRecommendController.swift */,
+			);
+			path = Recommend;
+			sourceTree = "<group>";
+		};
+		4332BB7A24ED1C81007EE662 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4332BB7E24ED1E3A007EE662 /* ListenTRecommendableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4332BB7B24ED1C86007EE662 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4332BB8024ED1EBE007EE662 /* ListenRecommendViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4332BB9724EE4EC4007EE662 /* Broadcast */ = {
+			isa = PBXGroup;
+			children = (
+				4332BB9E24EE56D9007EE662 /* API */,
+				4332BB9D24EE56D3007EE662 /* Model */,
+				4332BB9C24EE56CA007EE662 /* Controller */,
+				4332BB9B24EE56BE007EE662 /* ViewModel */,
+				4332BB9A24EE56B9007EE662 /* View */,
+				4332BB9824EE4F33007EE662 /* HomeBroadcastControllerController.swift */,
+			);
+			path = Broadcast;
+			sourceTree = "<group>";
+		};
+		4332BB9A24EE56B9007EE662 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4332BBB024EE7351007EE662 /* HomeRadiosCell.swift */,
+				4332BBB224EE73DF007EE662 /* RadioHeaderView.swift */,
+				4332BBB424EE744E007EE662 /* RadioFooterView.swift */,
+				4332BBB624EE74CD007EE662 /* RadioCategoriesCell.swift */,
+				4332BBB824EE7888007EE662 /* RadioSquareCell.swift */,
+				4332BBBA24EE78BE007EE662 /* RadioSquareResultsCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4332BB9B24EE56BE007EE662 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4332BBAE24EE70A7007EE662 /* HomeBroadcastViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4332BB9C24EE56CA007EE662 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4332BBA324EE5E9B007EE662 /* HomeBroadcastListController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4332BB9D24EE56D3007EE662 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4332BBA124EE5BBE007EE662 /* HomeBroadcastModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4332BB9E24EE56D9007EE662 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4332BB9F24EE570F007EE662 /* HomeBroadcastAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		4332BBBC24EF7166007EE662 /* Live */ = {
+			isa = PBXGroup;
+			children = (
+				4332BBC324EF7615007EE662 /* API */,
+				4332BBC224EF7610007EE662 /* Model */,
+				4332BBC124EF7608007EE662 /* Controller */,
+				4332BBC024EF7603007EE662 /* ViewModel */,
+				4332BBBF24EF75FE007EE662 /* View */,
+				4332BBBD24EF71A6007EE662 /* HomeLiveController.swift */,
+			);
+			path = Live;
+			sourceTree = "<group>";
+		};
+		4332BBBF24EF75FE007EE662 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4332BBCC24EF9415007EE662 /* HomeLiveBannerCell.swift */,
+				4332BBCE24EF97D1007EE662 /* LiveHeaderGridCell.swift */,
+				4332BBD024EF9A13007EE662 /* HomeLiveGridCell.swift */,
+				4332BBD224EF9CDD007EE662 /* LiveRankCell.swift */,
+				4332BBD424EF9D2B007EE662 /* HomeLiveRankCell.swift */,
+				4332BBD624EFA2EF007EE662 /* HomeLiveHeaderView.swift */,
+				4332BBD824EFA3FD007EE662 /* RecommendLiveCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4332BBC024EF7603007EE662 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4332BBCA24EF8FCD007EE662 /* HomeLiveViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4332BBC124EF7608007EE662 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4332BBC824EF8EA4007EE662 /* LiveCategoryListController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4332BBC224EF7610007EE662 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4332BBC624EF8E53007EE662 /* HomeLiveModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4332BBC324EF7615007EE662 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4332BBC424EF763C007EE662 /* HomeLiveAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		4332BBDC24EFA798007EE662 /* VIP */ = {
+			isa = PBXGroup;
+			children = (
+				4332BBE224EFAB9A007EE662 /* API */,
+				4332BBE124EFAB95007EE662 /* Model */,
+				4332BBE024EFAB90007EE662 /* ViewModel */,
+				4332BBDF24EFAB8C007EE662 /* View */,
+				4332BBDD24EFA7B9007EE662 /* HomeVIPController.swift */,
+			);
+			path = VIP;
+			sourceTree = "<group>";
+		};
+		4332BBDF24EFAB8C007EE662 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4332BBE024EFAB90007EE662 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4332BBE124EFAB95007EE662 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4332BBE224EFAB9A007EE662 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4332BBE324EFABB3007EE662 /* HomeVIPAPI.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		43383E4224DA9572006647A2 = {
@@ -295,8 +692,10 @@
 		43F7CD7F24E262700078D89E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4332BBA624EE6124007EE662 /* URefresh.swift */,
 				43F7CD8024E262820078D89E /* Header.swift */,
 				4332BB1F24E52098007EE662 /* CustomLabel.swift */,
+				4332BBDA24EFA4B2007EE662 /* ReplicatorLayer.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -333,6 +732,11 @@
 		43F7CD8524E265120078D89E /* Listen */ = {
 			isa = PBXGroup;
 			children = (
+				4332BB6424ECF05A007EE662 /* Model */,
+				4332BB5C24ECEC03007EE662 /* Controller */,
+				4332BB5924ECCB5B007EE662 /* View */,
+				4332BB5124EBD108007EE662 /* API */,
+				4332BB5724EBD41C007EE662 /* ListenController.swift */,
 			);
 			path = Listen;
 			sourceTree = "<group>";
@@ -340,6 +744,9 @@
 		43F7CD8624E2652C0078D89E /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				4332BBDC24EFA798007EE662 /* VIP */,
+				4332BBBC24EF7166007EE662 /* Live */,
+				4332BB9724EE4EC4007EE662 /* Broadcast */,
 				43F7CD8724E265570078D89E /* HomeController.swift */,
 			);
 			path = Home;
@@ -441,6 +848,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4332BB8224ED218D007EE662 /* ListenSubscribe.json in Resources */,
+				4332BB8324ED218D007EE662 /* ListenRecommend.json in Resources */,
+				4332BB8424ED218D007EE662 /* ListenMoreChannel.json in Resources */,
+				4332BB4F24EBA963007EE662 /* FindRecommend.json in Resources */,
+				4332BB5024EBA963007EE662 /* FindDubbing.json in Resources */,
 				4332BB2F24E61C03007EE662 /* FindAttention.json in Resources */,
 				43383E5B24DA9573006647A2 /* LaunchScreen.storyboard in Resources */,
 				43383E5824DA9573006647A2 /* Assets.xcassets in Resources */,
@@ -497,37 +909,85 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4332BBC724EF8E53007EE662 /* HomeLiveModel.swift in Sources */,
+				4332BBBE24EF71A6007EE662 /* HomeLiveController.swift in Sources */,
+				4332BBA224EE5BBE007EE662 /* HomeBroadcastModel.swift in Sources */,
 				4332BAF524E4E37C007EE662 /* CategoryView.swift in Sources */,
+				4332BBAF24EE70A7007EE662 /* HomeBroadcastViewModel.swift in Sources */,
 				43F7CD9624E28ABB0078D89E /* MineSetController.swift in Sources */,
 				43383E5324DA9572006647A2 /* ViewController.swift in Sources */,
 				43F7CD9124E27B180078D89E /* MakeTableViewCell.swift in Sources */,
+				4332BBD724EFA2EF007EE662 /* HomeLiveHeaderView.swift in Sources */,
+				4332BB6324ECEE57007EE662 /* ListenSubscribeViewModel.swift in Sources */,
 				4332BB0724E50C68007EE662 /* AttentionTableViewCell.swift in Sources */,
+				4332BB4C24EBA288007EE662 /* DubbingTableViewCell.swift in Sources */,
+				4332BB7824ED0FC3007EE662 /* ListenMoreChannelController.swift in Sources */,
+				4332BB3524E62B7A007EE662 /* RecommendTableViewCell.swift in Sources */,
 				4332BAF224E4DE7F007EE662 /* FindController.swift in Sources */,
 				43F7CD7C24E2619A0078D89E /* WRCycleScrollView.swift in Sources */,
 				43F7CD9824E28EC00078D89E /* IrregularityBasicContentView.swift in Sources */,
+				4332BBD124EF9A13007EE662 /* HomeLiveGridCell.swift in Sources */,
+				4332BBB124EE7351007EE662 /* HomeRadiosCell.swift in Sources */,
 				43F7CD6F24E2471A0078D89E /* NavigationController.swift in Sources */,
+				4332BBB924EE7888007EE662 /* RadioSquareCell.swift in Sources */,
 				43F7CD6B24E245DF0078D89E /* BasicContentView.swift in Sources */,
 				43F7CD9324E27B880078D89E /* RadarLayerView.swift in Sources */,
+				4332BB7124ED0418007EE662 /* OneKeyListenTableViewCell.swift in Sources */,
 				43F7CD8124E262820078D89E /* Header.swift in Sources */,
+				4332BB7F24ED1E3A007EE662 /* ListenTRecommendableViewCell.swift in Sources */,
+				4332BB7524ED0921007EE662 /* ChannelController.swift in Sources */,
+				4332BBA724EE6124007EE662 /* URefresh.swift in Sources */,
+				4332BB5F24ECEC23007EE662 /* SubscribeController.swift in Sources */,
+				4332BB3924E6320C007EE662 /* RecommendViewModel.swift in Sources */,
 				43F7CD7A24E261860078D89E /* WRProxy.swift in Sources */,
 				43F7CD8824E265570078D89E /* HomeController.swift in Sources */,
 				43F7CD7E24E261AA0078D89E /* WRCycleCell.swift in Sources */,
+				4332BBA024EE570F007EE662 /* HomeBroadcastAPI.swift in Sources */,
 				43F7CD7624E2613A0078D89E /* WRNavigationBar.swift in Sources */,
+				4332BB7D24ED1CA1007EE662 /* ListenRecommendController.swift in Sources */,
+				4332BBCD24EF9415007EE662 /* HomeLiveBannerCell.swift in Sources */,
+				4332BBC524EF763C007EE662 /* HomeLiveAPI.swift in Sources */,
+				4332BBB524EE744E007EE662 /* RadioFooterView.swift in Sources */,
 				4332BB0A24E50EE6007EE662 /* AttentionViewModel.swift in Sources */,
+				4332BB5B24ECCBA2007EE662 /* ListenHeaderView.swift in Sources */,
+				4332BBA424EE5E9B007EE662 /* HomeBroadcastListController.swift in Sources */,
+				4332BBB724EE74CD007EE662 /* RadioCategoriesCell.swift in Sources */,
 				4332BB2024E52098007EE662 /* CustomLabel.swift in Sources */,
+				4332BBCF24EF97D1007EE662 /* LiveHeaderGridCell.swift in Sources */,
+				4332BB6F24ECFDB5007EE662 /* ListenChannelTableViewCell.swift in Sources */,
+				4332BB5324EBD11A007EE662 /* ListenAPI.swift in Sources */,
+				4332BBDE24EFA7B9007EE662 /* HomeVIPController.swift in Sources */,
+				4332BB7324ED06BB007EE662 /* ListenChannelViewModel.swift in Sources */,
 				4332BB3124E61F3C007EE662 /* RecommendController.swift in Sources */,
+				4332BBD524EF9D2B007EE662 /* HomeLiveRankCell.swift in Sources */,
+				4332BBB324EE73DF007EE662 /* RadioHeaderView.swift in Sources */,
+				4332BB3E24E63576007EE662 /* DubbingController.swift in Sources */,
 				4332BAFC24E50528007EE662 /* RecommendModel.swift in Sources */,
+				4332BB8124ED1EBE007EE662 /* ListenRecommendViewModel.swift in Sources */,
 				4332BB0524E509A3007EE662 /* AttentionPictureCollectionViewCell.swift in Sources */,
 				43F7CD8D24E274A40078D89E /* ProfileView.swift in Sources */,
 				4332BB1E24E51942007EE662 /* AttentionController.swift in Sources */,
 				4332BAF724E4E88D007EE662 /* CategoryCollectionViewCell.swift in Sources */,
+				4332BBDB24EFA4B2007EE662 /* ReplicatorLayer.swift in Sources */,
 				43F7CD6D24E2467F0078D89E /* BouncesContentView.swift in Sources */,
 				43F7CD8F24E275D70078D89E /* VIPAnimationView.swift in Sources */,
+				4332BB3724E62F50007EE662 /* RecommendPictureCollectionViewCell.swift in Sources */,
+				4332BB6624ECF085007EE662 /* ListenModel.swift in Sources */,
+				4332BBD924EFA3FD007EE662 /* RecommendLiveCell.swift in Sources */,
+				4332BBCB24EF8FCD007EE662 /* HomeLiveViewModel.swift in Sources */,
 				43383E4F24DA9572006647A2 /* AppDelegate.swift in Sources */,
 				43383E5124DA9572006647A2 /* SceneDelegate.swift in Sources */,
+				4332BB6824ECF1F9007EE662 /* ListenFooterView.swift in Sources */,
+				4332BB6A24ECF4EE007EE662 /* ListenSubscribeTableViewCell.swift in Sources */,
 				43F7CD8A24E26FD60078D89E /* MineController.swift in Sources */,
+				4332BB5824EBD41C007EE662 /* ListenController.swift in Sources */,
 				4332BAFA24E50393007EE662 /* AttentionModel.swift in Sources */,
+				4332BBC924EF8EA4007EE662 /* LiveCategoryListController.swift in Sources */,
+				4332BBBB24EE78BE007EE662 /* RadioSquareResultsCell.swift in Sources */,
 				43F7CD7824E2616A0078D89E /* WRCustomNavigationBar.swift in Sources */,
+				4332BBD324EF9CDD007EE662 /* LiveRankCell.swift in Sources */,
+				4332BBE424EFABB3007EE662 /* HomeVIPAPI.swift in Sources */,
+				4332BB9924EE4F33007EE662 /* HomeBroadcastControllerController.swift in Sources */,
 				4332BAFE24E50616007EE662 /* DubbingModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

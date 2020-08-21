@@ -68,9 +68,8 @@ extension RecommendController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: RecommendTableViewCell = tableView.dequeueReusableCell(withIdentifier: RecommendTableViewCellID, for: indexPath) as! AttentionTableViewCell
-        cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        cell.eventInfosModel = viewModel.eventInfos?[indexPath.row]
+        let cell: RecommendTableViewCell = tableView.dequeueReusableCell(withIdentifier: RecommendTableViewCellID, for: indexPath) as! RecommendTableViewCell
+        cell.streamModel = viewModel.streamList?[indexPath.row]
         return cell
     }
 }

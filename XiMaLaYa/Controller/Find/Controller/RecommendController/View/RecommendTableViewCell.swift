@@ -1,16 +1,16 @@
 //
-//  AttentionTableViewCell.swift
+//  RecommendTableViewCell.swift
 //  XiMaLaYa
 //
-//  Created by rcadmin on 2020/8/13.
+//  Created by rcadmin on 2020/8/14.
 //  Copyright © 2020 rcadmin. All rights reserved.
 //
 
 import UIKit
 
-class AttentionTableViewCell: UITableViewCell {
+class RecommendTableViewCell: UITableViewCell {
     
-    private var eventInfos: EventInfosModel?
+    private var findRecommendSteam: FindRStreamList?
     
     // 头像
     lazy var picView: UIImageView = {
@@ -69,9 +69,10 @@ class AttentionTableViewCell: UITableViewCell {
         collectionView.backgroundColor = UIColor.white
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(AttentionPictureCollectionViewCell.self, forCellWithReuseIdentifier: "AttentionPictureCollectionViewCell")
+        collectionView.register(RecommendPictureCollectionViewCell.self, forCellWithReuseIdentifier: "RecommendPictureCollectionViewCell")
         return collectionView
     }()
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
@@ -79,7 +80,6 @@ class AttentionTableViewCell: UITableViewCell {
     }
     
     func setUpLayout(){
-        // 头像
         self.addSubview(self.picView)
         self.picView.image = UIImage(named: "news.png")
         self.picView.layer.masksToBounds = true
@@ -89,34 +89,34 @@ class AttentionTableViewCell: UITableViewCell {
             make.top.equalToSuperview().offset(10)
             make.width.height.equalTo(40)
         }
-        // 标题
+        
         self.addSubview(self.nameLabel)
-        self.nameLabel.text = "喜马拉雅"
+        self.nameLabel.text = "喜马拉雅好声音"
         self.nameLabel.snp.makeConstraints { (make) in
             make.left.equalTo(self.picView.snp.right).offset(8)
             make.width.equalTo(200)
             make.height.equalTo(30)
             make.centerY.equalTo(self.picView)
         }
-        // 描述
+        
         self.addSubview(self.desLabel)
-        self.desLabel.text = "四六级发送到了"
+        self.desLabel.text = "啦啦啦啦啦啦啦啦四六级发送到了解放塑料袋就分手发熟练度家纺"
         self.desLabel.snp.makeConstraints { (make) in
             make.left.equalTo(self.picView)
             make.top.equalTo(self.picView.snp.bottom).offset(8)
             make.right.equalToSuperview().offset(-15)
             make.height.equalTo(50)
         }
-        // 时间
+        
         self.addSubview(self.dateLabel)
         self.dateLabel.text = "一天前"
         self.dateLabel.snp.makeConstraints { (make) in
             make.left.equalTo(self.picView)
             make.bottom.equalToSuperview().offset(-15)
-            make.width.equalTo(160)
+            make.width.equalTo(100)
             make.height.equalTo(20)
         }
-        //
+        
         self.addSubview(self.commetLabel)
         self.commetLabel.text = "94"
         self.commetLabel.snp.makeConstraints { (make) in
@@ -164,25 +164,23 @@ class AttentionTableViewCell: UITableViewCell {
         super.init(coder: coder)
     }
     
-    var eventInfosModel:EventInfosModel? {
+    var streamModel: FindRStreamList? {
         didSet {
-            guard let model = eventInfosModel else {return}
-            self.picView.kf.setImage(with: URL(string: (model.authorInfo?.avatarUrl!)!))
-            self.nameLabel.text = model.authorInfo?.nickname
-            let zanNum:Int = (model.statInfo?.praiseCount)!
-            self.zanLabel.text = "\(zanNum)"
-            let commentNum:Int = (model.statInfo?.commentCount)!
-            self.commetLabel.text = "\(commentNum)"
-            self.desLabel.text = model.contentInfo?.text
-            let textHeight:CGFloat = height(for: model.contentInfo)
+            guard let model = streamModel else {return}
+            self.picView.kf.setImage(with: URL(string: model.avatar!))
+            self.desLabel.text = model.content
+            let textHeight:CGFloat = height(for: model)
             self.desLabel.snp.updateConstraints { (make) in
                 make.height.equalTo(textHeight)
             }
+            self.nameLabel.text = model.nickname
+            self.zanLabel.text = "\(model.likesCount)"
+            self.commetLabel.text = "\(model.commentsCount)"
             
-            self.dateLabel.text = updateTimeToCurrennTime(timeStamp: Double(CGFloat(model.timeline)))
+            self.dateLabel.text = updateTimeToCurrennTime(timeStamp: Double(CGFloat(model.issuedTs)))
             
-            self.eventInfos = model
-            let picNum = self.eventInfos?.contentInfo?.picInfos?.count ?? 0
+            self.findRecommendSteam = model
+            let picNum = self.findRecommendSteam?.picUrls?.count ?? 0
             var num:CGFloat = 0
             if picNum > 0 && picNum <= 3 {
                 num = 1
@@ -199,51 +197,53 @@ class AttentionTableViewCell: UITableViewCell {
             self.collectionView.reloadData()
         }
     }
-    
-    func height(for commentModel: FindAContentInfo?) -> CGFloat {
+    // 计算文字的高度
+    func height(for commentModel: FindRStreamList?) -> CGFloat {
         var height: CGFloat = 30
         guard let model = commentModel else { return height }
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
         label.numberOfLines = 0
-        label.text = model.text
+        label.text = model.content
         height += label.sizeThatFits(CGSize(width: ScreenWidth - 30, height: CGFloat.infinity)).height
         return height
     }
     
     // - 根据后台时间戳返回几分钟前，几小时前，几天前
     func updateTimeToCurrennTime(timeStamp: Double) -> String {
-        // 获取当前的时间戳
+        //获取当前的时间戳
         let currentTime = Date().timeIntervalSince1970
-        // 时间戳为毫秒级要 ／ 1000， 秒就不用除1000，参数带没带000
-        let timeSta: TimeInterval = TimeInterval(timeStamp / 1000)
-        // 时间差
+        //时间戳为毫秒级要 ／ 1000， 秒就不用除1000，参数带没带000
+        let timeSta:TimeInterval = TimeInterval(timeStamp / 1000)
+        //时间差
         let reduceTime : TimeInterval = currentTime - timeSta
-        // 时间差小于60秒
+        //时间差小于60秒
         if reduceTime < 60 {
             return "刚刚"
         }
-        // 时间差大于一分钟小于60分钟内
+        //时间差大于一分钟小于60分钟内
         let mins = Int(reduceTime / 60)
         if mins < 60 {
             return "\(mins)分钟前"
         }
+        //时间差大于一小时小于24小时内
         let hours = Int(reduceTime / 3600)
         if hours < 24 {
             return "\(hours)小时前"
         }
+        //时间差大于一天小于30天内
         let days = Int(reduceTime / 3600 / 24)
         if days < 30 {
             return "\(days)天前"
         }
-        // 不满足上述条件---或者是未来日期-----直接返回日期
+        //不满足上述条件---或者是未来日期-----直接返回日期
         let date = NSDate(timeIntervalSince1970: timeSta)
         let dfmatter = DateFormatter()
-        // yyyy-MM-dd HH:mm:ss
-        dfmatter.dateFormat = "yyyy年MM月dd日 HH:mm:ss"
+        //yyyy-MM-dd HH:mm:ss
+        dfmatter.dateFormat="yyyy年MM月dd日 HH:mm:ss"
         return dfmatter.string(from: date as Date)
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -257,14 +257,14 @@ class AttentionTableViewCell: UITableViewCell {
 
 }
 
-extension AttentionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension RecommendTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.eventInfos?.contentInfo?.picInfos?.count ?? 0
+        return self.findRecommendSteam?.picUrls?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: AttentionPictureCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "AttentionPictureCollectionViewCell", for: indexPath) as! AttentionPictureCollectionViewCell
-        cell.picModel = self.eventInfos?.contentInfo?.picInfos?[indexPath.row]
+        let cell: RecommendPictureCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendPictureCollectionViewCell", for: indexPath) as! RecommendPictureCollectionViewCell
+        cell.picModel = self.findRecommendSteam?.picUrls?[indexPath.row]
         return cell
     }
     
@@ -273,7 +273,7 @@ extension AttentionTableViewCell: UICollectionViewDelegate, UICollectionViewData
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
-    // 最小 Item 间距
+    // 最小 item 间距
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
