@@ -91,7 +91,6 @@
 		43383E5324DA9572006647A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43383E5224DA9572006647A2 /* ViewController.swift */; };
 		43383E5624DA9572006647A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43383E5424DA9572006647A2 /* Main.storyboard */; };
 		43383E5824DA9573006647A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43383E5724DA9573006647A2 /* Assets.xcassets */; };
-		43383E5B24DA9573006647A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43383E5924DA9573006647A2 /* LaunchScreen.storyboard */; };
 		438C37F224F34A470003F691 /* HomeClassifyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C37F124F34A470003F691 /* HomeClassifyController.swift */; };
 		438C37F824F34AA70003F691 /* HomeClassifyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C37F724F34AA70003F691 /* HomeClassifyAPI.swift */; };
 		438C37FA24F34BA70003F691 /* HomeClassifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C37F924F34BA70003F691 /* HomeClassifyModel.swift */; };
@@ -162,6 +161,7 @@
 		438C38A224F39F820003F691 /* PlayDetailProgramHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C38A124F39F820003F691 /* PlayDetailProgramHeaderView.swift */; };
 		438C38A424F39FB30003F691 /* PlayDetailProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C38A324F39FB30003F691 /* PlayDetailProgramCell.swift */; };
 		438C38A624F3A7810003F691 /* HomeRecommendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C38A524F3A7810003F691 /* HomeRecommendController.swift */; };
+		438C38A824F3BA660003F691 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438C38A724F3BA660003F691 /* LaunchScreen.storyboard */; };
 		43F7CD6B24E245DF0078D89E /* BasicContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7CD6A24E245DF0078D89E /* BasicContentView.swift */; };
 		43F7CD6D24E2467F0078D89E /* BouncesContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7CD6C24E2467F0078D89E /* BouncesContentView.swift */; };
 		43F7CD6F24E2471A0078D89E /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7CD6E24E2471A0078D89E /* NavigationController.swift */; };
@@ -266,7 +266,6 @@
 		43383E5224DA9572006647A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		43383E5524DA9572006647A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43383E5724DA9573006647A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		43383E5A24DA9573006647A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43383E5C24DA9573006647A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		438C37F124F34A470003F691 /* HomeClassifyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeClassifyController.swift; sourceTree = "<group>"; };
 		438C37F724F34AA70003F691 /* HomeClassifyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeClassifyAPI.swift; sourceTree = "<group>"; };
@@ -338,6 +337,7 @@
 		438C38A124F39F820003F691 /* PlayDetailProgramHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayDetailProgramHeaderView.swift; sourceTree = "<group>"; };
 		438C38A324F39FB30003F691 /* PlayDetailProgramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayDetailProgramCell.swift; sourceTree = "<group>"; };
 		438C38A524F3A7810003F691 /* HomeRecommendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecommendController.swift; sourceTree = "<group>"; };
+		438C38A724F3BA660003F691 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43F7CD6A24E245DF0078D89E /* BasicContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicContentView.swift; sourceTree = "<group>"; };
 		43F7CD6C24E2467F0078D89E /* BouncesContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouncesContentView.swift; sourceTree = "<group>"; };
 		43F7CD6E24E2471A0078D89E /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -792,13 +792,12 @@
 			isa = PBXGroup;
 			children = (
 				43F7CD7F24E262700078D89E /* Common */,
-				43F7CD7224E260CC0078D89E /* Lib */,
 				43F7CD6824E244F40078D89E /* Controller */,
 				43F7CD6724E23BBA0078D89E /* AppDeledate */,
 				43383E5424DA9572006647A2 /* Main.storyboard */,
 				43383E5724DA9573006647A2 /* Assets.xcassets */,
-				43383E5924DA9573006647A2 /* LaunchScreen.storyboard */,
 				43383E5C24DA9573006647A2 /* Info.plist */,
+				438C38A724F3BA660003F691 /* LaunchScreen.storyboard */,
 			);
 			path = XiMaLaYa;
 			sourceTree = "<group>";
@@ -1134,7 +1133,6 @@
 		43F7CD6824E244F40078D89E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				438C382E24F356100003F691 /* Recommend */,
 				43F7CD8624E2652C0078D89E /* Home */,
 				43F7CD8524E265120078D89E /* Listen */,
 				43F7CD8424E265060078D89E /* Play */,
@@ -1154,14 +1152,6 @@
 				43F7CD9724E28EC00078D89E /* IrregularityBasicContentView.swift */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		43F7CD7224E260CC0078D89E /* Lib */ = {
-			isa = PBXGroup;
-			children = (
-				43F7CD7324E260E50078D89E /* WRNavigationBar */,
-			);
-			path = Lib;
 			sourceTree = "<group>";
 		};
 		43F7CD7324E260E50078D89E /* WRNavigationBar */ = {
@@ -1187,6 +1177,7 @@
 		43F7CD7F24E262700078D89E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				43F7CD7324E260E50078D89E /* WRNavigationBar */,
 				4332BBA624EE6124007EE662 /* URefresh.swift */,
 				43F7CD8024E262820078D89E /* Header.swift */,
 				4332BB1F24E52098007EE662 /* CustomLabel.swift */,
@@ -1245,6 +1236,7 @@
 		43F7CD8624E2652C0078D89E /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				438C382E24F356100003F691 /* Recommend */,
 				438C37F024F349310003F691 /* Classify */,
 				4332BBDC24EFA798007EE662 /* VIP */,
 				4332BBBC24EF7166007EE662 /* Live */,
@@ -1356,8 +1348,8 @@
 				4332BB4F24EBA963007EE662 /* FindRecommend.json in Resources */,
 				4332BB5024EBA963007EE662 /* FindDubbing.json in Resources */,
 				4332BB2F24E61C03007EE662 /* FindAttention.json in Resources */,
-				43383E5B24DA9573006647A2 /* LaunchScreen.storyboard in Resources */,
 				43383E5824DA9573006647A2 /* Assets.xcassets in Resources */,
+				438C38A824F3BA660003F691 /* LaunchScreen.storyboard in Resources */,
 				43383E5624DA9572006647A2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1587,14 +1579,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		43383E5924DA9573006647A2 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				43383E5A24DA9573006647A2 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1717,6 +1701,7 @@
 			baseConfigurationReference = D4709ED1FBDF213C0747AEDF /* Pods-XiMaLaYa.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = XiMaLaYa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1736,6 +1721,7 @@
 			baseConfigurationReference = 9FCD3B89E9D01170DB03CEFC /* Pods-XiMaLaYa.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = XiMaLaYa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

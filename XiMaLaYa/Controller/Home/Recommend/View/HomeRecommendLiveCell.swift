@@ -12,7 +12,7 @@ import HandyJSON
 
 class HomeRecommendLiveCell: UICollectionViewCell {
     private var live:[LiveModel]?
-    private let RecommendLiveCellID = "RecommendLiveCell"
+    private let LBRecommendLiveCellID = "LBRecommendLiveCell"
     private lazy var changeBtn:UIButton = {
         let button = UIButton.init(type: UIButton.ButtonType.custom)
         button.setTitle("换一批", for: UIControl.State.normal)
@@ -31,7 +31,7 @@ class HomeRecommendLiveCell: UICollectionViewCell {
         collectionView.dataSource = self
         collectionView.backgroundColor = UIColor.white
         collectionView.alwaysBounceVertical = true
-        collectionView.register(RecommendLiveCell.self, forCellWithReuseIdentifier: RecommendLiveCellID)
+        collectionView.register(LBRecommendLiveCell.self, forCellWithReuseIdentifier: LBRecommendLiveCellID)
         return collectionView
     }()
     
@@ -98,7 +98,7 @@ extension HomeRecommendLiveCell: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell:LBRecommendLiveCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendLiveCellID, for: indexPath) as! LBRecommendLiveCell
+        let cell:LBRecommendLiveCell = collectionView.dequeueReusableCell(withReuseIdentifier: LBRecommendLiveCellID, for: indexPath) as! LBRecommendLiveCell
         cell.recommendliveData = self.live?[indexPath.row]
         return cell
     }

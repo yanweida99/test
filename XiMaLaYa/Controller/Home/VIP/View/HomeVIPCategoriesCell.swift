@@ -33,7 +33,7 @@ class HomeVIPCategoriesCell: UITableViewCell {
         collectionView.backgroundColor = UIColor.white
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(VIPCategoryCell.self, forCellWithReuseIdentifier:"VipCategoryCell")
+        collectionView.register(VIPCategoryCell.self, forCellWithReuseIdentifier:"VIPCategoryCell")
         
         return collectionView
     }()
