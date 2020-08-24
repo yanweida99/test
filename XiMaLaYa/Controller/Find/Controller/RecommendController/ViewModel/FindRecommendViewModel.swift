@@ -10,7 +10,7 @@ import UIKit
 import HandyJSON
 import SwiftyJSON
 
-class RecommendViewModel: NSObject {
+class FindRecommendViewModel: NSObject {
     var findRecommendModel: FindRecommendModel?
     var streamList: [FindRStreamList]?
     // 数据源更新
@@ -19,7 +19,7 @@ class RecommendViewModel: NSObject {
 }
 
 // 请求数据
-extension RecommendViewModel {
+extension FindRecommendViewModel {
     func refreshDataSource() {
         // 1、获取JSON文件路径
         let path = Bundle.main.path(forResource: "FindRecommend", ofType: "json")
@@ -35,7 +35,7 @@ extension RecommendViewModel {
     }
 }
 
-extension RecommendViewModel {
+extension FindRecommendViewModel {
     // 每个分区显示item数量
     func numberOfRowsInSection(section: NSInteger) -> NSInteger {
         return self.streamList?.count ?? 0

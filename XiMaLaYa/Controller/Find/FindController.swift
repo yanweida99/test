@@ -19,7 +19,7 @@ class FindController: UIViewController {
     
     private lazy var viewControllers: [UIViewController] = {
         let findAttentionVC = AttentionController()
-        let findRecommendVC = RecommendController()
+        let findRecommendVC = FindRecommendController()
         let findDubbingVC = DubbingController()
         return [findAttentionVC, findRecommendVC, findDubbingVC]
     }()

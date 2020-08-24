@@ -9,7 +9,7 @@
 import UIKit
 import LTScrollView
 
-class RecommendController: UIViewController, LTTableViewProtocal {
+class FindRecommendController: UIViewController, LTTableViewProtocal {
 
     private let RecommendTableViewCellID = "RecommendTableViewCell"
     
@@ -19,8 +19,8 @@ class RecommendController: UIViewController, LTTableViewProtocal {
         return tableView
     }()
     
-    lazy var viewModel: RecommendViewModel = {
-        return RecommendViewModel()
+    lazy var viewModel: FindRecommendViewModel = {
+        return FindRecommendViewModel()
     }()
     
     override func viewDidLoad() {
@@ -58,7 +58,7 @@ class RecommendController: UIViewController, LTTableViewProtocal {
     
 }
 
-extension RecommendController: UITableViewDelegate, UITableViewDataSource {
+extension FindRecommendController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRowsInSection(section: section)
     }

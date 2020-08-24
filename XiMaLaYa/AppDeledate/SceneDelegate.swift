@@ -43,9 +43,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         }
         
-        let home = MineController()// LBFMHomeController()
+        let home = HomeController()
         let listen = ListenController()
-        let play = MineController()//LBFMPlayController()
+        let play = PlayController()
         let find = FindController()
         let mine = MineController()
         

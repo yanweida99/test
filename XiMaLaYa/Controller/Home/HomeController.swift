@@ -10,10 +10,10 @@ import UIKit
 import DNSPageView
 
 class HomeController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.white
         setupPageStyle()
@@ -31,7 +31,11 @@ class HomeController: UIViewController {
         style.bottomLineHeight = 2
         
         let titles = ["推荐", "分类", "VIP", "直播", "广播"]
-        let viewControllers: [UIViewController] = []
+        let viewControllers: [UIViewController] = [HomeRecommendController(),
+                                                   HomeClassifyController(),
+                                                   HomeVIPController(),
+                                                   HomeLiveController(),
+                                                   HomeBroadcastController()]
         for vc in viewControllers {
             self.addChild(vc)
         }
@@ -40,15 +44,15 @@ class HomeController: UIViewController {
         view.addSubview(pageView)
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

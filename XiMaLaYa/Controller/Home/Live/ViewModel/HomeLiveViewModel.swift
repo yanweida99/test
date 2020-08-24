@@ -58,6 +58,24 @@ extension HomeLiveViewModel {
         }
         
         group.enter()
+        // 首页直播滚动图接口请求
+        HomeLiveAPIProvider.request(.liveBannerList) { result in
+            if case let .success(response) = result {
+                // 解析数据
+                let data = try? response.mapJSON()
+                let json = JSON(data!)
+                if let mappedObject = JSONDeserializer<HomeLiveBanerModel>.deserializeFrom(json: json.description) { // 从字符串转换为对象实例
+                    self.homeLiveBannerList = mappedObject.data
+                    // let index: IndexPath = IndexPath.init(row: 0, section: 1)
+                    // self.collectionView.reloadItems(at: [index])
+                    // 更新tableView数据
+                    // self.updataBlock?()
+                    group.leave()
+                }
+            }
+        }
+
+        group.enter()
         // 首页直播排行榜接口请求
         HomeLiveAPIProvider.request(.liveRankList) { result in
             if case let .success(response) = result {

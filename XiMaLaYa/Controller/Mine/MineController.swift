@@ -8,7 +8,7 @@
 
 import UIKit
 
-let tNavBarBottom = WRNavigationBar.navBarBottom()
+let kNavBarBottom = WRNavigationBar.navBarBottom()
 
 class MineController: UIViewController {
     private let makeTableViewCellID = "MakeTableViewCell"
@@ -33,7 +33,7 @@ class MineController: UIViewController {
     // 懒加载TableView
     private lazy var tableView: UITableView = {
         let tableView = UITableView.init(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight), style: UITableView.Style.plain)
-        tableView.contentInset = UIEdgeInsets(top: -CGFloat(tNavBarBottom), left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: -CGFloat(kNavBarBottom), left: 0, bottom: 0, right: 0)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = DownColor
@@ -180,7 +180,7 @@ extension MineController : UITableViewDelegate, UITableViewDataSource {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         if offsetY > 0 {
-            let alpha = offsetY / CGFloat(tNavBarBottom)
+            let alpha = offsetY / CGFloat(kNavBarBottom)
             navBarBackgroundAlpha = alpha
         } else {
             navBarBackgroundAlpha = 0

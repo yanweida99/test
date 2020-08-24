@@ -45,14 +45,14 @@ class HomeVIPController: UIViewController {
         tableView.backgroundColor = UIColor.white
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         // 注册头尾视图
-        tableView.register(HomeVipHeaderView.self, forHeaderFooterViewReuseIdentifier: HomeVipHeaderViewID)
-        tableView.register(HomeVipFooterView.self, forHeaderFooterViewReuseIdentifier: HomeVipFooterViewID)
+        tableView.register(HomeVIPHeaderView.self, forHeaderFooterViewReuseIdentifier: HomeVIPHeaderViewID)
+        tableView.register(HomeVIPFooterView.self, forHeaderFooterViewReuseIdentifier: HomeVIPFooterViewID)
         // 注册分区cell
         tableView.register(HomeVIPCell.self, forCellReuseIdentifier: HomeVIPCellID)
-        tableView.register(HomeVipBannerCell.self, forCellReuseIdentifier: HomeVipBannerCellID)
-        tableView.register(HomeVipCategoriesCell.self, forCellReuseIdentifier: HomeVipCategoriesCellID)
-        tableView.register(HomeVipHotCell.self, forCellReuseIdentifier: HomeVipHotCellID)
-        tableView.register(HomeVipEnjoyCell.self, forCellReuseIdentifier: HomeVipEnjoyCellID)
+        tableView.register(HomeVIPBannerCell.self, forCellReuseIdentifier: HomeVIPBannerCellID)
+        tableView.register(HomeVIPCategoriesCell.self, forCellReuseIdentifier: HomeVIPCategoriesCellID)
+        tableView.register(HomeVIPHotCell.self, forCellReuseIdentifier: HomeVIPHotCellID)
+        tableView.register(HomeVIPEnjoyCell.self, forCellReuseIdentifier: HomeVIPEnjoyCellID)
         tableView.uHead = URefreshHeader{ [weak self] in self?.setupLoadData() }
         return tableView
     }()
@@ -73,7 +73,7 @@ class HomeVIPController: UIViewController {
     
     func setupLoadData() {
         // 加载数据
-        viewModel.updataBlock = { [unowned self] in
+        viewModel.updateBlock = { [unowned self] in
             self.tableView.uHead.endRefreshing()
             // 更新列表数据
             self.tableView.reloadData()
@@ -97,23 +97,23 @@ extension HomeVIPController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
-        case HomeVipSectionBanner:
-            let cell: HomeVipBannerCell = tableView.dequeueReusableCell(withIdentifier: HomeVipBannerCellID, for: indexPath) as! HomeVipBannerCell
+        case HomeVIPSectionBanner:
+            let cell: HomeVIPBannerCell = tableView.dequeueReusableCell(withIdentifier: HomeVIPBannerCellID, for: indexPath) as! HomeVIPBannerCell
             cell.vipBannerList = viewModel.focusImages
             cell.delegate = self
             return cell
-        case HomeVipSectionGrid:
-            let cell: HomeVipCategoriesCell = tableView.dequeueReusableCell(withIdentifier: HomeVipCategoriesCellID, for: indexPath) as! HomeVipCategoriesCell
-            cell.categoryBtnModel = viewModel.categoryBtnList
+        case HomeVIPSectionGrid:
+            let cell: HomeVIPCategoriesCell = tableView.dequeueReusableCell(withIdentifier: HomeVIPCategoriesCellID, for: indexPath) as! HomeVIPCategoriesCell
+            cell.categoryBtnModel = viewModel.categoryButtonList
             cell.delegate = self
             return cell
-        case HomeVipSectionHot:
-            let cell: HomeVipHotCell = tableView.dequeueReusableCell(withIdentifier: HomeVipHotCellID, for: indexPath) as! HomeVipHotCell
+        case HomeVIPSectionHot:
+            let cell: HomeVIPHotCell = tableView.dequeueReusableCell(withIdentifier: HomeVIPHotCellID, for: indexPath) as! HomeVIPHotCell
             cell.categoryContentsModel = viewModel.categoryList?[indexPath.section].list
             cell.delegate = self
             return cell
-        case HomeVipSectionEnjoy:
-            let cell: HomeVipEnjoyCell = tableView.dequeueReusableCell(withIdentifier: HomeVipEnjoyCellID, for: indexPath) as! HomeVipEnjoyCell
+        case HomeVIPSectionEnjoy:
+            let cell: HomeVIPEnjoyCell = tableView.dequeueReusableCell(withIdentifier: HomeVIPEnjoyCellID, for: indexPath) as! HomeVIPEnjoyCell
             cell.categoryContentsModel = viewModel.categoryList?[indexPath.section].list
             cell.delegate = self
             return cell
@@ -134,7 +134,7 @@ extension HomeVIPController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView: HomeVipHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: HomeVipHeaderViewID) as! HomeVipHeaderView
+        let headerView: HomeVIPHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: HomeVIPHeaderViewID) as! HomeVIPHeaderView
         headerView.titStr = viewModel.categoryList?[section].title
         return headerView
     }
@@ -149,8 +149,8 @@ extension HomeVIPController: UITableViewDelegate, UITableViewDataSource {
         return view
     }
 }
-extension HomeVIPController: HomeVipBannerCellDelegate{
-    func homeVipBannerCellClick(url: String) {
+extension HomeVIPController: HomeVIPBannerCellDelegate{
+    func homeVIPBannerCellClick(url: String) {
         let warning = MessageView.viewFromNib(layout: .cardView)
         warning.configureTheme(.warning)
         warning.configureDropShadow()
@@ -165,8 +165,8 @@ extension HomeVIPController: HomeVipBannerCellDelegate{
 }
 
 // - 点击顶部分类按钮 delegate
-extension HomeVIPController: HomeVipCategoriesCellDelegate{
-    func homeVipCategoriesCellItemClick(id: String, url: String,title:String) {
+extension HomeVIPController: HomeVIPCategoriesCellDelegate{
+    func homeVIPCategoriesCellItemClick(id: String, url: String,title:String) {
         if url == ""{
             let vc = ClassifySubMenuController(categoryId: Int(id)!,isVipPush:true)
             vc.title = title
@@ -179,15 +179,15 @@ extension HomeVIPController: HomeVipCategoriesCellDelegate{
     }
 }
 // - 点击Vip尊享课item delegate
-extension HomeVIPController: HomeVipEnjoyCellDelegate{
-    func homeVipEnjoyCellItemClick(model: CategoryContents) {
+extension HomeVIPController: HomeVIPEnjoyCellDelegate{
+    func homeVIPEnjoyCellItemClick(model: CategoryContents) {
         let vc = PlayDetailController(albumId: model.albumId)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 // - 点击热播item delegate
-extension HomeVIPController: HomeVipHotCellDelegate{
-    func homeVipHotCellItemClick(model: CategoryContents) {
+extension HomeVIPController: HomeVIPHotCellDelegate{
+    func homeVIPHotCellItemClick(model: CategoryContents) {
         let vc = PlayDetailController(albumId: model.albumId)
         self.navigationController?.pushViewController(vc, animated: true)
     }
