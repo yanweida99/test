@@ -39,7 +39,7 @@ class ClassifySubHeaderView: UICollectionReusableView {
     func setUpLayout(){
         self.addSubview(self.titleLabel)
         self.titleLabel.text = "猜你喜欢"
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.equalTo(15)
             make.width.equalTo(200)
             make.top.equalTo(5)
@@ -47,7 +47,7 @@ class ClassifySubHeaderView: UICollectionReusableView {
         }
         
         self.addSubview(self.moreBtn)
-        self.moreBtn.snp.makeConstraints { (make) in
+        self.moreBtn.snp.makeConstraints { make in
             make.right.equalTo(15)
             make.top.equalTo(5)
             make.width.equalTo(100)
@@ -57,7 +57,7 @@ class ClassifySubHeaderView: UICollectionReusableView {
         self.addSubview(self.allBtn)
         self.allBtn.layer.masksToBounds = true
         self.allBtn.layer.cornerRadius = 15
-        self.allBtn.snp.makeConstraints { (make) in
+        self.allBtn.snp.makeConstraints { make in
             make.right.equalTo(-15)
             make.top.equalTo(5)
             make.width.equalTo(80)
@@ -72,7 +72,7 @@ class ClassifySubHeaderView: UICollectionReusableView {
             if model.moduleType == 19 {
                 self.moreBtn.isHidden = true
                 self.allBtn.isHidden = false
-            }else {
+            } else {
                 self.moreBtn.isHidden = false
                 self.allBtn.isHidden = true
             }
@@ -80,7 +80,7 @@ class ClassifySubHeaderView: UICollectionReusableView {
     }
     
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
 }

@@ -10,10 +10,10 @@ import UIKit
 
 class PlayController: UIViewController {
     // 外部传值请求接口
-    private var albumId :Int = 0
-    private var trackUid:Int = 0
-    private var uid:Int = 0
-    convenience init(albumId: Int = 0, trackUid: Int = 0, uid:Int = 0) {
+    private var albumId: Int = 0
+    private var trackUid: Int = 0
+    private var uid: Int = 0
+    convenience init(albumId: Int = 0, trackUid: Int = 0, uid: Int = 0) {
         self.init()
         self.albumId = albumId
         self.trackUid = trackUid
@@ -27,7 +27,7 @@ class PlayController: UIViewController {
     private let PlayAnchorCellID      = "PlayAnchorCell"
     private let PlayCircleCellID      = "PlayCircleCell"
     
-    private lazy var collectionView : UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout.init()
         let collection = UICollectionView.init(frame:.zero, collectionViewLayout: layout)
         collection.delegate = self
@@ -83,7 +83,7 @@ class PlayController: UIViewController {
         navBarBarTintColor = UIColor.white
         navBarBackgroundAlpha = 0
         self.view.addSubview(self.collectionView)
-        self.collectionView.snp.makeConstraints { (make) in
+        self.collectionView.snp.makeConstraints { make in
             make.width.height.equalToSuperview()
             make.center.equalToSuperview()
         }
@@ -107,10 +107,9 @@ class PlayController: UIViewController {
     // 控制向上滚动显示导航栏标题和左右按钮
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
-        if (offsetY > 0)
-        {
+        if offsetY > 0 {
             navBarBackgroundAlpha = 1
-        }else{
+        } else {
             navBarBackgroundAlpha = 0
         }
     }
@@ -130,7 +129,7 @@ class PlayController: UIViewController {
     }
 }
 
-extension PlayController : UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+extension PlayController: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.numberOfSections(collectionView:collectionView)
     }
@@ -145,15 +144,15 @@ extension PlayController : UICollectionViewDelegate, UICollectionViewDataSource,
             let cell:PlayCell = collectionView.dequeueReusableCell(withReuseIdentifier: PlayCellID, for: indexPath) as! PlayCell
             cell.playTrackInfo = viewModel.playTrackInfo
             return cell
-        }else if indexPath.section == 1{
+        } else if indexPath.section == 1 {
             let cell:PlayAnchorCell = collectionView.dequeueReusableCell(withReuseIdentifier: PlayAnchorCellID, for: indexPath) as! PlayAnchorCell
             cell.userInfo = viewModel.userInfo
             return cell
-        }else if indexPath.section == 2{
+        } else if indexPath.section == 2 {
             let cell:PlayCircleCell = collectionView.dequeueReusableCell(withReuseIdentifier: PlayCircleCellID, for: indexPath) as! PlayCircleCell
             cell.communityInfo = viewModel.communityInfo
             return cell
-        }else{
+        } else {
             let cell:PlayCommentCell = collectionView.dequeueReusableCell(withReuseIdentifier: PlayCommentCellID, for: indexPath) as! PlayCommentCell
             cell.playCommentInfo = viewModel.playCommentInfo?[indexPath.row]
             return cell
@@ -196,10 +195,10 @@ extension PlayController : UICollectionViewDelegate, UICollectionViewDataSource,
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            let headerView : PlayHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: PlayHeaderViewID, for: indexPath) as! PlayHeaderView
+            let headerView: PlayHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: PlayHeaderViewID, for: indexPath) as! PlayHeaderView
             return headerView
-        }else if kind == UICollectionView.elementKindSectionFooter {
-            let footerView : PlayFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: PlayFooterViewID, for: indexPath) as! PlayFooterView
+        } else if kind == UICollectionView.elementKindSectionFooter {
+            let footerView: PlayFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: PlayFooterViewID, for: indexPath) as! PlayFooterView
             return footerView
         }
         return UICollectionReusableView()

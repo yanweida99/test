@@ -7,14 +7,12 @@
 //
 
 import UIKit
-import HandyJSON
-import SwiftyJSON
 
 class HomeGuessYouLikeMoreController: UIViewController {
     var guessYouLikeList: [GuessYouLikeModel]?
     
     let HotAudiobookCellID = "HotAudiobookCell"
-    lazy var collectionView : UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout.init()
         let collectionView = UICollectionView.init(frame:.zero, collectionViewLayout: layout)
         collectionView.delegate = self
@@ -30,18 +28,18 @@ class HomeGuessYouLikeMoreController: UIViewController {
         self.view.backgroundColor = UIColor.white
         self.navigationItem.title = "猜你喜欢"
         self.view.addSubview(self.collectionView)
-        self.collectionView.snp.makeConstraints { (make) in
+        self.collectionView.snp.makeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()
         }
         setupLoadData()
     }
     func setupLoadData(){
         // 首页推荐接口请求
-        RecommendProvider.request(.guessYouLikeMoreList) { result in
-            if case let .success(response) = result {
+        let api = HomeRecommendAPI.guessYouLikeMoreList
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
                 //解析数据
-                let data = try? response.mapJSON()
-                let json = JSON(data!)
+                let json = JSON(jsonData)
                 if let guessYouLikeModel = JSONDeserializer<GuessYouLikeModel>.deserializeModelArrayFrom(json: json["list"].description) {
                     self.guessYouLikeList = guessYouLikeModel as? [GuessYouLikeModel]
                     self.collectionView.reloadData()
@@ -80,6 +78,6 @@ extension HomeGuessYouLikeMoreController: UICollectionViewDelegate, UICollection
     
     // item 的尺寸
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width:ScreenWidth - 30,height:120)
+        return CGSize.init(width: ScreenWidth - 30,height:120)
     }
 }

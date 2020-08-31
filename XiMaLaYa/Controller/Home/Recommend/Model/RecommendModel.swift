@@ -7,14 +7,13 @@
 //
 
 import Foundation
-import HandyJSON
 
 // 最外层的model
 struct HomeRecommendModel: HandyJSON {
-    var msg:String?
-    var ret:Int = 0
-    var code:String?
-    var list:[RecommendModel]?
+    var msg: String?
+    var ret: Int = 0
+    var code: String?
+    var list: [RecommendModel]?
 }
 
 // 里层的model
@@ -26,7 +25,7 @@ struct RecommendModel: HandyJSON {
     var moduleId: Int = 0
     var moduleType: String?
     var showInterestCard: Bool = false
-    var title : String?
+    var title: String?
     
     var target: Target?
     var recWords: [RecWords]?
@@ -94,7 +93,7 @@ struct Keywords: HandyJSON {
 struct FocusModel: HandyJSON {
     var data: [BannerData]?
     var responseId: Int = 0
-    var ret : Int = 0
+    var ret: Int = 0
 }
 
 struct BannerData: HandyJSON {
@@ -102,7 +101,7 @@ struct BannerData: HandyJSON {
     var adType: Int = 0
     var buttonShowed: Bool = false
     var clickAction: Int = 0
-    var clickTokens:[Any]?
+    var clickTokens: [Any]?
     var clickType: Int = 0
     var cover: String?
     var description: String?
@@ -190,10 +189,10 @@ struct GuessYouLikeModel: HandyJSON {
     var vipFreeType: Int = 0
     
     /// 更多追加
-    var coverMiddle:String?
-    var recReason:String?
-    var tracks:Int = 0
-    var playsCounts:Int = 0
+    var coverMiddle: String?
+    var recReason: String?
+    var tracks: Int = 0
+    var playsCounts: Int = 0
 }
 
 struct PaidCategoryModel: HandyJSON {
@@ -275,10 +274,10 @@ struct RecommnedAdvertModel: HandyJSON {
     var shareData: AdvertShareData?
     var isShareFlag: Bool = false
     var thirdStatUrl: String?
-    var thirdShowStatUrls:[Any]?
-    var thirdClickStatUrls:[Any]?
-    var showTokens:[Any]?
-    var clickTokens:[Any]?
+    var thirdShowStatUrls: [Any]?
+    var thirdClickStatUrls: [Any]?
+    var showTokens: [Any]?
+    var clickTokens: [Any]?
     var recSrc: String?
     var recTrack: String?
     var link: String?
@@ -305,7 +304,7 @@ struct RecommnedAdvertModel: HandyJSON {
     var position: Int = 0
     var subCover: String?
     var subName: String?
-    var adid:Int = 0
+    var adid: Int = 0
     
 }
 struct AdvertShareData: HandyJSON {

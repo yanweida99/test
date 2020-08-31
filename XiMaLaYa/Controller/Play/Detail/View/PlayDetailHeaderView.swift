@@ -63,7 +63,7 @@ class PlayDetailHeaderView: UIView {
     }()
     
     // 播放数量
-    private var numLabel : UILabel = {
+    private var numLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
         label.textColor = UIColor.white
@@ -94,14 +94,14 @@ class PlayDetailHeaderView: UIView {
         self.imageView.layer.masksToBounds = true
         self.imageView.layer.cornerRadius = 5
         self.imageView.image = UIImage(named: "1")
-        self.imageView.snp.makeConstraints { (make) in
+        self.imageView.snp.makeConstraints { make in
             make.left.equalTo(15)
             make.top.equalTo(64+10)
             make.bottom.equalTo(-20)
             make.width.equalTo(120)
         }
         self.imageView.addSubview(self.numView)
-        self.numView.snp.makeConstraints { (make) in
+        self.numView.snp.makeConstraints { make in
             make.left.equalTo(5)
             make.width.height.equalTo(18)
             make.bottom.equalToSuperview().offset(-5)
@@ -109,7 +109,7 @@ class PlayDetailHeaderView: UIView {
         
         self.imageView.addSubview(self.numLabel)
         self.numLabel.text = "171.9万"
-        self.numLabel.snp.makeConstraints { (make) in
+        self.numLabel.snp.makeConstraints { make in
             make.left.equalTo(self.numView.snp.right).offset(5)
             make.right.equalToSuperview()
             make.bottom.equalToSuperview().offset(-5)
@@ -118,7 +118,7 @@ class PlayDetailHeaderView: UIView {
         
         self.blurImageView.addSubview(self.titleLabel)
         self.titleLabel.text = "金瓶梅"
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.equalTo(self.imageView.snp.right).offset(10)
             make.right.equalToSuperview()
             make.height.equalTo(30)
@@ -127,7 +127,7 @@ class PlayDetailHeaderView: UIView {
         
         self.blurImageView.addSubview(self.nickView)
         self.nickView.image = UIImage(named: "album_ic_zhubo_14x14_")
-        self.nickView.snp.makeConstraints { (make) in
+        self.nickView.snp.makeConstraints { make in
             make.left.equalTo(self.titleLabel)
             make.width.height.equalTo(25)
             make.bottom.equalToSuperview().offset(-8)
@@ -135,7 +135,7 @@ class PlayDetailHeaderView: UIView {
         
         self.blurImageView.addSubview(self.nickLabel)
         self.nickLabel.text = "爱心爵箩筐"
-        self.nickLabel.snp.makeConstraints { (make) in
+        self.nickLabel.snp.makeConstraints { make in
             make.left.equalTo(self.nickView.snp.right).offset(5)
             make.right.equalToSuperview()
             make.height.equalTo(25)
@@ -144,7 +144,7 @@ class PlayDetailHeaderView: UIView {
         
         self.addSubview(self.categoryBtn)
         self.categoryBtn.setTitle("有声书 >", for: UIControl.State.normal)
-        self.categoryBtn.snp.makeConstraints { (make) in
+        self.categoryBtn.snp.makeConstraints { make in
             make.left.equalTo(self.imageView.snp.right).offset(10)
             make.top.equalTo(self.blurImageView.snp.bottom).offset(5)
             make.width.equalTo(120)
@@ -153,7 +153,7 @@ class PlayDetailHeaderView: UIView {
         
         self.addSubview(self.dateLabel)
         self.dateLabel.text = "2018-08-20更新"
-        self.dateLabel.snp.makeConstraints { (make) in
+        self.dateLabel.snp.makeConstraints { make in
             make.left.equalTo(self.categoryBtn)
             make.top.equalTo(self.categoryBtn.snp.bottom).offset(5)
             make.height.equalTo(30)
@@ -163,7 +163,7 @@ class PlayDetailHeaderView: UIView {
         self.addSubview(self.subscibeBtn)
         self.subscibeBtn.layer.masksToBounds = true
         self.subscibeBtn.layer.cornerRadius = 17
-        self.subscibeBtn.snp.makeConstraints { (make) in
+        self.subscibeBtn.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-20)
             make.right.equalToSuperview().offset(-20)
             make.width.equalTo(70)
@@ -179,10 +179,10 @@ class PlayDetailHeaderView: UIView {
             self.imageView.kf.setImage(with: URL(string: model.coverLarge!))
             self.titleLabel.text = model.title
             self.nickLabel.text = model.nickname
-            let categoryName:String = model.categoryName!
+            let categoryName: String = model.categoryName!
             self.categoryBtn.setTitle("\(categoryName)>", for: UIControl.State.normal)
             // updatedAt
-            var tagString:String?
+            var tagString: String?
             if model.playTimes > 100000000 {
                 tagString = String(format: "%.1f亿", Double(model.playTimes) / 100000000)
             } else if model.playTimes > 10000 {
@@ -206,7 +206,7 @@ class PlayDetailHeaderView: UIView {
         return dfmatter.string(from: date as Date)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
 }

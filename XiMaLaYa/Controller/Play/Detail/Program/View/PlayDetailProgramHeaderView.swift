@@ -30,7 +30,7 @@ class PlayDetailProgramHeaderView: UIView {
     
     func setUpLayout(){
         self.addSubview(self.playBtn)
-        self.playBtn.snp.makeConstraints { (make) in
+        self.playBtn.snp.makeConstraints { make in
             make.left.equalTo(20)
             make.width.equalTo(80)
             make.top.bottom.equalToSuperview()

@@ -9,7 +9,6 @@
 import UIKit
 
 class HomeVIPCell: UITableViewCell {
-    
     // 图片
     private var pictureView: UIImageView = {
         let imageView = UIImageView()
@@ -22,7 +21,7 @@ class HomeVIPCell: UITableViewCell {
         return label
     }()
     // 子标题
-    private var subLabel : UILabel = {
+    private var subLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
         label.textColor = UIColor.gray
@@ -30,7 +29,7 @@ class HomeVIPCell: UITableViewCell {
     }()
     
     // 播放数量
-    private var numLabel : UILabel = {
+    private var numLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor.gray
@@ -38,7 +37,7 @@ class HomeVIPCell: UITableViewCell {
     }()
     
     // 集数
-    private var tracksLabel : UILabel = {
+    private var tracksLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor.gray
@@ -69,14 +68,14 @@ class HomeVIPCell: UITableViewCell {
     func setUpLayout(){
         self.addSubview(self.pictureView)
         self.pictureView.image = UIImage(named: "pic1.jpeg")
-        self.pictureView.snp.makeConstraints { (make) in
+        self.pictureView.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(15)
             make.bottom.equalToSuperview().offset(-15)
             make.width.equalTo(80)
         }
         self.addSubview(self.titleLabel)
         self.titleLabel.text = "明朝那些事"
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.equalTo(self.pictureView.snp.right).offset(10)
             make.right.equalToSuperview()
             make.top.equalTo(self.pictureView)
@@ -85,13 +84,13 @@ class HomeVIPCell: UITableViewCell {
         
         self.addSubview(self.subLabel)
         self.subLabel.text = "说服力的积分乐山大佛大"
-        self.subLabel.snp.makeConstraints { (make) in
+        self.subLabel.snp.makeConstraints { make in
             make.left.right.height.equalTo(self.titleLabel)
             make.top.equalTo(self.titleLabel.snp.bottom).offset(10)
         }
         
         self.addSubview(self.numView)
-        self.numView.snp.makeConstraints { (make) in
+        self.numView.snp.makeConstraints { make in
             make.left.equalTo(self.subLabel)
             make.bottom.equalToSuperview().offset(-25)
             make.width.height.equalTo(17)
@@ -99,21 +98,21 @@ class HomeVIPCell: UITableViewCell {
         
         self.addSubview(self.numLabel)
         self.numLabel.text = "> 2.5亿 1284集"
-        self.numLabel.snp.makeConstraints { (make) in
+        self.numLabel.snp.makeConstraints { make in
             make.left.equalTo(self.numView.snp.right).offset(5)
             make.bottom.equalTo(self.numView)
             make.width.equalTo(60)
         }
         
         self.addSubview(self.tracksView)
-        self.tracksView.snp.makeConstraints { (make) in
+        self.tracksView.snp.makeConstraints { make in
             make.left.equalTo(self.numLabel.snp.right).offset(5)
             make.bottom.equalTo(self.numLabel)
             make.width.height.equalTo(20)
         }
         
         self.addSubview(self.tracksLabel)
-        self.tracksLabel.snp.makeConstraints { (make) in
+        self.tracksLabel.snp.makeConstraints { make in
             make.left.equalTo(self.tracksView.snp.right).offset(5)
             make.bottom.equalTo(self.tracksView)
             make.width.equalTo(80)
@@ -129,7 +128,7 @@ class HomeVIPCell: UITableViewCell {
             self.subLabel.text = model.intro
             self.tracksLabel.text = "\(model.tracks)集"
             
-            var tagString:String?
+            var tagString: String?
             if model.playsCounts > 100000000 {
                 tagString = String(format: "%.1f亿", Double(model.playsCounts) / 100000000)
             } else if model.playsCounts > 10000 {
@@ -141,8 +140,8 @@ class HomeVIPCell: UITableViewCell {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     

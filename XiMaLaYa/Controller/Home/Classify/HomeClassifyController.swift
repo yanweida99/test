@@ -14,7 +14,7 @@ class HomeClassifyController: UIViewController {
     private let HomeClassifyFooterViewID = "HomeClassifyFooterView"
     private let HomeClassifyHeaderViewID = "HomeClassifyHeaderView"
     
-    lazy var collectionView : UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout.init()
         let collection = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
         collection.delegate = self
@@ -35,14 +35,14 @@ class HomeClassifyController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.clear
         self.view.addSubview(self.collectionView)
-        self.collectionView.snp.makeConstraints { (make) in
+        self.collectionView.snp.makeConstraints { make in
             make.left.right.top.height.equalToSuperview()
         }
         // 加载数据
-        setupLoadData()
+        loadData()
     }
     
-    func setupLoadData(){
+    func loadData(){
         // 加载数据
         viewModel.updateBlock = { [unowned self] in
             // 更新列表数据
@@ -62,9 +62,9 @@ extension HomeClassifyController: UICollectionViewDelegateFlowLayout, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let identifier:String = "\(indexPath.section)\(indexPath.row)"
+        let identifier: String = "\(indexPath.section)\(indexPath.row)"
         self.collectionView.register(HomeClassifyCell.self, forCellWithReuseIdentifier: identifier)
-        let cell:HomeClassifyCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! HomeClassifyCell
+        let cell: HomeClassifyCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! HomeClassifyCell
         cell.backgroundColor = UIColor.white
         cell.layer.masksToBounds =  true
         cell.layer.cornerRadius = 4.0
@@ -78,7 +78,7 @@ extension HomeClassifyController: UICollectionViewDelegateFlowLayout, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         
-        let categoryId:Int = viewModel.classifyModel?[indexPath.section].itemList![indexPath.row].itemDetail?.categoryId ?? 0
+        let categoryId: Int = viewModel.classifyModel?[indexPath.section].itemList![indexPath.row].itemDetail?.categoryId ?? 0
         let title = viewModel.classifyModel?[indexPath.section].itemList![indexPath.row].itemDetail?.title ?? ""
         let vc = ClassifySubMenuController(categoryId: categoryId)
         vc.title = title
@@ -115,11 +115,11 @@ extension HomeClassifyController: UICollectionViewDelegateFlowLayout, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            let headerView : HomeClassifyHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeClassifyHeaderViewID, for: indexPath) as! HomeClassifyHeaderView
+            let headerView: HomeClassifyHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeClassifyHeaderViewID, for: indexPath) as! HomeClassifyHeaderView
             headerView.titleString = viewModel.classifyModel?[indexPath.section].groupName
             return headerView
-        }else if kind == UICollectionView.elementKindSectionFooter {
-            let footerView : HomeClassifyFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: HomeClassifyFooterViewID, for: indexPath) as! HomeClassifyFooterView
+        } else if kind == UICollectionView.elementKindSectionFooter {
+            let footerView: HomeClassifyFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: HomeClassifyFooterViewID, for: indexPath) as! HomeClassifyFooterView
             return footerView
         }
         return UICollectionReusableView()

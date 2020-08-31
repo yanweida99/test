@@ -11,18 +11,18 @@ import FSPagerView
 
 // 添加按钮点击代理方法
 protocol RecommendHeaderCellDelegate:NSObjectProtocol {
-    func recommendHeaderBtnClick(categoryId:String,title:String,url:String)
-    func recommendHeaderBannerClick(url:String)
+    func recommendHeaderBtnClick(categoryId: String,title: String,url: String)
+    func recommendHeaderBannerClick(url: String)
 }
 
 class RecommendHeaderCell: UICollectionViewCell {
-    private var focus:FocusModel?
-    private var square:[SquareModel]?
-    private var topBuzzList:[TopBuzzModel]?
+    private var focus: FocusModel?
+    private var square: [SquareModel]?
+    private var topBuzzList: [TopBuzzModel]?
     
-    weak var delegate : RecommendHeaderCellDelegate?
+    weak var delegate: RecommendHeaderCellDelegate?
     
-    private lazy var pagerView : FSPagerView = {
+    private lazy var pagerView: FSPagerView = {
         
         let pagerView = FSPagerView()
         pagerView.delegate = self
@@ -59,22 +59,23 @@ class RecommendHeaderCell: UICollectionViewCell {
     func setupLayOut() {
         // 分页轮播图
         self.addSubview(self.pagerView)
-        self.pagerView.snp.makeConstraints { (make) in
-            make.left.top.right.equalToSuperview()
+        self.pagerView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.left.right.equalToSuperview()
             make.height.equalTo(150)
         }
         // 九宫格
         self.addSubview(self.gridView)
-        self.gridView.snp.makeConstraints { (make) in
+        self.gridView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.top.equalTo(self.pagerView.snp.bottom)
-            make.height.equalTo(210)
+            make.height.equalTo(50)
         }
         self.pagerView.itemSize = CGSize.init(width: ScreenWidth - 60, height: 140)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     var focusModel:FocusModel? {
@@ -84,7 +85,7 @@ class RecommendHeaderCell: UICollectionViewCell {
             self.pagerView.reloadData()
         }
     }
-    var squareList:[SquareModel]? {
+    var squareList: [SquareModel]? {
         didSet{
             guard let model = squareList else { return }
             self.square = model
@@ -92,7 +93,7 @@ class RecommendHeaderCell: UICollectionViewCell {
         }
     }
     
-    var topBuzzListData:[TopBuzzModel]? {
+    var topBuzzListData: [TopBuzzModel]? {
         didSet{
             guard let model = topBuzzListData else { return }
             self.topBuzzList = model
@@ -112,7 +113,7 @@ extension RecommendHeaderCell:FSPagerViewDelegate,FSPagerViewDataSource{
     }
     
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-        let url:String = self.focus?.data?[index].link ?? ""
+        let url: String = self.focus?.data?[index].link ?? ""
         delegate?.recommendHeaderBannerClick(url: url)
     }
 }
@@ -123,7 +124,7 @@ extension RecommendHeaderCell: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
             return self.square?.count ?? 0
-        }else {
+        } else {
             return 1
         }
     }
@@ -133,7 +134,7 @@ extension RecommendHeaderCell: UICollectionViewDelegate, UICollectionViewDataSou
             let cell:RecommendGridCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendGridCell", for: indexPath) as! RecommendGridCell
             cell.square = self.square?[indexPath.row]
             return cell
-        }else {
+        } else {
             let cell:RecommendNewsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendNewsCell", for: indexPath) as! RecommendNewsCell
             cell.topBuzzList = self.topBuzzList
             return cell
@@ -143,26 +144,26 @@ extension RecommendHeaderCell: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0{
             return CGSize.init(width: (ScreenWidth - 5)/5, height:80)
-        }else {
+        } else {
             return CGSize.init(width: ScreenWidth, height: 50)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let string = self.square?[indexPath.row].properties?.uri else {
-            let categoryId:String = "0"
-            let title:String = self.square?[indexPath.row].title ?? ""
-            let url:String = self.square?[indexPath.row].url ?? ""
+            let categoryId: String = "0"
+            let title: String = self.square?[indexPath.row].title ?? ""
+            let url: String = self.square?[indexPath.row].url ?? ""
             delegate?.recommendHeaderBtnClick(categoryId:categoryId,title:title,url:url)
             return
         }
-        let categoryId:String = getUrlCategoryId(url:string)
-        let title:String = self.square?[indexPath.row].title ?? ""
-        let url:String = self.square?[indexPath.row].url ?? ""
+        let categoryId: String = getUrlCategoryId(url:string)
+        let title: String = self.square?[indexPath.row].title ?? ""
+        let url: String = self.square?[indexPath.row].url ?? ""
         delegate?.recommendHeaderBtnClick(categoryId:categoryId,title:title,url:url)
     }
     
-    func getUrlCategoryId(url:String) -> String {
+    func getUrlCategoryId(url: String) -> String {
         // 判断是否有参数
         if !url.contains("?") {
             return ""
@@ -179,8 +180,8 @@ extension RecommendHeaderCell: UICollectionViewDelegate, UICollectionViewDataSou
             for keyValuePair in urlComponents {
                 // 生成Key/Value
                 let pairComponents = keyValuePair.split(separator: "=")
-                let key:String = String(pairComponents[0])
-                let value:String = String(pairComponents[1])
+                let key: String = String(pairComponents[0])
+                let value: String = String(pairComponents[1])
                 
                 params[key] = value
             }
@@ -192,8 +193,8 @@ extension RecommendHeaderCell: UICollectionViewDelegate, UICollectionViewDataSou
                 return "nil"
             }
             
-            let key:String = String(pairComponents[0])
-            let value:String = String(pairComponents[1])
+            let key: String = String(pairComponents[0])
+            let value: String = String(pairComponents[1])
             params[key] = value as AnyObject
         }
         return params["category_id"] as! String

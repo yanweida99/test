@@ -7,13 +7,10 @@
 //
 
 import UIKit
-import HandyJSON
-import SwiftyJSON
 
 class AttentionViewModel: NSObject {
     var eventInfos: [EventInfosModel]?
     // 数据源更新
-    typealias AddDataBlock = () -> Void
     var updateBlock: AddDataBlock?
 }
 

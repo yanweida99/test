@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import HandyJSON
-import SwiftyJSON
 
 class ListenMoreChannelController: UIViewController {
 
@@ -136,7 +134,7 @@ extension ListenMoreChannelController: UITableViewDelegate, UITableViewDataSourc
         let titleLabel = UILabel()
         titleLabel.frame = CGRect(x: 20, y: 0, width: 80, height: 40)
         let titleName: String = (self.channelClassInfo?[section].className)!
-        let count:Int = (self.channelClassInfo?[section].channelInfos?.count)!
+        let count: Int = (self.channelClassInfo?[section].channelInfos?.count)!
         titleLabel.text = "\(titleName)(\(count))"
         titleLabel.font = UIFont.systemFont(ofSize: 16)
         titleLabel.textColor = UIColor.lightGray

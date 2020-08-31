@@ -11,16 +11,16 @@ import FSPagerView
 
 // 添加cell点击代理方法
 protocol HomeVIPBannerCellDelegate: NSObjectProtocol {
-    func homeVIPBannerCellClick(url:String)
+    func homeVIPBannerCellClick(url: String)
 }
 
 class HomeVIPBannerCell: UITableViewCell {
-    weak var delegate : HomeVIPBannerCellDelegate?
+    weak var delegate: HomeVIPBannerCellDelegate?
     
     var vipBanner: [FocusImagesData]?
     
     // - 懒加载滚动图片浏览器
-    private lazy var pagerView : FSPagerView = {
+    private lazy var pagerView: FSPagerView = {
         let pagerView = FSPagerView()
         pagerView.delegate = self
         pagerView.dataSource = self
@@ -35,7 +35,7 @@ class HomeVIPBannerCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addSubview(self.pagerView)
-        self.pagerView.snp.makeConstraints { (make) in
+        self.pagerView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
             make.height.equalToSuperview()
         }
@@ -44,8 +44,8 @@ class HomeVIPBannerCell: UITableViewCell {
     }
     
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     var vipBannerList: [FocusImagesData]? {
@@ -70,7 +70,7 @@ extension HomeVIPBannerCell: FSPagerViewDelegate, FSPagerViewDataSource {
     }
     
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-        let url:String = self.vipBanner?[index].link ?? ""
+        let url: String = self.vipBanner?[index].link ?? ""
         delegate?.homeVIPBannerCellClick(url: url)
     }
 }

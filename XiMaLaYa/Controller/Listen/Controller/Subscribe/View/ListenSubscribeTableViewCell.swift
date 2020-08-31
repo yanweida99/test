@@ -56,7 +56,7 @@ class ListenSubscribeTableViewCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     func setUpLayout(){
@@ -77,19 +77,19 @@ class ListenSubscribeTableViewCell: UITableViewCell {
         }
         
         self.addSubview(self.subLabel)
-        self.subLabel.snp.makeConstraints { (make) in
+        self.subLabel.snp.makeConstraints { make in
             make.top.equalTo(self.titleLabel.snp.bottom).offset(5)
             make.left.height.right.equalTo(self.titleLabel)
         }
         
         self.addSubview(self.timeLabel)
-        self.timeLabel.snp.makeConstraints { (make) in
+        self.timeLabel.snp.makeConstraints { make in
             make.left.height.right.equalTo(self.titleLabel)
             make.bottom.equalTo(self.pictureView)
         }
         
         self.addSubview(self.setButton)
-        self.setButton.snp.makeConstraints { (make) in
+        self.setButton.snp.makeConstraints { make in
             make.right.bottom.equalToSuperview().offset(-20)
             make.width.equalTo(30)
             make.height.equalTo(30)
@@ -113,7 +113,7 @@ class ListenSubscribeTableViewCell: UITableViewCell {
         // 时间戳为毫秒级要 ／ 1000， 秒就不用除1000，参数带没带000
         let timeSta:TimeInterval = TimeInterval(timeStamp / 1000)
         // 时间差
-        let reduceTime : TimeInterval = currentTime - timeSta
+        let reduceTime: TimeInterval = currentTime - timeSta
         // 时间差小于60秒
         if reduceTime < 60 {
             return "刚刚"

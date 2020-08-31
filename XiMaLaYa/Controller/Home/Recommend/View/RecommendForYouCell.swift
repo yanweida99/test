@@ -9,7 +9,7 @@
 import UIKit
 
 class RecommendForYouCell: UICollectionViewCell {
-    private lazy var collectionView : UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout.init()
         let collectionView = UICollectionView.init(frame:.zero, collectionViewLayout: layout)
         collectionView.delegate = self
@@ -30,7 +30,7 @@ class RecommendForYouCell: UICollectionViewCell {
     func setUpLayout(){
         self.addSubview(self.collectionView)
         self.collectionView.backgroundColor = UIColor.red
-        self.collectionView.snp.makeConstraints { (make) in
+        self.collectionView.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(15)
             make.right.bottom.equalToSuperview().offset(-15)
             
@@ -69,7 +69,7 @@ extension RecommendForYouCell: UICollectionViewDelegate, UICollectionViewDataSou
     
     //item 的尺寸
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width:ScreenWidth - 30,height:100)
+        return CGSize.init(width: ScreenWidth - 30,height:100)
     }
 }
 

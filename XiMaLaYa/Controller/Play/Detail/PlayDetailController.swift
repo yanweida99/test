@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import LTScrollView
-import HandyJSON
-import SwiftyJSON
 
 class PlayDetailController: UIViewController {
     // 外部传值请求接口如此那
@@ -25,7 +22,7 @@ class PlayDetailController: UIViewController {
     private var playDetailTracks:PlayDetailTracksModel?
     // - headerView
     private lazy var headerView:PlayDetailHeaderView = {
-        let view = PlayDetailHeaderView.init(frame: CGRect(x:0, y:0, width:ScreenWidth, height:240))
+        let view = PlayDetailHeaderView.init(frame: CGRect(x:0, y:0, width: ScreenWidth, height:240))
         view.backgroundColor = UIColor.white
         return view
     }()
@@ -114,11 +111,10 @@ class PlayDetailController: UIViewController {
     }
     
     func setupLoadData(){
-        PlayDetailProvider.request(PlayDetailAPI.playDetailData(albumId:self.albumId)) { result in
-            if case let .success(response) = result {
-                // 解析数据
-                let data = try? response.mapJSON()
-                let json = JSON(data!)
+        let api = PlayDetailAPI.playDetailData(albumId:self.albumId)
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
+                let json = JSON(jsonData)
                 // 从字符串转换为对象实例
                 if let playDetailAlbum = JSONDeserializer<PlayDetailAlbumModel>.deserializeFrom(json: json["data"]["album"].description) {
                     self.playDetailAlbum = playDetailAlbum
@@ -157,7 +153,7 @@ class PlayDetailController: UIViewController {
     }
 }
 
-extension PlayDetailController : LTAdvancedScrollViewDelegate {
+extension PlayDetailController: LTAdvancedScrollViewDelegate {
     // 具体使用请参考以下
     private func advancedManagerConfig() {
         // 选中事件
@@ -167,13 +163,12 @@ extension PlayDetailController : LTAdvancedScrollViewDelegate {
     }
     
     func glt_scrollViewOffsetY(_ offsetY: CGFloat) {
-        if (offsetY > 5)
-        {
+        if offsetY > 5 {
             let alpha = offsetY / CGFloat(kNavBarBottom)
             navBarBackgroundAlpha = alpha
             self.rightBarButton1.setImage(UIImage(named: "icon_more_n_30x31_"), for: UIControl.State.normal)
             self.rightBarButton2.setImage(UIImage(named: "icon_share_n_30x30_"), for: UIControl.State.normal)
-        }else{
+        } else {
             navBarBackgroundAlpha = 0
             self.rightBarButton1.setImage(UIImage(named: "icon_more_h_30x31_"), for: UIControl.State.normal)
             self.rightBarButton2.setImage(UIImage(named: "icon_share_h_30x30_"), for: UIControl.State.normal)

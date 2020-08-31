@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import LTScrollView
 
 class VIPAnimationView: UIView {
     // 图片
@@ -83,8 +82,8 @@ class VIPAnimationView: UIView {
         
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     // Only override draw() if you perform custom drawing.

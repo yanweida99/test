@@ -9,18 +9,18 @@
 import UIKit
 
 class LiveRankCell: UICollectionViewCell {
-        private lazy var imageView : UIView = {
+        private lazy var imageView: UIView = {
             let imageView = UIView()
             return imageView
         }()
         
-        private lazy var titleLabel : UILabel = {
+        private lazy var titleLabel: UILabel = {
            let label = UILabel()
             label.font = UIFont.systemFont(ofSize: 18)
             return label
         }()
         
-        private lazy var label : UILabel = {
+        private lazy var label: UILabel = {
             let label = UILabel()
             label.text = ">"
             label.textColor = UIColor.lightGray
@@ -31,7 +31,7 @@ class LiveRankCell: UICollectionViewCell {
             super.init(frame: frame)
             
             self.addSubview(self.titleLabel)
-            self.titleLabel.snp.makeConstraints { (make) in
+            self.titleLabel.snp.makeConstraints { make in
                 make.left.equalToSuperview().offset(10)
                 make.height.equalTo(40)
                 make.width.equalTo(100)
@@ -39,7 +39,7 @@ class LiveRankCell: UICollectionViewCell {
             }
             
             self.addSubview(self.imageView)
-            self.imageView.snp.makeConstraints { (make) in
+            self.imageView.snp.makeConstraints { make in
                 make.right.equalToSuperview().offset(-5)
                 make.top.equalToSuperview().offset(5)
                 make.bottom.equalToSuperview().offset(-5)
@@ -47,7 +47,7 @@ class LiveRankCell: UICollectionViewCell {
             }
             
             self.imageView.addSubview(self.label)
-            self.label.snp.makeConstraints { (make) in
+            self.label.snp.makeConstraints { make in
                 make.right.equalToSuperview().offset(-5)
                 make.height.width.equalTo(10)
                 make.centerY.equalToSuperview()
@@ -62,7 +62,7 @@ class LiveRankCell: UICollectionViewCell {
             didSet {
                 guard let model = multidimensionalRankVos else { return }
                     self.titleLabel.text = model.dimensionName
-                let num:Int = (model.ranks?.count)!
+                let num: Int = (model.ranks?.count)!
                 let margin:CGFloat = 50
                 for index in 0..<num {
                         let picView = UIImageView.init(frame: CGRect(x: margin * CGFloat(index) + 5 * CGFloat(index), y: 5, width: margin, height: margin))

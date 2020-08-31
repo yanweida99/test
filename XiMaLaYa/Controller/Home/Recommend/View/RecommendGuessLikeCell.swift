@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
-import HandyJSON
 
 // 添加cell点击代理方法
 protocol RecommendGuessLikeCellDelegate: NSObjectProtocol {
@@ -17,9 +15,9 @@ protocol RecommendGuessLikeCellDelegate: NSObjectProtocol {
 
 class RecommendGuessLikeCell: UICollectionViewCell {
     
-    weak var delegate : RecommendGuessLikeCellDelegate?
+    weak var delegate: RecommendGuessLikeCellDelegate?
     
-    private var recommendList:[RecommendListModel]?
+    private var recommendList: [RecommendListModel]?
     
     private let GuessYouLikeCellID = "GuessYouLikeCell"
     private lazy var changeBtn:UIButton = {
@@ -34,7 +32,7 @@ class RecommendGuessLikeCell: UICollectionViewCell {
     }()
     
     
-    private lazy var collectionView : UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout.init()
         let collectionView = UICollectionView.init(frame:.zero, collectionViewLayout: layout)
         collectionView.delegate = self
@@ -52,14 +50,15 @@ class RecommendGuessLikeCell: UICollectionViewCell {
     
     func setUpLayout(){
         self.addSubview(self.collectionView)
-        self.collectionView.snp.makeConstraints { (make) in
-            make.left.top.equalTo(15)
-            make.bottom.equalToSuperview().offset(-50)
+        self.collectionView.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(15)
+            make.top.equalToSuperview()//test
+            make.bottom.equalToSuperview()
             make.right.equalToSuperview().offset(-15)
         }
         
         self.addSubview(self.changeBtn)
-        self.changeBtn.snp.makeConstraints { (make) in
+        self.changeBtn.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-15)
             make.width.equalTo(100)
             make.height.equalTo(30)
@@ -67,11 +66,11 @@ class RecommendGuessLikeCell: UICollectionViewCell {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
-    var recommendListData:[RecommendListModel]? {
+    var recommendListData: [RecommendListModel]? {
         didSet{
             guard let model = recommendListData else { return }
             self.recommendList = model
@@ -81,11 +80,11 @@ class RecommendGuessLikeCell: UICollectionViewCell {
     // 更换一批按钮刷新cell
     @objc func updataBtnClick(button:UIButton){
         // 首页推荐接口请求
-        RecommendProvider.request(.changeGuessYouLikeList) { result in
-            if case let .success(response) = result {
-                // 解析数据
-                let data = try? response.mapJSON()
-                let json = JSON(data!)
+        let api = HomeRecommendAPI.changeGuessYouLikeList
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
+                //解析数据
+                let json = JSON(jsonData)
                 if let mappedObject = JSONDeserializer<RecommendListModel>.deserializeModelArrayFrom(json: json["list"].description) {
                     self.recommendList = mappedObject as? [RecommendListModel]
                     self.collectionView.reloadData()

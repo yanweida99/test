@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import DNSPageView
 
 class HomeController: UIViewController {
     
@@ -21,14 +20,16 @@ class HomeController: UIViewController {
     
     func setupPageStyle() {
         // 创建DNSPageStyle，设置样式
-        let style = DNSPageStyle()
+        let style = PageStyle()
+        style.titleFont = UIFont.systemFont(ofSize: 16)
         style.isTitleViewScrollEnabled = false
         style.isTitleScaleEnabled = true
-        style.isShowBottomLine = true
-        style.titleSelectedColor = UIColor.black
+        style.titleSelectedColor = UIColor.red
         style.titleColor = UIColor.gray
-        style.bottomLineColor = ButtonColor
-        style.bottomLineHeight = 2
+        // 标题下划线
+        // style.isShowBottomLine = true
+        // style.bottomLineColor = ButtonColor
+        // style.bottomLineHeight = 2
         
         let titles = ["推荐", "分类", "VIP", "直播", "广播"]
         let viewControllers: [UIViewController] = [HomeRecommendController(),
@@ -39,7 +40,7 @@ class HomeController: UIViewController {
         for vc in viewControllers {
             self.addChild(vc)
         }
-        let pageView = DNSPageView(frame: CGRect(x: 0, y: NavBarHeight, width: ScreenWidth, height: ScreenHeight - NavBarHeight - 44), style: style, titles: titles, childViewControllers: viewControllers)
+        let pageView = PageView(frame: CGRect(x: 0, y: NavBarHeight, width: ScreenWidth, height: ScreenHeight - NavBarHeight - 44), style: style, titles: titles, childViewControllers: viewControllers)
         pageView.contentView.backgroundColor = UIColor.red
         view.addSubview(pageView)
     }

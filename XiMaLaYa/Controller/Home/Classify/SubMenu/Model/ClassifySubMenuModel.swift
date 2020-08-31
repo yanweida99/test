@@ -7,14 +7,13 @@
 //
 
 import Foundation
-import HandyJSON
 
 // 分类二级界面顶部分类Model
 struct ClassifySubMenuCategoryModel:HandyJSON {
-    var msg:String?
+    var msg: String?
     var ret: Int = 0
     var gender: String?
-    var keywords:[ClassifySubMenuKeywords]?
+    var keywords: [ClassifySubMenuKeywords]?
     var categoryInfo:ClassifySubMenuCategoryInfo?
 }
 
@@ -40,15 +39,15 @@ struct ClassifySubMenuCategoryInfo:HandyJSON {
 struct ClassifyCategoryContentsList: HandyJSON {
     var calcDimension: String?
     var cardClass: String?
-    var categoryId:Int = 0
+    var categoryId: Int = 0
     var contentType: String?
     var hasMore:Bool = false
-    var keywordId:Int = 0
+    var keywordId: Int = 0
     var keywordName: String?
-    // var list:[Any]?
-    var list:[ClassifyVerticalModel]?
-    var loopCount:Int = 0
-    var moduleType:Int = 0
+    // var list: [Any]?
+    var list: [ClassifyVerticalModel]?
+    var loopCount: Int = 0
+    var moduleType: Int = 0
     var tagName: String?
     var title: String?
 }
@@ -80,13 +79,13 @@ struct ClassifyVerticalModel:HandyJSON {
     var commentsCount: Int = 0
     var coverLarge: String?
     var coverMiddle: String?
-    var coverSmall:String?
+    var coverSmall: String?
     var discountedPrice: Int = 0
     var displayDiscountedPrice: String?
     var displayPrice: String?
     var draft: Bool = false
     var id: Int = 0
-    var intro:String?
+    var intro: String?
     var isFinished: Int = 0
     var isPaid: Bool = false
     var materialType: String?
@@ -94,7 +93,7 @@ struct ClassifyVerticalModel:HandyJSON {
     var playsCounts: Int = 0
     var price:CGFloat = 0.0
     var priceTypeEnum: Int = 0
-    var priceTypeId:Int = 0
+    var priceTypeId: Int = 0
     var priceUnit: String?
     var provider: String?
     var refundSupportType: Int = 0
@@ -102,9 +101,9 @@ struct ClassifyVerticalModel:HandyJSON {
     var serialState: Int = 0
     var tags: String?
     var title: String?
-    var trackId:Int = 0
+    var trackId: Int = 0
     var trackTitle: String?
-    var tracks:Int = 0
+    var tracks: Int = 0
     var uid: Int = 0
     var vipFree: Bool = false
     var vipFreeType: Int = 0
@@ -135,19 +134,19 @@ struct ClassifyVerticalModel:HandyJSON {
     var coverPathBig: String?
     var footnote: String?
     // var intro: String?
-    // var nickname:String?
-    var personalSignature:String?
-    var smallLogo:String?
-    var specialId:Int = 0
-    // var title:String?
-    // var uid:Int = 0
+    // var nickname: String?
+    var personalSignature: String?
+    var smallLogo: String?
+    var specialId: Int = 0
+    // var title: String?
+    // var uid: Int = 0
     
     
     // 4
-    var coverPathSmall:String?
+    var coverPathSmall: String?
     
     // 16
-    var name:String?
+    var name: String?
 }
 
 struct ClassifyModuleType19Model: HandyJSON {
@@ -185,8 +184,8 @@ struct ClassifyModuleType19List: HandyJSON {
 }
 
 struct ClassifyModuleType19Origin:HandyJSON {
-    var title:String?
-    var coverSmall:String?
+    var title: String?
+    var coverSmall: String?
 }
 
 struct ClassifyModuleType20Model: HandyJSON {
@@ -195,16 +194,16 @@ struct ClassifyModuleType20Model: HandyJSON {
     var coverPathBig: String?
     var footnote: String?
     var intro: String?
-    var nickname:String?
-    var personalSignature:String?
-    var smallLogo:String?
-    var specialId:Int = 0
-    var title:String?
-    var uid:Int = 0
+    var nickname: String?
+    var personalSignature: String?
+    var smallLogo: String?
+    var specialId: Int = 0
+    var title: String?
+    var uid: Int = 0
 }
 
 struct ClassifyModuleType20List: HandyJSON {
-    var albumCoverUrl290:String?
+    var albumCoverUrl290: String?
     var albumId: Int = 0
     var commentsCounts: Int = 0
     var discountedPrice: CGFloat = 0.0
@@ -213,7 +212,7 @@ struct ClassifyModuleType20List: HandyJSON {
     var id: Int = 0
     var isDraft: Bool = false
     var isPaid: Bool = false
-    var intro:String?
+    var intro: String?
     var isFinished: Int = 0
     var lastUptrackAt: Int = 0
     var materialType: String?
@@ -231,5 +230,5 @@ struct ClassifyModuleType20List: HandyJSON {
 
 struct ClassifyModuleType20Origin: HandyJSON {
     var albumCoverUrl290: String?
-    var title:String?
+    var title: String?
 }

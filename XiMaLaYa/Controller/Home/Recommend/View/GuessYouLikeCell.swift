@@ -21,7 +21,7 @@ class GuessYouLikeCell: UICollectionViewCell {
         return label
     }()
     // 子标题
-    private var subLabel : UILabel = {
+    private var subLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor.gray
@@ -33,24 +33,24 @@ class GuessYouLikeCell: UICollectionViewCell {
         super.init(frame: frame)
         setUpLayout()
     }
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     func setUpLayout(){
         self.addSubview(self.imageView)
-        self.imageView.snp.makeConstraints { (make) in
+        self.imageView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
             make.bottom.equalToSuperview().offset(-60)
         }
         self.addSubview(self.titleLabel)
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.top.equalTo(self.imageView.snp.bottom)
             make.height.equalTo(20)
         }
         
         self.addSubview(self.subLabel)
-        self.subLabel.snp.makeConstraints { (make) in
+        self.subLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.top.equalTo(self.titleLabel.snp.bottom)
             make.height.equalTo(40)
@@ -61,7 +61,7 @@ class GuessYouLikeCell: UICollectionViewCell {
     var recommendData:RecommendListModel? {
         didSet{
             guard let model = recommendData else { return }
-            if (model.pic != nil) {
+            if model.pic != nil {
                 self.imageView.kf.setImage(with: URL(string: model.pic!))
             }
             self.titleLabel.text = model.title

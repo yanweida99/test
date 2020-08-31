@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import HandyJSON
 
 // 首页广播数据模型
 struct HomeBroadcastModel: HandyJSON {

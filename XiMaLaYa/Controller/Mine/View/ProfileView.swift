@@ -204,8 +204,8 @@ class ProfileView: UIView {
         delegate?.shopViewButtonClick(tag: button.tag)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     // Only override draw() if you perform custom drawing.

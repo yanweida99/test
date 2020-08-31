@@ -8,8 +8,6 @@
 
 import UIKit
 
-let kNavBarBottom = WRNavigationBar.navBarBottom()
-
 class MineController: UIViewController {
     private let makeTableViewCellID = "MakeTableViewCell"
     
@@ -111,7 +109,7 @@ class MineController: UIViewController {
 }
 
 // 委托
-extension MineController : UITableViewDelegate, UITableViewDataSource {
+extension MineController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
@@ -189,8 +187,8 @@ extension MineController : UITableViewDelegate, UITableViewDataSource {
 }
 
 // shopView按钮点击代理方法
-extension MineController : ProfileViewDelegate {
-    func shopViewButtonClick(tag:Int) {
+extension MineController: ProfileViewDelegate {
+    func shopViewButtonClick(tag: Int) {
         
     }
 }

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
-import HandyJSON
 
 class HomeBroadcastListController: UIViewController {
     
@@ -41,7 +39,7 @@ class HomeBroadcastListController: UIViewController {
                 self?.loadMoreCategoryData()
                 
             }
-        }else{
+        } else {
             collection.uHead = URefreshHeader { [weak self] in
                 self?.setupLoadData()
                 
@@ -64,18 +62,17 @@ class HomeBroadcastListController: UIViewController {
         self.collectionView.uHead.beginRefreshing()
         if isMoreCategory{
             loadMoreCategoryData()
-        }else{
+        } else {
             setupLoadData()
         }
     }
     
     func setupLoadData(){
         // 首页广播接口请求
-        HomeBroadcastAPIProvider.request(.categoryBroadcastList(path:self.url!)) { result in
-            if case let .success(response) = result {
-                // 解析数据
-                let data = try? response.mapJSON()
-                let json = JSON(data!)
+        let api = HomeBroadcastAPI.categoryBroadcastList(path: self.url!)
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
+                let json = JSON(jsonData)
                 if let mappedObject = JSONDeserializer<TopRadiosModel>.deserializeModelArrayFrom(json: json["data"]["data"].description) {
                     self.topRadiosModel = mappedObject as? [TopRadiosModel]
                 }
@@ -87,11 +84,10 @@ class HomeBroadcastListController: UIViewController {
     
     func loadMoreCategoryData(){
         // 首页广播接口请求
-        HomeBroadcastAPIProvider.request(.moreCategoryBroadcastList(categoryId:self.categoryId)) { result in
-            if case let .success(response) = result {
-                // 解析数据
-                let data = try? response.mapJSON()
-                let json = JSON(data!)
+        let api = HomeBroadcastAPI.moreCategoryBroadcastList(categoryId:self.categoryId)
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
+                let json = JSON(jsonData)
                 if let mappedObject = JSONDeserializer<TopRadiosModel>.deserializeModelArrayFrom(json: json["data"]["data"].description) {
                     self.topRadiosModel = mappedObject as? [TopRadiosModel]
                 }
@@ -146,7 +142,7 @@ extension HomeBroadcastListController: UICollectionViewDelegate, UICollectionVie
     
     // item 的尺寸
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width:ScreenWidth,height:120)
+        return CGSize.init(width: ScreenWidth, height: 120)
     }
     
 }

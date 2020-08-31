@@ -7,12 +7,9 @@
 //
 
 import UIKit
-import SwiftyJSON
-import HandyJSON
 
 class ListenRecommendViewModel: NSObject {
     var albums: [albumsModel]?
-    typealias AddDataBlock = () -> Void
     var updateBlock: AddDataBlock?
 }
 

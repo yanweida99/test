@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import LTScrollView
 
 class ChannelController: UIViewController, LTTableViewProtocal {
 
@@ -45,10 +44,10 @@ class ChannelController: UIViewController, LTTableViewProtocal {
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
-        setupLoadData()
+        loadData()
     }
     
-    func setupLoadData() {
+    func loadData() {
         viewModel.updateBlock = { [unowned self] in
             self.tableView.reloadData()
         }

@@ -7,11 +7,9 @@
 //
 
 import UIKit
-import SwiftyJSON
-import HandyJSON
 
 class HomeRecommendLiveCell: UICollectionViewCell {
-    private var live:[LiveModel]?
+    private var live: [LiveModel]?
     private let LBRecommendLiveCellID = "LBRecommendLiveCell"
     private lazy var changeBtn:UIButton = {
         let button = UIButton.init(type: UIButton.ButtonType.custom)
@@ -24,7 +22,7 @@ class HomeRecommendLiveCell: UICollectionViewCell {
         return button
     }()
     
-    private lazy var collectionView : UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout.init()
         let collectionView = UICollectionView.init(frame:.zero, collectionViewLayout: layout)
         collectionView.delegate = self
@@ -42,14 +40,14 @@ class HomeRecommendLiveCell: UICollectionViewCell {
     
     func setUpUI(){
         self.addSubview(self.collectionView)
-        self.collectionView.snp.makeConstraints { (make) in
+        self.collectionView.snp.makeConstraints { make in
             make.left.top.equalTo(15)
             make.bottom.equalToSuperview().offset(-50)
             make.right.equalToSuperview().offset(-15)
         }
         
         self.addSubview(self.changeBtn)
-        self.changeBtn.snp.makeConstraints { (make) in
+        self.changeBtn.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-15)
             make.width.equalTo(100)
             make.height.equalTo(30)
@@ -57,18 +55,18 @@ class HomeRecommendLiveCell: UICollectionViewCell {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
-    //    var recommendListData:[RecommendListModel]? {
+    //    var recommendListData: [RecommendListModel]? {
     //        didSet{
     //            guard let model = recommendListData else { return }
     //            self.recommendList = model
     //            self.collectionView.reloadData()
     //        }
     //    }
-    var liveList : [LiveModel]? {
+    var liveList: [LiveModel]? {
         didSet {
             guard let model = liveList else { return }
             self.live = model
@@ -78,11 +76,11 @@ class HomeRecommendLiveCell: UICollectionViewCell {
     // 更换一批按钮刷新cell
     @objc func updataBtnClick(button:UIButton){
         //首页推荐接口请求
-        RecommendProvider.request(.changeLiveList) { result in
-            if case let .success(response) = result {
+        let api = HomeRecommendAPI.changeLiveList
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
                 //解析数据
-                let data = try? response.mapJSON()
-                let json = JSON(data!)
+                let json = JSON(jsonData)
                 if let mappedObject = JSONDeserializer<LiveModel>.deserializeModelArrayFrom(json: json["data"]["list"].description) {
                     self.live = mappedObject as? [LiveModel]
                     self.collectionView.reloadData()

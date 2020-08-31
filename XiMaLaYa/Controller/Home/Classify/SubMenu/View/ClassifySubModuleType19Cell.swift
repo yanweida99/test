@@ -9,7 +9,7 @@
 import UIKit
 
 class ClassifySubModuleType19Cell: UICollectionViewCell {
-    private var classifyModuleType19List:[ClassifyModuleType19List]?
+    private var classifyModuleType19List: [ClassifyModuleType19List]?
     // 细线
     private var lineView:UIView = {
         let view = UIView()
@@ -39,18 +39,18 @@ class ClassifySubModuleType19Cell: UICollectionViewCell {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
         self.addSubview(self.tableView)
-        self.tableView.snp.makeConstraints { (make) in
+        self.tableView.snp.makeConstraints { make in
             make.left.right.top.equalToSuperview()
             make.height.equalTo(150)
         }
         self.addSubview(self.lineView)
-        self.lineView.snp.makeConstraints { (make) in
+        self.lineView.snp.makeConstraints { make in
             make.left.width.right.equalToSuperview()
             make.height.equalTo(0.5)
             make.bottom.equalToSuperview().offset(-40)
         }
         self.addSubview(self.moreBtn)
-        self.moreBtn.snp.makeConstraints { (make) in
+        self.moreBtn.snp.makeConstraints { make in
             make.top.equalTo(self.lineView.snp.bottom).offset(5)
             make.width.equalTo(150)
             make.height.equalTo(30)
@@ -65,8 +65,9 @@ class ClassifySubModuleType19Cell: UICollectionViewCell {
             self.tableView.reloadData()
         }
     }
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
 }
 

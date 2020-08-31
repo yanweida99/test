@@ -46,32 +46,32 @@ class VIPEnjoyCell: UICollectionViewCell {
         setUpLayout()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     func setUpLayout(){
         self.addSubview(self.imageView)
-        self.imageView.snp.makeConstraints { (make) in
+        self.imageView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
             make.bottom.equalToSuperview().offset(-110)
         }
         self.addSubview(self.titleLabel)
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.top.equalTo(self.imageView.snp.bottom).offset(10)
             make.height.equalTo(40)
         }
         
         self.addSubview(self.couponLabel)
-        self.couponLabel.snp.makeConstraints { (make) in
+        self.couponLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.top.equalTo(self.titleLabel.snp.bottom).offset(5)
             make.height.equalTo(20)
         }
         
         self.addSubview(self.freeLabel)
-        self.freeLabel.snp.makeConstraints { (make) in
+        self.freeLabel.snp.makeConstraints { make in
             make.left.equalToSuperview()
             make.width.equalTo(55)
             make.top.equalTo(self.couponLabel.snp.bottom).offset(5)

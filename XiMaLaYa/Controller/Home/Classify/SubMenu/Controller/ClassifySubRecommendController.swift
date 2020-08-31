@@ -12,7 +12,7 @@ class ClassifySubRecommendController: UIViewController {
     
     // - 上页面传过来请求接口必须的参数
     private var categoryId: Int = 0
-    convenience init(categoryId:Int = 0) {
+    convenience init(categoryId: Int = 0) {
         self.init()
         self.categoryId = categoryId
     }
@@ -29,7 +29,7 @@ class ClassifySubRecommendController: UIViewController {
     private let ClassifySubModuleType16CellID = "ClassifySubModuleType16Cell"
     private let ClassifySubModuleType23CellID = "ClassifySubModuleType23Cell"
     
-    private lazy var collectionView : UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout.init()
         let collection = UICollectionView.init(frame:.zero, collectionViewLayout: layout)
         collection.delegate = self
@@ -64,7 +64,7 @@ class ClassifySubRecommendController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(self.collectionView)
-        self.collectionView.snp.makeConstraints { (make) in
+        self.collectionView.snp.makeConstraints { make in
             make.width.height.equalToSuperview()
             make.center.equalToSuperview()
         }
@@ -84,7 +84,7 @@ class ClassifySubRecommendController: UIViewController {
     }
 }
 
-extension ClassifySubRecommendController : UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+extension ClassifySubRecommendController: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.numberOfSections(collectionView:collectionView)
     }
@@ -102,55 +102,55 @@ extension ClassifySubRecommendController : UICollectionViewDelegate, UICollectio
             cell.focusModel = viewModel.focus
             cell.classifyCategoryContentsListModel = viewModel.classifyCategoryContentsList?[indexPath.section]
             return cell
-        }else if moduleType == 3 {
+        } else if moduleType == 3 {
             if cardClass == "horizontal" {
                 let cell:ClassifySubHorizontalCell = collectionView.dequeueReusableCell(withReuseIdentifier: ClassifySubHorizontalCellID, for: indexPath) as! ClassifySubHorizontalCell
                 cell.classifyVerticalModel = viewModel.classifyCategoryContentsList?[indexPath.section].list?[indexPath.row]
                 return cell
-            }else {
+            } else {
                 let cell:ClassifySubVerticalCell = collectionView.dequeueReusableCell(withReuseIdentifier: ClassifySubVerticalCellID, for: indexPath) as! ClassifySubVerticalCell
                 cell.classifyVerticalModel = viewModel.classifyCategoryContentsList?[indexPath.section].list?[indexPath.row]
                 return cell
             }
-        }else if moduleType == 5{
+        } else if moduleType == 5{
             if cardClass == "horizontal" {
                 let cell:ClassifySubHorizontalCell = collectionView.dequeueReusableCell(withReuseIdentifier: ClassifySubHorizontalCellID, for: indexPath) as! ClassifySubHorizontalCell
                 cell.classifyVerticalModel = viewModel.classifyCategoryContentsList?[indexPath.section].list?[indexPath.row]
                 return cell
-            }else {
+            } else {
                 let cell:ClassifySubVerticalCell = collectionView.dequeueReusableCell(withReuseIdentifier: ClassifySubVerticalCellID, for: indexPath) as! ClassifySubVerticalCell
                 cell.classifyVerticalModel = viewModel.classifyCategoryContentsList?[indexPath.section].list?[indexPath.row]
                 return cell
             }
-        }else if moduleType == 20 {
+        } else if moduleType == 20 {
             let cell:ClassifySubModuleType20Cell = collectionView.dequeueReusableCell(withReuseIdentifier: ClassifySubModuleType20CellID, for: indexPath) as! ClassifySubModuleType20Cell
             cell.classifyVerticalModel = viewModel.classifyCategoryContentsList?[indexPath.section].list?[indexPath.row]
             return cell
-        }else if moduleType == 19 {
+        } else if moduleType == 19 {
             let cell:ClassifySubModuleType19Cell = collectionView.dequeueReusableCell(withReuseIdentifier: ClassifySubModuleType19CellID, for: indexPath) as! ClassifySubModuleType19Cell
             cell.classifyVerticalModel = viewModel.classifyCategoryContentsList?[indexPath.section].list?[indexPath.row]
             return cell
-        }else if moduleType == 17 {
+        } else if moduleType == 17 {
             let cell:ClassifySubModuleType17Cell = collectionView.dequeueReusableCell(withReuseIdentifier: ClassifySubModuleType17CellID, for: indexPath) as! ClassifySubModuleType17Cell
             cell.classifyVerticalModel = viewModel.classifyCategoryContentsList?[indexPath.section].list?[indexPath.row]
             return cell
-        }else if moduleType == 4 {
+        } else if moduleType == 4 {
             let cell:ClassifySubModuleType4Cell = collectionView.dequeueReusableCell(withReuseIdentifier: ClassifySubModuleType4CellID, for: indexPath) as! ClassifySubModuleType4Cell
             cell.classifyVerticalModel = viewModel.classifyCategoryContentsList?[indexPath.section].list?[indexPath.row]
             return cell
-        }else if moduleType == 16 {
+        } else if moduleType == 16 {
             let cell:ClassifySubModuleType16Cell = collectionView.dequeueReusableCell(withReuseIdentifier: ClassifySubModuleType16CellID, for: indexPath) as! ClassifySubModuleType16Cell
             cell.classifyVerticalModel = viewModel.classifyCategoryContentsList?[indexPath.section].list?[indexPath.row]
             return cell
-        }else if moduleType == 23{
+        } else if moduleType == 23{
             let cell:ClassifySubModuleType23Cell = collectionView.dequeueReusableCell(withReuseIdentifier: ClassifySubModuleType23CellID, for: indexPath) as! ClassifySubModuleType23Cell
             //            cell.classifyVerticalModel = self.classifyCategoryContentsList?[indexPath.section].list?[indexPath.row]
             return cell
-        }else if moduleType == 18{
+        } else if moduleType == 18{
             let cell:ClassifySubVerticalCell = collectionView.dequeueReusableCell(withReuseIdentifier: ClassifySubVerticalCellID, for: indexPath) as! ClassifySubVerticalCell
             cell.classifyVerticalModel = viewModel.classifyCategoryContentsList?[indexPath.section].list?[indexPath.row]
             return cell
-        }else {
+        } else {
             let cell:ClassifySubVerticalCell = collectionView.dequeueReusableCell(withReuseIdentifier: ClassifySubVerticalCellID, for: indexPath) as! ClassifySubVerticalCell
             return cell
         }
@@ -192,11 +192,11 @@ extension ClassifySubRecommendController : UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            let headerView : ClassifySubHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ClassifySubHeaderViewID, for: indexPath) as! ClassifySubHeaderView
+            let headerView: ClassifySubHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ClassifySubHeaderViewID, for: indexPath) as! ClassifySubHeaderView
             headerView.classifyCategoryContents = viewModel.classifyCategoryContentsList?[indexPath.section]
             return headerView
-        }else if kind == UICollectionView.elementKindSectionFooter {
-            let footerView : ClassifySubFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: ClassifySubFooterViewID, for: indexPath) as! ClassifySubFooterView
+        } else if kind == UICollectionView.elementKindSectionFooter {
+            let footerView: ClassifySubFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: ClassifySubFooterViewID, for: indexPath) as! ClassifySubFooterView
             return footerView
         }
         return UICollectionReusableView()

@@ -31,14 +31,14 @@ class RadioHeaderView: UICollectionReusableView {
     func setUpLayout(){
         self.addSubview(self.titleLabel)
         self.titleLabel.text = "最热有声读物"
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.top.equalTo(15)
             make.width.equalTo(150)
             make.height.equalTo(30)
         }
         
         self.addSubview(self.moreBtn)
-        self.moreBtn.snp.makeConstraints { (make) in
+        self.moreBtn.snp.makeConstraints { make in
             make.right.equalTo(15)
             make.top.equalTo(15)
             make.width.equalTo(100)
@@ -53,7 +53,7 @@ class RadioHeaderView: UICollectionReusableView {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
 }

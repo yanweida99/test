@@ -74,7 +74,7 @@ class DubbingTableViewCell: UITableViewCell {
         self.addSubview(self.picView)
         self.picView.layer.masksToBounds = true
         self.picView.layer.cornerRadius = 5
-        self.picView.snp.makeConstraints { (make) in
+        self.picView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(15)
             make.top.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-15)
@@ -82,7 +82,7 @@ class DubbingTableViewCell: UITableViewCell {
         }
         
         self.picView.addSubview(self.titleLabel)
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
             make.height.equalTo(30)
@@ -92,7 +92,7 @@ class DubbingTableViewCell: UITableViewCell {
         self.iconView.image = UIImage(named: "news.png")
         self.iconView.layer.masksToBounds = true
         self.iconView.layer.cornerRadius = 15
-        self.iconView.snp.makeConstraints { (make) in
+        self.iconView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(15)
             make.bottom.equalToSuperview().offset(-15)
             make.width.height.equalTo(30)
@@ -100,7 +100,7 @@ class DubbingTableViewCell: UITableViewCell {
         
         self.addSubview(self.nameLabel)
         self.nameLabel.text = "喜马拉雅好声音"
-        self.nameLabel.snp.makeConstraints { (make) in
+        self.nameLabel.snp.makeConstraints { make in
             make.left.equalTo(self.iconView.snp.right).offset(8)
             make.width.equalTo(200)
             make.height.equalTo(30)
@@ -109,7 +109,7 @@ class DubbingTableViewCell: UITableViewCell {
         
         self.addSubview(self.commetLabel)
         self.commetLabel.text = "94"
-        self.commetLabel.snp.makeConstraints { (make) in
+        self.commetLabel.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-5)
             make.height.equalTo(20)
             make.width.equalTo(30)
@@ -118,7 +118,7 @@ class DubbingTableViewCell: UITableViewCell {
         
         self.addSubview(self.commentImageView)
         self.commentImageView.image = UIImage(named: "评论")
-        self.commentImageView.snp.makeConstraints { (make) in
+        self.commentImageView.snp.makeConstraints { make in
             make.right.equalTo(self.commetLabel.snp.left).offset(-5)
             make.centerY.equalTo(self.commetLabel)
             make.width.height.equalTo(25)
@@ -126,7 +126,7 @@ class DubbingTableViewCell: UITableViewCell {
         
         self.addSubview(self.zanLabel)
         self.zanLabel.text = "20.4万"
-        self.zanLabel.snp.makeConstraints { (make) in
+        self.zanLabel.snp.makeConstraints { make in
             make.right.equalTo(self.commentImageView.snp.left).offset(-10)
             make.width.equalTo(30)
             make.height.equalTo(20)
@@ -135,7 +135,7 @@ class DubbingTableViewCell: UITableViewCell {
         
         self.addSubview(self.zanImageView)
         self.zanImageView.image = UIImage(named: "点赞")
-        self.zanImageView.snp.makeConstraints { (make) in
+        self.zanImageView.snp.makeConstraints { make in
             make.right.equalTo(self.zanLabel.snp.left).offset(-5)
             make.width.height.equalTo(20)
             make.centerY.equalTo(self.zanLabel)
@@ -148,15 +148,15 @@ class DubbingTableViewCell: UITableViewCell {
             self.titleLabel.text = model.dubbingItem?.intro
             self.iconView.kf.setImage(with: URL(string: (model.dubbingItem?.logoPic)!))
             self.nameLabel.text = model.dubbingItem?.nickname
-            let zanNum:Int = (model.dubbingItem?.favorites)!
+            let zanNum: Int = (model.dubbingItem?.favorites)!
             self.zanLabel.text = "\(zanNum)"
-            let commentNum:Int = (model.dubbingItem?.commentCount)!
+            let commentNum: Int = (model.dubbingItem?.commentCount)!
             self.commetLabel.text = "\(commentNum)"
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     override func awakeFromNib() {

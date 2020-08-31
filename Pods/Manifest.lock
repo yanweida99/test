@@ -1,21 +1,17 @@
 PODS:
-  - Alamofire (4.9.1)
-  - DNSPageView (1.0.4)
+  - Alamofire (5.2.2)
+  - DNSPageView (2.1.0)
   - ESTabBarController-swift (2.6.5)
   - FSPagerView (0.8.3)
   - HandyJSON (5.0.3-beta)
   - JXMarqueeView (0.0.9)
-  - Kingfisher (4.10.1)
+  - Kingfisher (5.15.0):
+    - Kingfisher/Core (= 5.15.0)
+  - Kingfisher/Core (5.15.0)
   - LookinServer (1.0.0)
-  - LTScrollView (0.2.1)
-  - MJRefresh (3.4.3)
-  - Moya (13.0.1):
-    - Moya/Core (= 13.0.1)
-  - Moya/Core (13.0.1):
-    - Alamofire (~> 4.1)
-    - Result (~> 4.1)
-  - Result (4.1.0)
-  - SnapKit (4.2.0)
+  - LTScrollView (0.3.0)
+  - MJRefresh (3.5.0)
+  - SnapKit (5.0.1)
   - StreamingKit (0.1.30)
   - SVProgressHUD (2.2.5)
   - SwiftMessages (6.0.2):
@@ -24,7 +20,8 @@ PODS:
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
-  - DNSPageView (~> 1.0.1)
+  - Alamofire (~> 5.2)
+  - DNSPageView
   - ESTabBarController-swift (~> 2.6.2)
   - FSPagerView
   - HandyJSON (~> 5.0.0-beta.1)
@@ -33,7 +30,6 @@ DEPENDENCIES:
   - LookinServer
   - LTScrollView
   - MJRefresh
-  - Moya
   - SnapKit
   - StreamingKit
   - SVProgressHUD
@@ -52,8 +48,6 @@ SPEC REPOS:
     - LookinServer
     - LTScrollView
     - MJRefresh
-    - Moya
-    - Result
     - SnapKit
     - StreamingKit
     - SVProgressHUD
@@ -61,24 +55,22 @@ SPEC REPOS:
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  DNSPageView: 28b2b5a9fb65cdc222d45dc2ce6247cd3f9365b5
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  DNSPageView: 4d77a61f49a5668ec330fb7bd620d81354371ea7
   ESTabBarController-swift: f31cd3e30bde23619d3b300266f27864d96ffb58
   FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
   HandyJSON: 88e8ea5f66ab65c3b8768499a1935d0509c460d4
   JXMarqueeView: 0058108f80f149b25ff3bc3705c1af348fe7be8f
-  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
   LookinServer: 0002891cd3cec5e082a910e897dfe71b4f06b89e
-  LTScrollView: 93fff4aed9f9545f541a99b320b27808f5307c12
-  MJRefresh: 53e3e3219f204425ee6d3e62e8733d3295944cd6
-  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
-  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
-  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  LTScrollView: 46029b501f34d31e33e33392935cb240eb1d1ed0
+  MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   StreamingKit: 70ca8608c206864b4d54a577eacb3c8bf7c72209
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftMessages: 8b3cc68dba2f1c91aac1a74c90b10287aac35371
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 86e3ff06fabe65e54f8e774c2a9bfac3101a6674
+PODFILE CHECKSUM: 350ae35e29fe8d0ae71c37b15a9cdba181de7761
 
 COCOAPODS: 1.7.5

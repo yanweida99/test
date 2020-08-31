@@ -34,7 +34,7 @@ class PlayDetailSimilarCell: UITableViewCell {
     }()
     
     // 子标题
-    private var subLabel : UILabel = {
+    private var subLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
         label.textColor = UIColor.gray
@@ -42,7 +42,7 @@ class PlayDetailSimilarCell: UITableViewCell {
     }()
     
     // 播放数量
-    private var numLabel : UILabel = {
+    private var numLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor.gray
@@ -50,7 +50,7 @@ class PlayDetailSimilarCell: UITableViewCell {
     }()
     
     // 集数
-    private var tracksLabel : UILabel = {
+    private var tracksLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor.gray
@@ -85,7 +85,7 @@ class PlayDetailSimilarCell: UITableViewCell {
     func setUpLayout(){
         self.addSubview(self.picView)
         self.picView.image = UIImage(named: "pic1.jpeg")
-        self.picView.snp.makeConstraints { (make) in
+        self.picView.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(15)
             make.bottom.equalToSuperview().offset(-15)
             make.width.equalTo(80)
@@ -93,7 +93,7 @@ class PlayDetailSimilarCell: UITableViewCell {
         
         self.addSubview(self.paidLabel)
         self.paidLabel.text = "完结"
-        self.paidLabel.snp.makeConstraints { (make) in
+        self.paidLabel.snp.makeConstraints { make in
             make.left.equalTo(self.picView.snp.right).offset(10)
             make.top.equalTo(self.picView).offset(2)
             make.height.equalTo(16)
@@ -101,7 +101,7 @@ class PlayDetailSimilarCell: UITableViewCell {
         }
         
         self.addSubview(self.titleLabel)
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.equalTo(self.paidLabel.snp.right).offset(10)
             make.right.equalToSuperview()
             make.top.equalTo(self.picView)
@@ -110,14 +110,14 @@ class PlayDetailSimilarCell: UITableViewCell {
         
         self.addSubview(self.subLabel)
         self.subLabel.text = "佛大"
-        self.subLabel.snp.makeConstraints { (make) in
+        self.subLabel.snp.makeConstraints { make in
             make.right.height.equalTo(self.titleLabel)
             make.left.equalTo(self.picView.snp.right).offset(10)
             make.top.equalTo(self.titleLabel.snp.bottom).offset(10)
         }
         
         self.addSubview(self.numView)
-        self.numView.snp.makeConstraints { (make) in
+        self.numView.snp.makeConstraints { make in
             make.left.equalTo(self.subLabel)
             make.bottom.equalToSuperview().offset(-25)
             make.width.height.equalTo(17)
@@ -125,27 +125,27 @@ class PlayDetailSimilarCell: UITableViewCell {
         
         self.addSubview(self.numLabel)
         self.numLabel.text = "> 2.5亿 1284集"
-        self.numLabel.snp.makeConstraints { (make) in
+        self.numLabel.snp.makeConstraints { make in
             make.left.equalTo(self.numView.snp.right).offset(5)
             make.bottom.equalTo(self.numView)
             make.width.equalTo(60)
         }
         
         self.addSubview(self.tracksView)
-        self.tracksView.snp.makeConstraints { (make) in
+        self.tracksView.snp.makeConstraints { make in
             make.left.equalTo(self.numLabel.snp.right).offset(5)
             make.bottom.equalTo(self.numLabel)
             make.width.height.equalTo(20)
         }
         
         self.addSubview(self.tracksLabel)
-        self.tracksLabel.snp.makeConstraints { (make) in
+        self.tracksLabel.snp.makeConstraints { make in
             make.left.equalTo(self.tracksView.snp.right).offset(5)
             make.bottom.equalTo(self.tracksView)
             make.width.equalTo(80)
         }
         self.addSubview(self.subBtn)
-        self.subBtn.snp.makeConstraints { (make) in
+        self.subBtn.snp.makeConstraints { make in
             make.right.bottom.equalToSuperview().offset(-15)
             make.height.equalTo(30)
             make.width.equalTo(60)
@@ -169,7 +169,7 @@ class PlayDetailSimilarCell: UITableViewCell {
             self.titleLabel.text = model.title
             self.subLabel.text = model.intro
             self.tracksLabel.text = "\(model.tracks)集"
-            var tagString:String?
+            var tagString: String?
             if model.playsCounts > 100000000 {
                 tagString = String(format: "%.1f亿", Double(model.playsCounts) / 100000000)
             } else if model.playsCounts > 10000 {

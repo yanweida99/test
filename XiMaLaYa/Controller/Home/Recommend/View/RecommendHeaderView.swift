@@ -9,10 +9,10 @@
 import UIKit
 
 // 创建闭包 - OC中的block
-typealias HeaderMoreBtnClick = () ->Void
+typealias HeaderMoreButtonClick = () ->Void
 
 class RecommendHeaderView: UICollectionReusableView {
-    var headerMoreBtnClick : HeaderMoreBtnClick?
+    var headerMoreButtonClick: HeaderMoreButtonClick?
     
     // 标题
     private var titleLabel:UILabel = {
@@ -37,10 +37,11 @@ class RecommendHeaderView: UICollectionReusableView {
         moreButton.addTarget(self, action: #selector(moreButtonClick(moreButton:)), for: .touchUpInside)
         return moreButton
     }()
+    
     @objc func moreButtonClick(moreButton:UIButton) {
         // 闭包回调
-        guard let headerMoreBtnClick = headerMoreBtnClick else { return }
-        headerMoreBtnClick()
+        guard let headerMoreButtonnClick = headerMoreButtonClick else { return }
+        headerMoreButtonnClick()
     }
     
     override init(frame: CGRect) {
@@ -48,8 +49,8 @@ class RecommendHeaderView: UICollectionReusableView {
         setupHeaderView()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     // 布局
@@ -57,7 +58,7 @@ class RecommendHeaderView: UICollectionReusableView {
         
         self.addSubview(self.titleLabel)
         self.titleLabel.text = "猜你喜欢"
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.top.equalTo(15)
             make.width.equalTo(150)
             make.height.equalTo(30)
@@ -66,14 +67,14 @@ class RecommendHeaderView: UICollectionReusableView {
         self.addSubview(self.subLabel)
         //        self.subLabel.text = "副标题"
         subLabel.textColor = UIColor.red
-        self.subLabel.snp.makeConstraints { (make) in
+        self.subLabel.snp.makeConstraints { make in
             make.left.equalTo(self.titleLabel.snp.right)
             make.height.top.equalTo(self.titleLabel)
             make.right.equalToSuperview().offset(-100)
         }
         self.addSubview(self.moreButton)
         //        self.moreButton.setTitle("您好", for: .normal)
-        self.moreButton.snp.makeConstraints { (make) in
+        self.moreButton.snp.makeConstraints { make in
             make.right.equalTo(15)
             make.top.equalTo(15)
             make.width.equalTo(100)
@@ -83,9 +84,9 @@ class RecommendHeaderView: UICollectionReusableView {
     var homeRecommendList:RecommendModel? {
         didSet{
             guard let model = homeRecommendList else { return }
-            if (model.title != nil) {
+            if model.title != nil {
                 self.titleLabel.text = model.title
-            }else {
+            } else {
                 self.titleLabel.text = "猜你喜欢"
             }
         }

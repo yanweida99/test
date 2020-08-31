@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import HandyJSON
 
 // 关注动态 Model
 struct AttentionAuthorInfo: HandyJSON {

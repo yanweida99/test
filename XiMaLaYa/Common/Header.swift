@@ -7,13 +7,13 @@
 //
 
 import UIKit
-import Foundation
-import Kingfisher
 import SnapKit
-import SwiftyJSON
-import HandyJSON
-import SwiftMessages
-
+@_exported import Alamofire
+@_exported import HandyJSON
+@_exported import SwiftyJSON
+@_exported import DNSPageView
+@_exported import SwiftMessages
+@_exported import LTScrollView
 
 let ScreenWidth = UIScreen.main.bounds.size.width
 let ScreenHeight = UIScreen.main.bounds.size.height
@@ -24,8 +24,11 @@ let DownColor = UIColor.init(red: 240 / 255.0, green: 241 / 255.0, blue: 244 / 2
 
 // iphone X
 let isIphoneX = ScreenHeight == 812 ? true : false
-// LBFMNavBarHeight
-let NavBarHeight : CGFloat = isIphoneX ? 88 : 64
-// LBFMTabBarHeight
-let TabBarHeight : CGFloat = isIphoneX ? 49 + 34 : 49
+// NavBarHeight
+let NavBarHeight: CGFloat = isIphoneX ? 88 : 64
+// TabBarHeight
+let TabBarHeight: CGFloat = isIphoneX ? 49 + 34 : 49
 
+let kNavBarBottom = WRNavigationBar.navBarBottom()
+
+typealias AddDataBlock = () ->Void

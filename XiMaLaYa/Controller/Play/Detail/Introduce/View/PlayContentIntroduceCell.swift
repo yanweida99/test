@@ -27,13 +27,13 @@ class PlayContentIntroduceCell: UITableViewCell {
     
     func setUpUI(){
         self.addSubview(self.titleLabel)
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.top.equalTo(15)
             make.right.equalToSuperview()
             make.height.equalTo(30)
         }
         self.addSubview(self.subLabel)
-        self.subLabel.snp.makeConstraints { (make) in
+        self.subLabel.snp.makeConstraints { make in
             make.left.equalTo(15)
             make.top.equalTo(self.titleLabel.snp.bottom).offset(10)
             make.bottom.right.equalToSuperview().offset(-15)
@@ -47,8 +47,8 @@ class PlayContentIntroduceCell: UITableViewCell {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
 }

@@ -8,9 +8,6 @@
 //
 
 import UIKit
-import HandyJSON
-import SwiftyJSON
-import DNSPageView
 
 class ClassifySubMenuController: UIViewController {
     
@@ -23,7 +20,7 @@ class ClassifySubMenuController: UIViewController {
         self.isVipPush = isVipPush
     }
     
-    private var Keywords:[ClassifySubMenuKeywords]?
+    private var Keywords: [ClassifySubMenuKeywords]?
     private lazy var nameArray = NSMutableArray()
     private lazy var keywordIdArray = NSMutableArray()
     
@@ -36,12 +33,12 @@ class ClassifySubMenuController: UIViewController {
     }
     // 加载头部分类数据
     func loadHeaderCategoryData(){
-        //分类二级界面顶部分类接口请求
-        ClassifySubMenuProvider.request(ClassifySubMenuAPI.headerCategoryList(categoryId: self.categoryId)) { result in
-            if case let .success(response) = result {
-                // 解析数据
-                let data = try? response.mapJSON()
-                let json = JSON(data!)
+        // 分类二级界面顶部分类接口请求
+        let api = HomeClassifySubMenuAPI.headerCategoryList(categoryId: self.categoryId)
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
+                //解析数据
+                let json = JSON(jsonData)
                 // 从字符串转换为对象实例
                 if let mappedObject = JSONDeserializer<ClassifySubMenuKeywords>.deserializeModelArrayFrom(json: json["keywords"].description) {
                     self.Keywords = mappedObject as? [ClassifySubMenuKeywords]
@@ -59,7 +56,7 @@ class ClassifySubMenuController: UIViewController {
     
     func setupHeaderView(){
         // 创建DNSPageStyle，设置样式
-        let style = DNSPageStyle()
+        let style = PageStyle()
         style.isTitleViewScrollEnabled = true
         style.isTitleScaleEnabled = true
         style.isShowBottomLine = true
@@ -84,7 +81,7 @@ class ClassifySubMenuController: UIViewController {
         for vc in viewControllers{
             self.addChild(vc)
         }
-        let pageView = DNSPageView(frame: CGRect(x: 0, y: NavBarHeight, width: ScreenWidth, height: ScreenHeight - NavBarHeight), style: style, titles: nameArray as! [String], childViewControllers: viewControllers)
+        let pageView = PageView(frame: CGRect(x: 0, y: NavBarHeight, width: ScreenWidth, height: ScreenHeight - NavBarHeight), style: style, titles: nameArray as! [String], childViewControllers: viewControllers)
         view.addSubview(pageView)
     }
 }

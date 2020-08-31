@@ -42,7 +42,7 @@ class HomeVIPEnjoyCell: UITableViewCell {
     
     func setUpLayout(){
         self.addSubview(self.collectionView)
-        self.collectionView.snp.makeConstraints { (make) in
+        self.collectionView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-15)
             make.height.equalToSuperview()

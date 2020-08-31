@@ -9,7 +9,7 @@
 import UIKit
 
 class OneKeyListenCell: UICollectionViewCell {
-    private var oneKeyListen:[OneKeyListenModel]?
+    private var oneKeyListen: [OneKeyListenModel]?
     private lazy var changeBtn:UIButton = {
         let button = UIButton.init(type: UIButton.ButtonType.custom)
         button.setTitle("换一批", for: UIControl.State.normal)
@@ -43,14 +43,14 @@ class OneKeyListenCell: UICollectionViewCell {
     // 布局
     func setUpLayout(){
         self.addSubview(self.gridView)
-        self.gridView.snp.makeConstraints { (make) in
+        self.gridView.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-15)
             make.bottom.equalToSuperview().offset(-40)
         }
         
         self.addSubview(self.changeBtn)
-        self.changeBtn.snp.makeConstraints { (make) in
+        self.changeBtn.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-10)
             make.width.equalTo(100)
             make.height.equalTo(30)
@@ -66,7 +66,7 @@ class OneKeyListenCell: UICollectionViewCell {
         super.init(coder: coder)
     }
     
-    var oneKeyListenList:[OneKeyListenModel]? {
+    var oneKeyListenList: [OneKeyListenModel]? {
         didSet {
             guard let model = oneKeyListenList else { return }
             self.oneKeyListen = model

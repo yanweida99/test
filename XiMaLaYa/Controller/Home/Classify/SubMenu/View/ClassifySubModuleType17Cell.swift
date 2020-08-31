@@ -17,7 +17,7 @@ class ClassifySubModuleType17Cell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(self.imageView)
-        self.imageView.snp.makeConstraints { (make) in
+        self.imageView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.top.equalTo(5)
             make.bottom.equalTo(-5)
@@ -30,8 +30,8 @@ class ClassifySubModuleType17Cell: UICollectionViewCell {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
 }
 

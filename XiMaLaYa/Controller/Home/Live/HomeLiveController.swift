@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
-import HandyJSON
 
 let HomeLiveSectionGrid     = 0     // 分类
 let HomeLiveSectionBanner   = 1     // 滚动图片
@@ -39,7 +37,10 @@ class HomeLiveController: UIViewController {
         collection.register(HomeLiveGridCell.self, forCellWithReuseIdentifier: HomeLiveGridCellID)
         collection.register(HomeLiveBannerCell.self, forCellWithReuseIdentifier: HomeLiveBannerCellID)
         collection.register(HomeLiveRankCell.self, forCellWithReuseIdentifier: HomeLiveRankCellID)
-        collection.uHead = URefreshHeader{ [weak self] in self?.loadLiveData() }
+        collection.uHead = URefreshHeader { [weak self] in
+            self?.loadData()
+            
+        }
         return collection
     }()
     
@@ -60,10 +61,10 @@ class HomeLiveController: UIViewController {
         }
         // 刚进页面进行刷新
         self.collectionView.uHead.beginRefreshing()
-        loadLiveData()
+        loadData()
     }
     
-    func loadLiveData() {
+    func loadData() {
         // 加载数据
         viewModel.updateBlock = { [unowned self] in
             self.collectionView.uHead.endRefreshing()
@@ -99,19 +100,19 @@ extension HomeLiveController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case HomeLiveSectionGrid:
-            let cell:HomeLiveGridCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeLiveGridCellID, for: indexPath) as! HomeLiveGridCell
+            let cell: HomeLiveGridCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeLiveGridCellID, for: indexPath) as! HomeLiveGridCell
             cell.layer.masksToBounds = true
             cell.layer.cornerRadius = 5
             cell.delegate = self
             return cell
         case HomeLiveSectionBanner:
-            let cell:HomeLiveBannerCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeLiveBannerCellID, for: indexPath) as! HomeLiveBannerCell
+            let cell: HomeLiveBannerCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeLiveBannerCellID, for: indexPath) as! HomeLiveBannerCell
             cell.layer.masksToBounds = true
             cell.layer.cornerRadius = 5
             cell.bannerList = viewModel.homeLiveBannerList
             return cell
         case HomeLiveSectionRank:
-            let cell:HomeLiveRankCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeLiveRankCellID, for: indexPath) as! HomeLiveRankCell
+            let cell: HomeLiveRankCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeLiveRankCellID, for: indexPath) as! HomeLiveRankCell
             cell.layer.masksToBounds = true
             cell.layer.cornerRadius = 5
             cell.backgroundColor = UIColor.red
@@ -157,11 +158,11 @@ extension HomeLiveController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            let headerView : HomeLiveHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeLiveHeaderViewID, for: indexPath) as! HomeLiveHeaderView
+            let headerView: HomeLiveHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeLiveHeaderViewID, for: indexPath) as! HomeLiveHeaderView
             headerView.delegate = self
             headerView.backgroundColor = UIColor.white
             return headerView
-        }else {
+        } else {
             return UICollectionReusableView()
         }
     }
@@ -169,7 +170,7 @@ extension HomeLiveController: UICollectionViewDelegate, UICollectionViewDataSour
 
 // - 点击顶部分类按钮 delegate
 extension HomeLiveController:HomeLiveGridCellDelegate{
-    func homeLiveGridCellItemClick(channelId: Int,title:String) {
+    func homeLiveGridCellItemClick(channelId: Int,title: String) {
         let vc = LiveCategoryListController(channelId: channelId)
         vc.title = title
         self.navigationController?.pushViewController(vc, animated: true)

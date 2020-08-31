@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftMessages
 import FSPagerView
 
 class HomeLiveBannerCell: UICollectionViewCell {

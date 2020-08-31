@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftMessages
 
 let HomeVIPSectionBanner    = 0 // 滚动图片
 let HomeVIPSectionGrid      = 1 // 分类
@@ -39,7 +38,7 @@ class HomeVIPController: UIViewController {
     }()
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: CGRect(x:0, y:0, width: ScreenWidth, height:ScreenHeight - NavBarHeight - 44 - TabBarHeight), style: UITableView.Style.grouped)
+        let tableView = UITableView.init(frame: CGRect(x:0, y:0, width: ScreenWidth, height: ScreenHeight - NavBarHeight - 44 - TabBarHeight), style: UITableView.Style.grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.white
@@ -53,7 +52,9 @@ class HomeVIPController: UIViewController {
         tableView.register(HomeVIPCategoriesCell.self, forCellReuseIdentifier: HomeVIPCategoriesCellID)
         tableView.register(HomeVIPHotCell.self, forCellReuseIdentifier: HomeVIPHotCellID)
         tableView.register(HomeVIPEnjoyCell.self, forCellReuseIdentifier: HomeVIPEnjoyCellID)
-        tableView.uHead = URefreshHeader{ [weak self] in self?.setupLoadData() }
+        tableView.uHead = URefreshHeader { [weak self] in
+            self?.loadData()
+        }
         return tableView
     }()
     
@@ -68,10 +69,10 @@ class HomeVIPController: UIViewController {
         self.view.addSubview(self.tableView)
         // 刚进页面进行刷新
         self.tableView.uHead.beginRefreshing()
-        setupLoadData()
+        loadData()
     }
     
-    func setupLoadData() {
+    func loadData() {
         // 加载数据
         viewModel.updateBlock = { [unowned self] in
             self.tableView.uHead.endRefreshing()
@@ -118,7 +119,7 @@ extension HomeVIPController: UITableViewDelegate, UITableViewDataSource {
             cell.delegate = self
             return cell
         default:
-            let cell:HomeVIPCell = tableView.dequeueReusableCell(withIdentifier: HomeVIPCellID, for: indexPath) as! HomeVIPCell
+            let cell: HomeVIPCell = tableView.dequeueReusableCell(withIdentifier: HomeVIPCellID, for: indexPath) as! HomeVIPCell
             cell.categoryContentsModel = viewModel.categoryList?[indexPath.section].list?[indexPath.row]
             return cell
         }
@@ -166,12 +167,12 @@ extension HomeVIPController: HomeVIPBannerCellDelegate{
 
 // - 点击顶部分类按钮 delegate
 extension HomeVIPController: HomeVIPCategoriesCellDelegate{
-    func homeVIPCategoriesCellItemClick(id: String, url: String,title:String) {
+    func homeVIPCategoriesCellItemClick(id: String, url: String,title: String) {
         if url == ""{
             let vc = ClassifySubMenuController(categoryId: Int(id)!,isVipPush:true)
             vc.title = title
             self.navigationController?.pushViewController(vc, animated: true)
-        }else{
+        } else {
             let vc = WebViewController(url:url)
             vc.title = title
             self.navigationController?.pushViewController(vc, animated: true)

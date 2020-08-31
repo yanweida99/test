@@ -7,38 +7,35 @@
 //
 
 import UIKit
-import HandyJSON
-import SwiftyJSON
 
 class ClassifySubRecommendViewModel: NSObject {
     
     // 外部传值请求接口如此那
-    var categoryId :Int = 0
+    var categoryId: Int = 0
     convenience init(categoryId: Int = 0) {
         self.init()
         self.categoryId = categoryId
     }
     
-    var classifyCategoryContentsList:[ClassifyCategoryContentsList]?
-    var classifyModuleType14List:[ClassifyModuleType14Model]?
-    var classifyModuleType19List:[ClassifyModuleType19Model]?
-    var classifyModuleType20Model:[ClassifyModuleType20Model]?
-    var classifyVerticalModel:[ClassifyVerticalModel]?
-    var focus:FocusModel?
+    var classifyCategoryContentsList: [ClassifyCategoryContentsList]?
+    var classifyModuleType14List: [ClassifyModuleType14Model]?
+    var classifyModuleType19List: [ClassifyModuleType19Model]?
+    var classifyModuleType20Model: [ClassifyModuleType20Model]?
+    var classifyVerticalModel: [ClassifyVerticalModel]?
+    var focus: FocusModel?
     // - 数据源更新
-    typealias AddDataBlock = () ->Void
-    var updataBlock:AddDataBlock?
+    var updataBlock: AddDataBlock?
 }
 
 // - 请求数据
 extension ClassifySubRecommendViewModel {
     func refreshDataSource() {
         // 分类二级界面推荐接口请求
-        ClassifySubMenuProvider.request(ClassifySubMenuAPI.classifyRecommendList(categoryId: self.categoryId)) { result in
-            if case let .success(response) = result {
+        let api = HomeClassifySubMenuAPI.classifyRecommendList(categoryId: self.categoryId)
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
                 //解析数据
-                let data = try? response.mapJSON()
-                let json = JSON(data!)
+                let json = JSON(jsonData)
                 if let mappedObject = JSONDeserializer<ClassifyCategoryContentsList>.deserializeModelArrayFrom(json:json["categoryContents"]["list"].description) { // 从字符串转换为对象实例
                     self.classifyCategoryContentsList = mappedObject as? [ClassifyCategoryContentsList]
                 }
@@ -63,7 +60,7 @@ extension ClassifySubRecommendViewModel {
         let moduleType = self.classifyCategoryContentsList?[section].moduleType
         if moduleType == 14 || moduleType == 19 || moduleType == 20{
             return 1
-        }else {
+        } else {
             return self.classifyCategoryContentsList?[section].list?.count ?? 0
         }
     }
@@ -78,7 +75,7 @@ extension ClassifySubRecommendViewModel {
     }
     
     // 最小 item 间距
-    func minimumInteritemSpacingForSectionAt(section:Int) ->CGFloat {
+    func minimumInteritemSpacingForSectionAt(section: Int) ->CGFloat {
         let cardClass = self.classifyCategoryContentsList?[section].cardClass
         let moduleType = self.classifyCategoryContentsList?[section].moduleType
         if cardClass == "horizontal" || moduleType == 16{
@@ -88,7 +85,7 @@ extension ClassifySubRecommendViewModel {
     }
     
     // 最小行间距
-    func minimumLineSpacingForSectionAt(section:Int) ->CGFloat {
+    func minimumLineSpacingForSectionAt(section: Int) ->CGFloat {
         let cardClass = self.classifyCategoryContentsList?[section].cardClass
         let moduleType = self.classifyCategoryContentsList?[section].moduleType
         if cardClass == "horizontal" || moduleType == 16 {
@@ -102,29 +99,29 @@ extension ClassifySubRecommendViewModel {
         let moduleType = self.classifyCategoryContentsList?[indexPath.section].moduleType
         let cardClass = self.classifyCategoryContentsList?[indexPath.section].cardClass
         if moduleType == 14 {
-            let num:Int = (self.classifyCategoryContentsList?[indexPath.section].list?.count)!
+            let num: Int = (self.classifyCategoryContentsList?[indexPath.section].list?.count)!
             if num >= 10 { // 这里是判断推荐页面滚动banner下面的分类按钮的高度
-                return CGSize.init(width:ScreenWidth,height:310)
-            }else {
-                return CGSize.init(width:ScreenWidth,height:230)
+                return CGSize.init(width: ScreenWidth, height: 310)
+            } else {
+                return CGSize.init(width: ScreenWidth, height: 230)
             }
-        }else if moduleType == 3 || moduleType == 5 || moduleType == 18{
+        } else if moduleType == 3 || moduleType == 5 || moduleType == 18{
             if cardClass == "horizontal" {
                 return CGSize.init(width:(ScreenWidth - 50) / 3,height:180)
-            }else{
-                return CGSize.init(width:ScreenWidth,height:120)
+            } else {
+                return CGSize.init(width: ScreenWidth, height: 120)
             }
-        }else if moduleType == 20{
-            return CGSize.init(width:ScreenWidth,height:300)
-        }else if moduleType == 19{
+        } else if moduleType == 20{
+            return CGSize.init(width: ScreenWidth, height: 300)
+        } else if moduleType == 19{
             return CGSize.init(width: ScreenWidth, height: 200)
-        }else if moduleType == 17{
+        } else if moduleType == 17{
             return CGSize.init(width: ScreenWidth, height: 180)
-        }else if moduleType == 16{
+        } else if moduleType == 16{
             return CGSize.init(width:(ScreenWidth - 50) / 3,height:180)
-        }else if moduleType == 4{
-            return CGSize.init(width:ScreenWidth,height:120)
-        }else {
+        } else if moduleType == 4{
+            return CGSize.init(width: ScreenWidth, height: 120)
+        } else {
             return .zero
         }
     }
@@ -135,12 +132,12 @@ extension ClassifySubRecommendViewModel {
         if moduleType == 14 || moduleType == 17 || moduleType == 20{
             return .zero
         }
-        return CGSize.init(width:ScreenWidth,height:40)
+        return CGSize.init(width: ScreenWidth, height: 40)
     }
     
     // 分区尾视图size
     func referenceSizeForFooterInSection(section: Int) -> CGSize {
-        return CGSize.init(width:ScreenWidth,height:10)
+        return CGSize.init(width: ScreenWidth, height: 10)
     }
 }
 

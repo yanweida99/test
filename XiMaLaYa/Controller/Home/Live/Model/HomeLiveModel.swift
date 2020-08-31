@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import HandyJSON
 
 // 直播顶部排行榜数据模型
 struct HomeLiveRankModel: HandyJSON {
@@ -37,7 +36,7 @@ struct RankList: HandyJSON {
 struct HomeLiveBanerModel: HandyJSON {
     var ret: Int = 0
     var responseId: Int = 0
-    var data:[HomeLiveBannerList]?
+    var data: [HomeLiveBannerList]?
     var adIds: [Any]?
     var adTypes: [Any]?
     var source: Int = 0
@@ -111,9 +110,9 @@ struct HomeLiveModel: HandyJSON {
 }
 
 struct HomeLiveDataModel: HandyJSON {
-    var categoryVoList:[CategoryVoList]?
+    var categoryVoList: [CategoryVoList]?
     var lastPage: Bool = false
-    var lives:[LivesModel]?
+    var lives: [LivesModel]?
     var pageId: Int = 0
     var pageSize: Int = 0
 }

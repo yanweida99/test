@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import HandyJSON
 
 struct HomeClassifyModel: HandyJSON {
-    var list:[ClassifyModel]?
+    var list: [ClassifyModel]?
     var msg: String?
     var code: String?
     var ret: Int = 0
@@ -19,7 +18,7 @@ struct HomeClassifyModel: HandyJSON {
 struct ClassifyModel: HandyJSON {
     var groupName: String?
     var displayStyleType: Int = 0
-    var itemList:[ItemList]?
+    var itemList: [ItemList]?
 }
 
 struct ItemList: HandyJSON {

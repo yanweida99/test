@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import LTScrollView
 
 class ListenRecommendController: UIViewController, LTTableViewProtocal {
     private let ListenTRecommendableViewCellID = "ListenTRecommendableViewCell"
@@ -34,10 +33,10 @@ class ListenRecommendController: UIViewController, LTTableViewProtocal {
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
-        setupLoadData()
+        loadData()
     }
     
-    func setupLoadData() {
+    func loadData() {
         viewModel.updateBlock = { [unowned self] in
             self.tableView.reloadData()
         }

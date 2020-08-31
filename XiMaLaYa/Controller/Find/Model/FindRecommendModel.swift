@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import HandyJSON
 
 // 推荐动态 Model
 
@@ -31,7 +30,7 @@ struct FindRStreamList: HandyJSON {
     var score: Int = 0
     var subType: Bool = false
     var type: String?
-    var uid : Int = 0
+    var uid: Int = 0
 }
 
 struct FindRecommendModel: HandyJSON {

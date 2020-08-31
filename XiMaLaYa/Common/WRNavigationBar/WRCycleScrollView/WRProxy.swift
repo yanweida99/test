@@ -11,29 +11,29 @@ import UIKit
 // 图片资源
 enum ImgSource {
     case SERVER(url:URL)
-    case LOCAL(name:String)
+    case LOCAL(name: String)
 }
 
 // 图片类型
-enum ImgType:Int {
+enum ImgType: Int {
     case SERVER = 0     // default
     case LOCAL = 1
 }
 
 struct Proxy
 {
-    var imgType:ImgType = .SERVER
-    var imgArray:[ImgSource] = [ImgSource]()
+    var imgType: ImgType = .SERVER
+    var imgArray: [ImgSource] = [ImgSource]()
     
     // 下标法获取imgArray中对应索引的ImgSource
-    subscript (index:Int) -> ImgSource {
+    subscript (index: Int) -> ImgSource {
         get {
             return imgArray[index]
         }
     }
     
     // 构造方法
-    init(type:ImgType, array:[String])
+    init(type: ImgType, array: [String])
     {
         imgType = type
         if imgType == .SERVER

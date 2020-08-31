@@ -15,27 +15,27 @@ class PlayCommentCell: UICollectionViewCell {
         return imageView
     }()
     //昵称
-    lazy var nameLabel : UILabel = {
+    lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         return label
     }()
     // 言论
-    lazy var desLabel : UILabel = {
+    lazy var desLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = 0
         return label
     }()
     // 日期
-    lazy var dateLabel : UILabel = {
+    lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor.lightGray
         return label
     }()
     // 赞
-    lazy var zanLabel : UILabel = {
+    lazy var zanLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor.lightGray
@@ -56,7 +56,7 @@ class PlayCommentCell: UICollectionViewCell {
         self.picView.image = UIImage(named: "news.png")
         self.picView.layer.masksToBounds = true
         self.picView.layer.cornerRadius = 20
-        self.picView.snp.makeConstraints { (make) in
+        self.picView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(15)
             make.top.equalToSuperview().offset(10)
             make.width.height.equalTo(40)
@@ -64,7 +64,7 @@ class PlayCommentCell: UICollectionViewCell {
         
         self.addSubview(self.nameLabel)
         self.nameLabel.text = "喜马拉雅"
-        self.nameLabel.snp.makeConstraints { (make) in
+        self.nameLabel.snp.makeConstraints { make in
             make.left.equalTo(self.picView.snp.right).offset(10)
             make.width.equalTo(200)
             make.height.equalTo(30)
@@ -73,7 +73,7 @@ class PlayCommentCell: UICollectionViewCell {
         
         self.addSubview(self.desLabel)
         self.desLabel.text = "四六级发送到了解放塑料袋就分手发熟练度家纺"
-        self.desLabel.snp.makeConstraints { (make) in
+        self.desLabel.snp.makeConstraints { make in
             make.left.equalTo(self.picView.snp.right).offset(10)
             make.top.equalTo(self.nameLabel.snp.bottom).offset(10)
             make.right.equalToSuperview().offset(-15)
@@ -82,7 +82,7 @@ class PlayCommentCell: UICollectionViewCell {
         
         self.addSubview(self.dateLabel)
         self.dateLabel.text = "一天前"
-        self.dateLabel.snp.makeConstraints { (make) in
+        self.dateLabel.snp.makeConstraints { make in
             make.left.equalTo(self.picView)
             make.bottom.equalToSuperview().offset(-15)
             make.width.equalTo(100)
@@ -91,7 +91,7 @@ class PlayCommentCell: UICollectionViewCell {
         
         self.addSubview(self.zanLabel)
         self.zanLabel.text = "20.4万"
-        self.zanLabel.snp.makeConstraints { (make) in
+        self.zanLabel.snp.makeConstraints { make in
             make.right.equalToSuperview()
             make.width.equalTo(40)
             make.height.equalTo(20)
@@ -100,7 +100,7 @@ class PlayCommentCell: UICollectionViewCell {
         
         self.addSubview(self.zanImageView)
         self.zanImageView.image = UIImage(named: "点赞")
-        self.zanImageView.snp.makeConstraints { (make) in
+        self.zanImageView.snp.makeConstraints { make in
             make.right.equalTo(self.zanLabel.snp.left).offset(-5)
             make.width.height.equalTo(20)
             make.centerY.equalTo(self.zanLabel)
@@ -141,7 +141,7 @@ class PlayCommentCell: UICollectionViewCell {
         //时间戳为毫秒级要 ／ 1000， 秒就不用除1000，参数带没带000
         let timeSta:TimeInterval = TimeInterval(timeStamp / 1000)
         //时间差
-        let reduceTime : TimeInterval = currentTime - timeSta
+        let reduceTime: TimeInterval = currentTime - timeSta
         //时间差小于60秒
         if reduceTime < 60 {
             return "刚刚"

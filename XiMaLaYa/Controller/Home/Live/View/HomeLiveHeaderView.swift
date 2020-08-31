@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
-import HandyJSON
-import SwiftMessages
 
 // 添加cell点击代理方法
 protocol HomeLiveHeaderViewDelegate: NSObjectProtocol {
@@ -19,7 +16,7 @@ class HomeLiveHeaderView: UICollectionReusableView {
     weak var delegate: HomeLiveHeaderViewDelegate?
     
     private var btnArray = NSMutableArray()
-    private var lineView : UIView = {
+    private var lineView: UIView = {
         let view = UIView()
         view.backgroundColor = ButtonColor
         return view
@@ -47,7 +44,7 @@ class HomeLiveHeaderView: UICollectionReusableView {
             if btn.tag == 1000 {
                 btn.setTitleColor(ButtonColor, for: UIControl.State.normal)
                 self.lineView.frame = CGRect(x:margin * CGFloat(btn.tag - 1000)+12.5,y:30,width:margin/2,height:2)
-            }else {
+            } else {
                 btn.setTitleColor(UIColor.lightGray, for: UIControl.State.normal)
             }
             self.btnArray.add(btn)
@@ -57,7 +54,7 @@ class HomeLiveHeaderView: UICollectionReusableView {
         
         self.addSubview(self.lineView)
         self.addSubview(self.moreBtn)
-        self.moreBtn.snp.makeConstraints { (make) in
+        self.moreBtn.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-5)
             make.height.equalTo(25)
             make.width.equalTo(50)
@@ -67,11 +64,11 @@ class HomeLiveHeaderView: UICollectionReusableView {
     }
     @objc func buttonClick(button:UIButton) {
         let margin:CGFloat = 50
-        self.lineView.frame = CGRect(x:margin*CGFloat(button.tag-1000)+12.5,y:30,width:margin/2,height:2)
+        self.lineView.frame = CGRect(x: margin * CGFloat(button.tag - 1000) + 12.5, y: 30, width: margin / 2, height: 2)
         for btn in self.btnArray {
             if (btn as AnyObject).tag == button.tag {
                 (btn as AnyObject).setTitleColor(ButtonColor, for: UIControl.State.normal)
-            }else {
+            } else {
                 (btn as AnyObject).setTitleColor(UIColor.lightGray, for: UIControl.State.normal)
             }
         }
@@ -92,7 +89,7 @@ class HomeLiveHeaderView: UICollectionReusableView {
         SwiftMessages.show(config: warningConfig, view: warning)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
 }

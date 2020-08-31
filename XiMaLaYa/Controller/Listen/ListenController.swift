@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import LTScrollView
 
 class ListenController: UIViewController {
     

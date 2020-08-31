@@ -7,12 +7,10 @@
 //
 
 import Foundation
-import Moya
-
-let HomeLiveAPIProvider = MoyaProvider<HomeLiveAPI>()
+import UIKit
 
 // 请求分类
-public enum HomeLiveAPI {
+enum HomeLiveAPI {
     case liveClassifyList
     case liveBannerList
     case liveRankList
@@ -21,22 +19,19 @@ public enum HomeLiveAPI {
     case categoryTypeList(categoryType: Int)
 }
 
-// 请求配置
-extension HomeLiveAPI: TargetType {
-    // 服务器地址
-    public var baseURL: URL {
+extension HomeLiveAPI {
+    var baseURL: String {
         switch self {
         case .liveBannerList:
-            return URL(string: "https://adse.ximalaya.com")!
+            return "https://adse.ximalaya.com"
         case .categoryLiveList:
-            return URL(string: "https://mobwsa.ximalaya.com")!
+            return "https://mobwsa.ximalaya.com"
         default:
-            return URL(string: "https://mobile.ximalaya.com")!
+            return "https://mobile.ximalaya.com"
         }
     }
     
-    // 各个请求的具体路径
-    public var path: String {
+    var path: String {
         switch self {
         case .liveClassifyList:
             return "/lamia/v1/homepage/materials HTTP/1.1"
@@ -53,55 +48,40 @@ extension HomeLiveAPI: TargetType {
         }
     }
     
-    public var method: Moya.Method { return .get }
-    
-    public var task: Task {
+    var parameters: [String: Any]? {
         switch self {
         case .categoryLiveList(let channelId):
-            var parameters = [
-                "appid":0,
-                "pageSize":40,
-                "network":"WIFI",
-                "operator":3,
-                "scale":3,
-                "pageId":1,
-                "device":"iPhone",
-                "version":"6.5.3",
-                "xt": Int32(Date().timeIntervalSince1970)
-                ] as [String: Any]
-            parameters["channelId"] = channelId
-            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+            return ["appid":0,
+                    "pageSize":40,
+                    "network":"WIFI",
+                    "operator":3,
+                    "scale":3,
+                    "pageId":1,
+                    "device":"iPhone",
+                    "version":"6.5.3",
+                    "xt": Int32(Date().timeIntervalSince1970),
+                    "channelId": channelId]
         case .categoryTypeList(let categoryType):
-            var parameters = [
-                "pageId":1,
-                "pageSize":20,
-                "sign":1,
-                "timeToPreventCaching": Int32(Date().timeIntervalSince1970)
-                ] as [String: Any]
-            parameters["categoryType"] = categoryType
-            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+            return ["pageId":1,
+                    "pageSize":20,
+                    "sign":1,
+                    "timeToPreventCaching": Int32(Date().timeIntervalSince1970),
+                    "categoryType": categoryType]
         default:
-            let parameters = [
-                "appid":0,
-                "categoryId":-3,
-                "network":"WIFI",
-                "operator":3,
-                "scale":3,
-                "uid":0,
-                "device":"iPhone",
-                "version":"6.5.3",
-                "xt": Int32(Date().timeIntervalSince1970),
-                "deviceId": UIDevice.current.identifierForVendor!.uuidString
-                ] as [String: Any]
-            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+            return ["appid":0,
+                    "categoryId":-3,
+                    "network":"WIFI",
+                    "operator":3,
+                    "scale":3,
+                    "uid":0,
+                    "device":"iPhone",
+                    "version":"6.5.3",
+                    "xt": Int32(Date().timeIntervalSince1970),
+                    "deviceId": UIDevice.current.identifierForVendor!.uuidString]
         }
     }
     
-    public var sampleData: Data {
-        return "".data(using: String.Encoding.utf8)!
-    }
-    
-    public var headers: [String : String]? {
-        return nil
+    var url: String {
+        return baseURL + path
     }
 }

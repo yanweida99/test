@@ -24,14 +24,14 @@ class ClassifySubCategoryCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(self.imageView)
-        self.imageView.snp.makeConstraints { (make) in
+        self.imageView.snp.makeConstraints { make in
             make.height.width.equalTo(40)
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(5)
         }
         
         self.addSubview(self.titleLabel)
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.top.equalTo(self.imageView.snp.bottom).offset(5)
             make.height.equalTo(20)

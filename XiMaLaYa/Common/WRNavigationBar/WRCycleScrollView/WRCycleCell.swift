@@ -15,7 +15,7 @@ class WRCycleCell: UICollectionViewCell
 //=======================================================
 // MARK: 对外提供的属性
 //=======================================================
-    var imgSource:ImgSource = ImgSource.LOCAL(name: "placeholder")  {
+    var imgSource: ImgSource = ImgSource.LOCAL(name: "placeholder")  {
         didSet {
             switch imgSource {
             case let .SERVER(url):
@@ -26,7 +26,7 @@ class WRCycleCell: UICollectionViewCell
         }
     }
     
-    var descText:String? {
+    var descText: String? {
         didSet {
             descLabel.isHidden  = (descText == nil) ? true : false
             bottomView.isHidden = (descText == nil) ? true : false
@@ -84,9 +84,11 @@ class WRCycleCell: UICollectionViewCell
         setupDescLabel()
         setupBottomView()
     }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
+    
     deinit {
         print("WRCycleCell  deinit")
     }

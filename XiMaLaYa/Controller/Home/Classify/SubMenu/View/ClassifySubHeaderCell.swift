@@ -11,12 +11,12 @@ import UIKit
 import FSPagerView
 
 class ClassifySubHeaderCell: UICollectionViewCell {
-    private var focus:FocusModel?
+    private var focus: FocusModel?
     private var classifyCategoryContentsList:ClassifyCategoryContentsList?
     
     let ClassifySubCategoryCellID = "ClassifySubCategoryCell"
     // - 懒加载滚动图片浏览器
-    private lazy var pagerView : FSPagerView = {
+    private lazy var pagerView: FSPagerView = {
         let pagerView = FSPagerView()
         pagerView.delegate = self
         pagerView.dataSource = self
@@ -47,12 +47,12 @@ class ClassifySubHeaderCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(self.pagerView)
-        self.pagerView.snp.makeConstraints { (make) in
+        self.pagerView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
             make.height.equalTo(150)
         }
         self.addSubview(self.gridView)
-        self.gridView.snp.makeConstraints { (make) in
+        self.gridView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.top.equalTo(self.pagerView.snp.bottom)
             make.height.equalTo(80)
@@ -74,7 +74,7 @@ class ClassifySubHeaderCell: UICollectionViewCell {
             self.classifyCategoryContentsList = model
             if (self.classifyCategoryContentsList?.list?.count)! == 10 {
                 self.layout.scrollDirection = UICollectionView.ScrollDirection.vertical
-            }else {
+            } else {
                 self.layout.scrollDirection = UICollectionView.ScrollDirection.horizontal
             }
             self.gridView.reloadData()
@@ -82,8 +82,8 @@ class ClassifySubHeaderCell: UICollectionViewCell {
     }
     
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
 }
 // 顶部循环滚动视图
@@ -138,12 +138,12 @@ extension ClassifySubHeaderCell:UICollectionViewDelegate, UICollectionViewDataSo
     
     // item 的尺寸
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let num:Int = (self.classifyCategoryContentsList?.list?.count)!
+        let num: Int = (self.classifyCategoryContentsList?.list?.count)!
         if num <= 6 {
             return CGSize.init(width: ScreenWidth / CGFloat(num), height: 80)
-        }else if num < 10 {
+        } else if num < 10 {
             return CGSize.init(width: ScreenWidth / 6, height: 80)
-        }else {
+        } else {
             self.gridView.snp.updateConstraints { (make) in
                 make.height.equalTo(160)
             }

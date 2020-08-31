@@ -83,61 +83,61 @@ class PlayDetailProgramCell: UITableViewCell {
     func setUpLayout(){
         self.addSubview(self.numLabel)
         self.numLabel.text = "2"
-        self.numLabel.snp.makeConstraints { (make) in
+        self.numLabel.snp.makeConstraints { make in
             make.left.equalTo(20)
             make.width.height.equalTo(30)
             make.centerY.equalToSuperview()
         }
         self.addSubview(self.titleLabel)
         self.titleLabel.text = "金瓶梅第三回"
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.equalTo(self.numLabel.snp.right).offset(10)
             make.top.equalTo(10)
             make.width.equalTo(240)
             make.height.equalTo(40)
         }
         self.addSubview(self.playImage)
-        self.playImage.snp.makeConstraints { (make) in
+        self.playImage.snp.makeConstraints { make in
             make.left.equalTo(self.titleLabel)
             make.bottom.equalTo(-15)
             make.width.height.equalTo(17)
         }
         self.addSubview(self.playCountLabel)
         self.playCountLabel.text = "175.4万"
-        self.playCountLabel.snp.makeConstraints { (make) in
+        self.playCountLabel.snp.makeConstraints { make in
             make.left.equalTo(self.playImage.snp.right).offset(2)
             make.width.equalTo(50)
             make.height.equalTo(20)
             make.bottom.equalTo(-12)
         }
         self.addSubview(self.commentImage)
-        self.commentImage.snp.makeConstraints { (make) in
+        self.commentImage.snp.makeConstraints { make in
             make.left.equalTo(self.playCountLabel.snp.right).offset(8)
             make.bottom.equalTo(self.playImage)
             make.width.height.equalTo(14)
         }
         self.addSubview(self.commentNumLabel)
         self.commentNumLabel.text = "350"
-        self.commentNumLabel.snp.makeConstraints { (make) in
+        self.commentNumLabel.snp.makeConstraints { make in
             make.left.equalTo(self.commentImage.snp.right).offset(2)
             make.width.height.bottom.equalTo(self.playCountLabel)
         }
         self.addSubview(self.timeImage)
-        self.timeImage.snp.makeConstraints { (make) in
+        self.timeImage.snp.makeConstraints { make in
             make.left.equalTo(self.commentNumLabel.snp.right).offset(8)
             make.width.height.equalTo(self.commentImage)
             make.bottom.equalTo(self.playImage)
         }
         self.addSubview(self.timeLabel)
         self.timeLabel.text = "10:47"
-        self.timeLabel.snp.makeConstraints { (make) in
+        self.timeLabel.snp.makeConstraints { make in
             make.left.equalTo(self.timeImage.snp.right).offset(2)
             make.width.height.bottom.equalTo(self.playCountLabel)
         }
         
         self.addSubview(self.dateLabel)
         self.dateLabel.text = "2017-12"
-        self.dateLabel.snp.makeConstraints { (make) in
+        self.dateLabel.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-15)
             make.width.equalTo(80)
             make.height.equalTo(20)
@@ -145,7 +145,7 @@ class PlayDetailProgramCell: UITableViewCell {
         }
         
         self.addSubview(self.downloadBtn)
-        self.downloadBtn.snp.makeConstraints { (make) in
+        self.downloadBtn.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-15)
             make.bottom.equalToSuperview().offset(-10)
             make.width.height.equalTo(30)
@@ -161,7 +161,7 @@ class PlayDetailProgramCell: UITableViewCell {
             let time = getMMSSFromSS(duration: model.duration)
             self.timeLabel.text = time
             
-            var tagString:String?
+            var tagString: String?
             if model.playtimes > 100000000 {
                 tagString = String(format: "%.1f亿", Double(model.playtimes) / 100000000)
             } else if model.playtimes > 10000 {
@@ -173,14 +173,14 @@ class PlayDetailProgramCell: UITableViewCell {
         }
     }
     
-    var indexPath:IndexPath? {
+    var indexPath: IndexPath? {
         didSet {
-            let num:Int = (indexPath?.row)!
+            let num: Int = (indexPath?.row)!
             self.numLabel.text = "\(num)"
         }
     }
     
-    func getMMSSFromSS(duration:Int)->(String){
+    func getMMSSFromSS(duration: Int)->(String){
         let str_minute = duration / 60
         let str_second = duration % 60
         let format_time = "\(str_minute):\(str_second)"

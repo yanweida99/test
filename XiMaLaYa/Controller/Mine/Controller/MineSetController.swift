@@ -29,7 +29,7 @@ class MineSetController: UIViewController {
     }()
     
     // 懒加载TableView
-    private lazy var tableView : UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView.init(frame:CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight), style: UITableView.Style.plain)
         tableView.delegate = self
         tableView.dataSource = self
@@ -56,7 +56,7 @@ class MineSetController: UIViewController {
     
 }
 
-extension MineSetController : UITableViewDelegate, UITableViewDataSource {
+extension MineSetController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return dataSource.count
     }

@@ -7,21 +7,18 @@
 //
 
 import UIKit
-import HandyJSON
-import SwiftyJSON
 
 class ListenChannelViewModel: NSObject {
     var channelResults: [ChannelResultsModel]?
-    typealias AddDataBlock = () -> Void
     var updateBlock: AddDataBlock?
 }
 
 extension ListenChannelViewModel {
     func refreshDataSource() {
-        ListenProvider.request(.listenChannelList) { result in
-            if case let .success(responce) = result {
-                let data = try? responce.mapJSON()
-                let json = JSON(data!)
+        let api = ListenAPI.listenChannelList
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
+                let json = JSON(jsonData)
                 if let mappedObject = JSONDeserializer<ChannelResultsModel>.deserializeModelArrayFrom(json: json["data"]["channelResults"].description) {
                     self.channelResults = mappedObject as? [ChannelResultsModel]
                     self.updateBlock?()

@@ -37,7 +37,7 @@ class HomeVIPHeaderView: UITableViewHeaderFooterView {
     func setUpLayout(){
         self.addSubview(self.titleLabel)
         self.titleLabel.text = "最热有声读物"
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.equalTo(15)
             make.top.equalTo(10)
             make.width.equalTo(150)
@@ -45,7 +45,7 @@ class HomeVIPHeaderView: UITableViewHeaderFooterView {
         }
         
         self.addSubview(self.moreBtn)
-        self.moreBtn.snp.makeConstraints { (make) in
+        self.moreBtn.snp.makeConstraints { make in
             make.right.equalTo(15)
             make.top.equalTo(10)
             make.width.equalTo(100)

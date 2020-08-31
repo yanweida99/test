@@ -49,12 +49,12 @@ class ListenChannelTableViewCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     func setUpLayout(){
         self.addSubview(self.pictureView)
-        self.pictureView.snp.makeConstraints { (make) in
+        self.pictureView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
             make.top.equalToSuperview().offset(5)
@@ -62,7 +62,7 @@ class ListenChannelTableViewCell: UITableViewCell {
         }
         
         self.pictureView.addSubview(self.titleLabel)
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(20)
             make.width.equalTo(150)
             make.height.equalTo(30)
@@ -73,7 +73,7 @@ class ListenChannelTableViewCell: UITableViewCell {
         marqueeView.contentMargin = 10
         marqueeView.marqueeType = .reverse
         self.pictureView.addSubview(marqueeView)
-        marqueeView.snp.makeConstraints { (make) in
+        marqueeView.snp.makeConstraints { make in
             make.left.equalTo(self.titleLabel)
             make.top.equalTo(self.titleLabel.snp.bottom).offset(5)
             make.height.equalTo(25)
@@ -82,7 +82,7 @@ class ListenChannelTableViewCell: UITableViewCell {
         }
         
         self.pictureView.addSubview(self.playButton)
-        self.playButton.snp.makeConstraints { (make) in
+        self.playButton.snp.makeConstraints { make in
             make.bottom.right.equalToSuperview().offset(-15)
             make.width.height.equalTo(45)
         }

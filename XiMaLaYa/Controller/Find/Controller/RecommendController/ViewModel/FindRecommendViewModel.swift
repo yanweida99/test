@@ -7,14 +7,11 @@
 //
 
 import UIKit
-import HandyJSON
-import SwiftyJSON
 
 class FindRecommendViewModel: NSObject {
     var findRecommendModel: FindRecommendModel?
     var streamList: [FindRStreamList]?
     // 数据源更新
-    typealias AddDataBlock = () -> Void
     var updateBlock: AddDataBlock?
 }
 

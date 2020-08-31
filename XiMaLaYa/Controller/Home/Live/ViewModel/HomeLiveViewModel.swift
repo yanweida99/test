@@ -8,8 +8,6 @@
 //
 
 import UIKit
-import SwiftyJSON
-import HandyJSON
 
 class HomeLiveViewModel: NSObject {
     // 外部传值请求接口
@@ -26,7 +24,6 @@ class HomeLiveViewModel: NSObject {
     var multidimensionalRankVos: [MultidimensionalRankVosModel]?
     
     // 数据源更新
-    typealias AddDataBlock = () -> Void
     var updateBlock: AddDataBlock?
 }
 
@@ -40,11 +37,10 @@ extension HomeLiveViewModel {
         let group = DispatchGroup()
         group.enter()
         // 首页直播接口请求
-        HomeLiveAPIProvider.request(.liveList) { result in
-            if case let .success(response) = result {
-                // 解析数据
-                let data = try? response.mapJSON()
-                let json = JSON(data!)
+        var api = HomeLiveAPI.liveList
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
+                let json = JSON(jsonData)
                 // 从字符串转换为对象实例
                 if let mappedObject = JSONDeserializer<HomeLiveModel>.deserializeFrom(json: json.description) {
                     self.lives = mappedObject.data?.lives
@@ -59,11 +55,10 @@ extension HomeLiveViewModel {
         
         group.enter()
         // 首页直播滚动图接口请求
-        HomeLiveAPIProvider.request(.liveBannerList) { result in
-            if case let .success(response) = result {
-                // 解析数据
-                let data = try? response.mapJSON()
-                let json = JSON(data!)
+        api = HomeLiveAPI.liveBannerList
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
+                let json = JSON(jsonData)
                 if let mappedObject = JSONDeserializer<HomeLiveBanerModel>.deserializeFrom(json: json.description) { // 从字符串转换为对象实例
                     self.homeLiveBannerList = mappedObject.data
                     // let index: IndexPath = IndexPath.init(row: 0, section: 1)
@@ -77,11 +72,10 @@ extension HomeLiveViewModel {
 
         group.enter()
         // 首页直播排行榜接口请求
-        HomeLiveAPIProvider.request(.liveRankList) { result in
-            if case let .success(response) = result {
-                // 解析数据
-                let data = try? response.mapJSON()
-                let json = JSON(data!)
+        api = HomeLiveAPI.liveRankList
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
+                let json = JSON(jsonData)
                 // 从字符串转换为对象实例
                 if let mappedObject = JSONDeserializer<HomeLiveRankModel>.deserializeFrom(json: json.description) {
                     self.multidimensionalRankVos = mappedObject.data?.multidimensionalRankVos
@@ -106,11 +100,10 @@ extension HomeLiveViewModel {
         loadCategoryLiveData()
     }
     func loadCategoryLiveData() {
-        HomeLiveAPIProvider.request(.categoryTypeList(categoryType:self.categoryType)) { result in
-            if case let .success(response) = result {
-                // 解析数据
-                let data = try? response.mapJSON()
-                let json = JSON(data!)
+        let api = HomeLiveAPI.categoryTypeList(categoryType:self.categoryType)
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
+                let json = JSON(jsonData)
                 if let mappedObject = JSONDeserializer<LivesModel>.deserializeModelArrayFrom(json: json["data"]["lives"].description) {
                     self.lives = mappedObject as? [LivesModel]
                 }
@@ -137,12 +130,12 @@ extension HomeLiveViewModel {
     }
     
     // 最小 item 间距
-    func minimumInteritemSpacingForSectionAt(section:Int) ->CGFloat {
+    func minimumInteritemSpacingForSectionAt(section: Int) ->CGFloat {
         return 5
     }
     
     // 最小行间距
-    func minimumLineSpacingForSectionAt(section:Int) ->CGFloat {
+    func minimumLineSpacingForSectionAt(section: Int) ->CGFloat {
         return 10
     }
     
@@ -150,11 +143,11 @@ extension HomeLiveViewModel {
     func sizeForItemAt(indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
         case HomeLiveSectionGrid:
-            return CGSize.init(width:ScreenWidth - 30, height: 90)
+            return CGSize.init(width: ScreenWidth - 30, height: 90)
         case HomeLiveSectionBanner:
-            return CGSize.init(width:ScreenWidth - 30, height: 110)
+            return CGSize.init(width: ScreenWidth - 30, height: 110)
         case HomeLiveSectionRank:
-            return CGSize.init(width:ScreenWidth - 30, height: 70)
+            return CGSize.init(width: ScreenWidth - 30, height: 70)
         default:
             return CGSize.init(width:(ScreenWidth - 40) / 2, height: 230)
         }

@@ -10,13 +10,13 @@ import UIKit
 
 class HomeClassifyHeaderView: UICollectionReusableView {
     
-    lazy var view : UIView = {
+    lazy var view: UIView = {
         let view = UIView()
         view.backgroundColor = ButtonColor
         return view
     }()
     
-    lazy var titleLabel : UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.gray
         return label
@@ -26,7 +26,7 @@ class HomeClassifyHeaderView: UICollectionReusableView {
         super.init(frame: frame)
         self.backgroundColor = DownColor
         self.addSubview(self.view)
-        self.view.snp.makeConstraints { (make) in
+        self.view.snp.makeConstraints { make in
             make.left.equalTo(10)
             make.top.equalTo(6)
             make.bottom.equalTo(-6)
@@ -34,7 +34,7 @@ class HomeClassifyHeaderView: UICollectionReusableView {
         }
         
         self.addSubview(self.titleLabel)
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.equalTo(self.view.snp.right).offset(10)
             make.right.equalTo(-10)
             make.top.bottom.equalToSuperview()

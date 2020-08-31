@@ -10,13 +10,13 @@ import UIKit
 import StreamingKit
 
 class PlayCell: UICollectionViewCell {
-    var playUrl:String?
+    var playUrl: String?
     var timer: Timer?
     var displayLink: CADisplayLink?
     // 是否是第一次播放
     private var isFirstPlay:Bool = true
     // 音频播放器
-    private lazy var audioPlayer:STKAudioPlayer={
+    private lazy var audioPlayer: STKAudioPlayer={
         let audioPlayer = STKAudioPlayer()
         
         return audioPlayer
@@ -123,7 +123,7 @@ class PlayCell: UICollectionViewCell {
     func setUpUI(){
         // 标题
         self.addSubview(self.titleLabel)
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(15)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
@@ -131,7 +131,7 @@ class PlayCell: UICollectionViewCell {
         }
         // 图片
         self.addSubview(self.imageView)
-        self.imageView.snp.makeConstraints { (make) in
+        self.imageView.snp.makeConstraints { make in
             make.top.equalTo(self.titleLabel.snp.bottom).offset(15)
             make.left.equalToSuperview().offset(60)
             make.right.equalToSuperview().offset(-60)
@@ -139,28 +139,28 @@ class PlayCell: UICollectionViewCell {
         }
         // 弹幕按钮
         self.addSubview(self.barrageBtn)
-        self.barrageBtn.snp.makeConstraints { (make) in
+        self.barrageBtn.snp.makeConstraints { make in
             make.left.equalTo(20)
             make.top.equalTo(self.imageView.snp.bottom).offset(20)
             make.height.width.equalTo(30)
         }
         // 设置按钮
         self.addSubview(self.setBtn)
-        self.setBtn.snp.makeConstraints { (make) in
+        self.setBtn.snp.makeConstraints { make in
             make.right.equalTo(-20)
             make.top.equalTo(self.imageView.snp.bottom).offset(20)
             make.height.width.equalTo(30)
         }
         // 播放机器按钮
         self.addSubview(self.machineBtn)
-        self.machineBtn.snp.makeConstraints { (make) in
+        self.machineBtn.snp.makeConstraints { make in
             make.right.equalTo(self.setBtn.snp.left).offset(-20)
             make.top.equalTo(self.imageView.snp.bottom).offset(20)
             make.height.width.equalTo(30)
         }
         // 进度条
         self.addSubview(self.slider)
-        self.slider.snp.makeConstraints { (make) in
+        self.slider.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
             make.bottom.equalToSuperview().offset(-90)
@@ -168,7 +168,7 @@ class PlayCell: UICollectionViewCell {
         // 当前时间
         self.addSubview(self.currentTime)
         self.currentTime.text = "00:00"
-        self.currentTime.snp.makeConstraints { (make) in
+        self.currentTime.snp.makeConstraints { make in
             make.left.equalTo(self.slider)
             make.top.equalTo(self.slider.snp.bottom).offset(5)
             make.width.equalTo(60)
@@ -177,7 +177,7 @@ class PlayCell: UICollectionViewCell {
         // 总时间
         self.addSubview(self.totalTime)
         self.totalTime.text = "21:33"
-        self.totalTime.snp.makeConstraints { (make) in
+        self.totalTime.snp.makeConstraints { make in
             make.right.equalTo(self.slider)
             make.top.equalTo(self.slider.snp.bottom).offset(5)
             make.width.equalTo(60)
@@ -185,35 +185,35 @@ class PlayCell: UICollectionViewCell {
         }
         // 播放暂停按钮
         self.addSubview(self.playBtn)
-        self.playBtn.snp.makeConstraints { (make) in
+        self.playBtn.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-20)
             make.height.width.equalTo(60)
             make.centerX.equalToSuperview()
         }
         // 上一曲按钮
         self.addSubview(self.prevBtn)
-        self.prevBtn.snp.makeConstraints { (make) in
+        self.prevBtn.snp.makeConstraints { make in
             make.right.equalTo(self.playBtn.snp.left).offset(-30)
             make.height.width.equalTo(25)
             make.centerY.equalTo(self.playBtn)
         }
         // 下一曲按钮
         self.addSubview(self.nextBtn)
-        self.nextBtn.snp.makeConstraints { (make) in
+        self.nextBtn.snp.makeConstraints { make in
             make.left.equalTo(self.playBtn.snp.right).offset(30)
             make.height.width.equalTo(25)
             make.centerY.equalTo(self.playBtn)
         }
         // 消息列表按钮
         self.addSubview(self.msgBtn)
-        self.msgBtn.snp.makeConstraints { (make) in
+        self.msgBtn.snp.makeConstraints { make in
             make.left.equalTo(15)
             make.bottom.equalToSuperview().offset(-20)
             make.height.width.equalTo(40)
         }
         // 定时按钮
         self.addSubview(self.timingBtn)
-        self.timingBtn.snp.makeConstraints { (make) in
+        self.timingBtn.snp.makeConstraints { make in
             make.right.equalTo(-15)
             make.bottom.equalToSuperview().offset(-20)
             make.height.width.equalTo(40)
@@ -230,10 +230,10 @@ class PlayCell: UICollectionViewCell {
         }
     }
     
-    func getMMSSFromSS(duration:Int)->(String){
+    func getMMSSFromSS(duration: Int)->(String){
         var min = duration / 60
         let sec = duration % 60
-        var hour : Int = 0
+        var hour: Int = 0
         if min >= 60 {
             hour = min / 60
             min = min % 60
@@ -244,8 +244,8 @@ class PlayCell: UICollectionViewCell {
         return String(format: "%02d:%02d", min, sec)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     @objc func playBtn(button:UIButton){
@@ -256,11 +256,11 @@ class PlayCell: UICollectionViewCell {
                 self.audioPlayer.play(URL(string: self.playUrl!)!)
                 starTimer()
                 isFirstPlay = false
-            }else {
+            } else {
                 starTimer()
                 self.audioPlayer.resume()
             }
-        }else{
+        } else {
             button.setImage(UIImage(named: "toolbar_play_n_p_78x78_"), for: UIControl.State.normal)
             removeTimer()
             self.audioPlayer.pause()
@@ -282,13 +282,13 @@ class PlayCell: UICollectionViewCell {
 
 extension PlayCell{
     @objc func setUpTimesView() {
-        let currentTime:Int = Int(self.audioPlayer.progress)
+        let currentTime: Int = Int(self.audioPlayer.progress)
         self.currentTime.text = getMMSSFromSS(duration: currentTime)
         let progress = Float(self.audioPlayer.progress / self.audioPlayer.duration)
         slider.value = progress
     }
     @objc func updateCurrentLabel() {
-        let currentTime:Int = Int(self.audioPlayer.progress)
+        let currentTime: Int = Int(self.audioPlayer.progress)
         self.currentTime.text = getMMSSFromSS(duration: currentTime)
         let progress = Float(self.audioPlayer.progress / self.audioPlayer.duration)
         slider.value = progress

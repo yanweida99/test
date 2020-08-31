@@ -7,20 +7,19 @@
 //
 
 import Foundation
-import Moya
 
-let ListenProvider = MoyaProvider<ListenAPI>()
-
-// 请求分类
-public enum ListenAPI {
+enum ListenAPI {
     case listenSubscribeList
     case listenChannelList
     case listenMoreChannelList
 }
 
-// 请求配置
-extension ListenAPI: TargetType {
-    public var path: String {
+extension ListenAPI {
+    var baseURL: String {
+        return "https://mobile.ximalaya.com"
+    }
+    
+    var path: String {
         switch self {
         case .listenSubscribeList:
             return "/subscribe/v2/subscribe/comprehensive/rank"
@@ -31,43 +30,24 @@ extension ListenAPI: TargetType {
         }
     }
     
-    public var method: Moya.Method {
-        return .get
-    }
-    
-    public var sampleData: Data {
-        return "".data(using: String.Encoding.utf8)!
-    }
-    
-    public var task: Task {
-        var parmeters = ["pageId": 1] as [String: Any]
+    var parameters: [String: Any]? {
         switch self {
         case .listenSubscribeList:
-            parmeters = ["pageSize":30,
-                         "pageId":1,
-                         "device":"iPhone",
-                         "sign":2,
-                         "size":30,
-                         "tsuid":124057809,
-                         "xt": Int32(Date().timeIntervalSince1970)] as [String: Any]
-        case .listenChannelList:
-            break
+            return ["pageSize":30,
+                    "pageId":1,
+                    "device":"iPhone",
+                    "sign":2,
+                    "size":30,
+                    "tsuid":124057809,
+                    "xt": Int32(Date().timeIntervalSince1970)]
         default:
-            parmeters = ["pageSize": 30,
-                         "pageId": 1,
-                         "device": "iPhone"] as [String: Any]
+            return ["pageSize": 30,
+                    "pageId": 1,
+                    "device": "iPhone"]
         }
-        return .requestParameters(parameters: parmeters, encoding: URLEncoding.default)
     }
     
-    public var headers: [String : String]? {
-        return nil
+    var url: String {
+        return baseURL + path
     }
-    
-    // 服务器地址
-    public var baseURL: URL {
-        return URL(string: "https://mobile.ximalaya.com")!
-    }
-    
-    
 }

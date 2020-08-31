@@ -7,13 +7,10 @@
 //
 
 import UIKit
-import SwiftyJSON
-import HandyJSON
-import SwiftMessages
 
 class HomeRecommendController: UIViewController {
     // 穿插的广告数据
-    private var recommnedAdvertList:[RecommnedAdvertModel]?
+    private var recommnedAdvertList: [RecommnedAdvertModel]?
     
     // cell 注册
     private let RecommendHeaderViewID     = "RecommendHeaderView"
@@ -34,7 +31,7 @@ class HomeRecommendController: UIViewController {
     // 推荐直播
     private let HomeRecommendLiveCellID   = "HomeRecommendLiveCell"
     
-    lazy var collectionView : UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout.init()
         let collection = UICollectionView.init(frame:.zero, collectionViewLayout: layout)
         collection.delegate = self
@@ -70,7 +67,7 @@ class HomeRecommendController: UIViewController {
         super.viewDidLoad()
         // 添加滑动视图
         self.view.addSubview(self.collectionView)
-        self.collectionView.snp.makeConstraints { (make) in
+        self.collectionView.snp.makeConstraints { make in
             make.width.height.equalToSuperview()
             make.center.equalToSuperview()
         }
@@ -90,11 +87,11 @@ class HomeRecommendController: UIViewController {
     }
     func setupLoadRecommendAdData() {
         // 首页穿插广告接口请求
-        RecommendProvider.request(.recommendAdList) { result in
-            if case let .success(response) = result {
-                // 解析数据
-                let data = try? response.mapJSON()
-                let json = JSON(data!)
+        let api = HomeRecommendAPI.recommendAdList
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
+                //解析数据
+                let json = JSON(jsonData)
                 if let advertList = JSONDeserializer<RecommnedAdvertModel>.deserializeModelArrayFrom(json: json["data"].description) { // 从字符串转换为对象实例
                     self.recommnedAdvertList = advertList as? [RecommnedAdvertModel]
                     self.collectionView.reloadData()
@@ -126,37 +123,37 @@ extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollect
             cell.topBuzzListData = viewModel.topBuzzList
             cell.delegate = self
             return cell
-        }else if moduleType == "guessYouLike" || moduleType == "paidCategory" || moduleType == "categoriesForLong" || moduleType == "cityCategory"{
+        } else if moduleType == "guessYouLike" || moduleType == "paidCategory" || moduleType == "categoriesForLong" || moduleType == "cityCategory"{
             // 横式排列布局cell
             let cell:RecommendGuessLikeCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendGuessLikeCellID, for: indexPath) as! RecommendGuessLikeCell
             cell.delegate = self
             cell.recommendListData = viewModel.homeRecommendList?[indexPath.section].list
             return cell
-        }else if moduleType == "categoriesForShort" || moduleType == "playlist" || moduleType == "categoriesForExplore"{
+        } else if moduleType == "categoriesForShort" || moduleType == "playlist" || moduleType == "categoriesForExplore"{
             // 竖式排列布局cell
-            let cell:HotAudiobookCell = collectionView.dequeueReusableCell(withReuseIdentifier: HotAudiobookCellID, for: indexPath) as! HotAudiobookCell
+            let cell: HotAudiobookCell = collectionView.dequeueReusableCell(withReuseIdentifier: HotAudiobookCellID, for: indexPath) as! HotAudiobookCell
             cell.delegate = self
             cell.recommendListData = viewModel.homeRecommendList?[indexPath.section].list
             return cell
-        }else if moduleType == "ad" {
+        } else if moduleType == "ad" {
             let cell:AdvertCell = collectionView.dequeueReusableCell(withReuseIdentifier: AdvertCellID, for: indexPath) as! AdvertCell
             if indexPath.section == 7 {
                 cell.adModel = self.recommnedAdvertList?[0]
-            }else if indexPath.section == 13 {
+            } else if indexPath.section == 13 {
                 cell.adModel = self.recommnedAdvertList?[1]
-                // }else if indexPath.section == 17 {
+                // } else if indexPath.section == 17 {
                 // cell.adModel = self.recommnedAdvertList?[2]
             }
             return cell
-        }else if moduleType == "oneKeyListen" {
+        } else if moduleType == "oneKeyListen" {
             let cell:OneKeyListenCell = collectionView.dequeueReusableCell(withReuseIdentifier: OneKeyListenCellID, for: indexPath) as! OneKeyListenCell
             cell.oneKeyListenList = viewModel.oneKeyListenList
             return cell
-        }else if moduleType == "live" {
-            let cell:HomeRecommendLiveCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeRecommendLiveCellID, for: indexPath) as! HomeRecommendLiveCell
+        } else if moduleType == "live" {
+            let cell: HomeRecommendLiveCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeRecommendLiveCellID, for: indexPath) as! HomeRecommendLiveCell
             cell.liveList = viewModel.liveList
             return cell
-        }else {
+        } else {
             let cell:RecommendForYouCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendForYouCellID, for: indexPath) as! RecommendForYouCell
             return cell
             
@@ -201,22 +198,22 @@ extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollect
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let moduleType = viewModel.homeRecommendList?[indexPath.section].moduleType
         if kind == UICollectionView.elementKindSectionHeader {
-            let headerView : RecommendHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: RecommendHeaderViewID, for: indexPath) as! RecommendHeaderView
+            let headerView: RecommendHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: RecommendHeaderViewID, for: indexPath) as! RecommendHeaderView
             headerView.homeRecommendList = viewModel.homeRecommendList?[indexPath.section]
             // 分区头右边更多按钮点击跳转
-            headerView.headerMoreBtnClick = {[weak self]() in
+            headerView.headerMoreButtonClick = {[weak self]() in
                 if moduleType == "guessYouLike"{
                     let vc = HomeGuessYouLikeMoreController()
                     self?.navigationController?.pushViewController(vc, animated: true)
-                }else if moduleType == "paidCategory" {
+                } else if moduleType == "paidCategory" {
                     let vc = HomeVIPController(isRecommendPush:true)
                     vc.title = "精品"
                     self?.navigationController?.pushViewController(vc, animated: true)
-                }else if moduleType == "live"{
+                } else if moduleType == "live"{
                     let vc = HomeLiveController()
                     vc.title = "直播"
                     self?.navigationController?.pushViewController(vc, animated: true)
-                }else {
+                } else {
                     guard let categoryId = self?.viewModel.homeRecommendList?[indexPath.section].target?.categoryId else {return}
                     if categoryId != 0 {
                         let vc = ClassifySubMenuController(categoryId:categoryId,isVipPush:false)
@@ -226,8 +223,8 @@ extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollect
                 }
             }
             return headerView
-        }else if kind == UICollectionView.elementKindSectionFooter {
-            let footerView : RecommendFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: RecommendFooterViewID, for: indexPath) as! RecommendFooterView
+        } else if kind == UICollectionView.elementKindSectionFooter {
+            let footerView: RecommendFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: RecommendFooterViewID, for: indexPath) as! RecommendFooterView
             return footerView
         }
         return UICollectionReusableView()
@@ -249,7 +246,7 @@ extension HomeRecommendController:RecommendHeaderCellDelegate {
         
     }
     
-    func recommendHeaderBtnClick(categoryId:String,title:String,url:String){
+    func recommendHeaderBtnClick(categoryId: String,title: String,url: String){
         if url == ""{
             if categoryId == "0"{
                 let warning = MessageView.viewFromNib(layout: .cardView)
@@ -262,12 +259,12 @@ extension HomeRecommendController:RecommendHeaderCellDelegate {
                 var warningConfig = SwiftMessages.defaultConfig
                 warningConfig.presentationContext = .window(windowLevel: UIWindow.Level.statusBar)
                 SwiftMessages.show(config: warningConfig, view: warning)
-            }else{
-                let vc = ClassifySubMenuController(categoryId:Int(categoryId)!)
+            } else {
+                let vc = ClassifySubMenuController(categoryId: Int(categoryId)!)
                 vc.title = title
                 self.navigationController?.pushViewController(vc, animated: true)
             }
-        }else{
+        } else {
             let vc = WebViewController(url:url)
             vc.title = title
             self.navigationController?.pushViewController(vc, animated: true)

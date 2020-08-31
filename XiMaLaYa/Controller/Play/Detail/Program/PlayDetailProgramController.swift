@@ -7,14 +7,13 @@
 //
 
 import UIKit
-import LTScrollView
 
 class PlayDetailProgramController: UIViewController, LTTableViewProtocal {
     private var playDetailTracks:PlayDetailTracksModel?
     
     private let PlayDetailProgramCellID = "PlayDetailProgramCell"
     private lazy var tableView: UITableView = {
-        let tableView = tableViewConfig(CGRect(x: 0, y:0, width:ScreenWidth, height: ScreenHeight), self, self, nil)
+        let tableView = tableViewConfig(CGRect(x: 0, y:0, width: ScreenWidth, height: ScreenHeight), self, self, nil)
         tableView.register(PlayDetailProgramCell.self, forCellReuseIdentifier: PlayDetailProgramCellID)
         return tableView
     }()
@@ -40,7 +39,7 @@ class PlayDetailProgramController: UIViewController, LTTableViewProtocal {
     }
 }
 
-extension PlayDetailProgramController : UITableViewDelegate, UITableViewDataSource {
+extension PlayDetailProgramController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.playDetailTracks?.list?.count ?? 0
     }

@@ -21,7 +21,7 @@ class AdvertCell: UICollectionViewCell {
         return label
     }()
     // 子标题
-    private var subLabel : UILabel = {
+    private var subLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor.gray
@@ -38,14 +38,14 @@ class AdvertCell: UICollectionViewCell {
         self.imageView.image = UIImage(named: "fj.jpg")
         self.imageView.contentMode = .scaleAspectFill
         self.imageView.clipsToBounds = true
-        self.imageView.snp.makeConstraints { (make) in
+        self.imageView.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-15)
             make.bottom.equalToSuperview().offset(-60)
         }
         self.addSubview(self.titleLabel)
         self.titleLabel.text = "那些事"
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-15)
             make.top.equalTo(self.imageView.snp.bottom)
@@ -54,7 +54,7 @@ class AdvertCell: UICollectionViewCell {
         
         self.addSubview(self.subLabel)
         self.subLabel.text = "开年会发年终奖呀领导开年会发年终奖呀"
-        self.subLabel.snp.makeConstraints { (make) in
+        self.subLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-15)
             make.top.equalTo(self.titleLabel.snp.bottom)

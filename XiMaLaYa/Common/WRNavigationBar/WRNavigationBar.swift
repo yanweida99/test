@@ -45,8 +45,7 @@ extension UINavigationBar:WRAwakeProtocol
     {
         backgroundView?.removeFromSuperview()
         backgroundView = nil
-        if (backgroundImageView == nil)
-        {
+        if backgroundImageView == nil {
             // add a image(nil color) to _UIBarBackground make it clear
             setBackgroundImage(UIImage(), for: .default)
             backgroundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: Int(bounds.width), height: WRNavigationBar.navBarBottom()))
@@ -62,8 +61,7 @@ extension UINavigationBar:WRAwakeProtocol
     {
         backgroundImageView?.removeFromSuperview()
         backgroundImageView = nil
-        if (backgroundView == nil)
-        {
+        if backgroundView == nil {
             // add a image(nil color) to _UIBarBackground make it clear
             setBackgroundImage(UIImage(), for: .default)
             backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: Int(bounds.width), height: WRNavigationBar.navBarBottom()))
@@ -91,42 +89,33 @@ extension UINavigationBar:WRAwakeProtocol
     }
     
     // 设置导航栏所有BarButtonItem的透明度
-    func wr_setBarButtonItemsAlpha(alpha:CGFloat, hasSystemBackIndicator:Bool)
-    {
-        for view in subviews
-        {
-            if (hasSystemBackIndicator == true)
-            {
+    func wr_setBarButtonItemsAlpha(alpha:CGFloat, hasSystemBackIndicator:Bool) {
+        for view in subviews {
+            if hasSystemBackIndicator == true {
                 // _UIBarBackground/_UINavigationBarBackground对应的view是系统导航栏，不需要改变其透明度
-                if let _UIBarBackgroundClass = NSClassFromString("_UIBarBackground")
-                {
+                if let _UIBarBackgroundClass = NSClassFromString("_UIBarBackground") {
                     if view.isKind(of: _UIBarBackgroundClass) == false {
                         view.alpha = alpha
                     }
                 }
                 
-                if let _UINavigationBarBackground = NSClassFromString("_UINavigationBarBackground")
-                {
+                if let _UINavigationBarBackground = NSClassFromString("_UINavigationBarBackground") {
                     if view.isKind(of: _UINavigationBarBackground) == false {
                         view.alpha = alpha
                     }
                 }
             }
-            else
-            {
+            else {
                 // 这里如果不做判断的话，会显示 backIndicatorImage(系统返回按钮)
                 if let _UINavigationBarBackIndicatorViewClass = NSClassFromString("_UINavigationBarBackIndicatorView"),
-                    view.isKind(of: _UINavigationBarBackIndicatorViewClass) == false
-                {
-                    if let _UIBarBackgroundClass = NSClassFromString("_UIBarBackground")
-                    {
+                    view.isKind(of: _UINavigationBarBackIndicatorViewClass) == false {
+                    if let _UIBarBackgroundClass = NSClassFromString("_UIBarBackground") {
                         if view.isKind(of: _UIBarBackgroundClass) == false {
                             view.alpha = alpha
                         }
                     }
                     
-                    if let _UINavigationBarBackground = NSClassFromString("_UINavigationBarBackground")
-                    {
+                    if let _UINavigationBarBackground = NSClassFromString("_UINavigationBarBackground") {
                         if view.isKind(of: _UINavigationBarBackground) == false {
                             view.alpha = alpha
                         }
@@ -170,7 +159,7 @@ extension UINavigationBar:WRAwakeProtocol
     //==========================================================================
     // MARK: swizzling pop
     //==========================================================================
-    @objc func wr_setTitleTextAttributes(_ newTitleTextAttributes:[String : Any]?)
+    @objc func wr_setTitleTextAttributes(_ newTitleTextAttributes: [String: Any]?)
     {
         guard var attributes = newTitleTextAttributes else {
             return

@@ -9,9 +9,9 @@
 import UIKit
 
 class RecommendNewsCell: UICollectionViewCell {
-    private var topBuzz:[TopBuzzModel]?
+    private var topBuzz: [TopBuzzModel]?
     
-    private lazy var imageView : UIImageView = {
+    private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "news.png")
         return imageView
@@ -31,7 +31,7 @@ class RecommendNewsCell: UICollectionViewCell {
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         layout.itemSize = CGSize(width: (ScreenWidth - 150), height:40)
-        let collectionView = UICollectionView.init(frame:CGRect(x:80,y:5, width:ScreenWidth-150, height:40), collectionViewLayout: layout)
+        let collectionView = UICollectionView.init(frame:CGRect(x:80,y:5, width: ScreenWidth-150, height:40), collectionViewLayout: layout)
         layout.scrollDirection = UICollectionView.ScrollDirection.vertical
         collectionView.contentSize = CGSize(width: (ScreenWidth - 150), height: 40)
         collectionView.delegate = self
@@ -56,14 +56,14 @@ class RecommendNewsCell: UICollectionViewCell {
     
     func setupLayout(){
         self.addSubview(self.imageView)
-        self.imageView.snp.makeConstraints { (make) in
+        self.imageView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(10)
             make.width.equalTo(60)
             make.height.equalTo(30)
             make.top.equalTo(10)
         }
         self.addSubview(self.moreBtn)
-        self.moreBtn.snp.makeConstraints { (make) in
+        self.moreBtn.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-5)
             make.width.equalTo(60)
             make.height.equalTo(40)
@@ -73,11 +73,11 @@ class RecommendNewsCell: UICollectionViewCell {
         self.addSubview(self.collectionView)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
-    var topBuzzList:[TopBuzzModel]? {
+    var topBuzzList: [TopBuzzModel]? {
         didSet{
             guard let model = topBuzzList else { return }
             self.topBuzz = model
@@ -86,7 +86,7 @@ class RecommendNewsCell: UICollectionViewCell {
     }
 }
 
-extension RecommendNewsCell : UICollectionViewDelegate, UICollectionViewDataSource {
+extension RecommendNewsCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (self.topBuzz?.count ?? 0)*100
     }
@@ -131,7 +131,7 @@ extension RecommendNewsCell : UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 class NewsCell: UICollectionViewCell {
-    lazy var titleLabel : UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         return label
@@ -140,7 +140,7 @@ class NewsCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(self.titleLabel)
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.right.height.top.equalToSuperview()
         }
     }

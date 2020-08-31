@@ -7,15 +7,13 @@
 //
 
 import UIKit
-import SwiftyJSON
-import HandyJSON
 
 class PlayViewModel: NSObject {
     // 外部传值请求接口如此那
-    var albumId :Int = 0
-    var trackUid:Int = 0
-    var uid:Int = 0
-    convenience init(albumId: Int = 0, trackUid: Int = 0,uid:Int = 0) {
+    var albumId: Int = 0
+    var trackUid: Int = 0
+    var uid: Int = 0
+    convenience init(albumId: Int = 0, trackUid: Int = 0,uid: Int = 0) {
         self.init()
         self.albumId = albumId
         self.trackUid = trackUid
@@ -23,22 +21,21 @@ class PlayViewModel: NSObject {
     }
     
     var playTrackInfo:PlayTrackInfo?
-    var playCommentInfo:[PlayCommentInfo]?
+    var playCommentInfo: [PlayCommentInfo]?
     var userInfo:PlayUserInfo?
     var communityInfo:PlayCommunityInfo?
     // - 数据源更新
-    typealias AddDataBlock = () ->Void
     var updateBlock:AddDataBlock?
 }
 
 // - 请求数据
 extension PlayViewModel {
     func refreshDataSource() {
-        PlayProvider.request(PlayAPI.fmPlayData(albumId:self.albumId,trackUid:self.trackUid,uid:self.uid)) { result in
-            if case let .success(response) = result {
-                // 解析数据
-                let data = try? response.mapJSON()
-                let json = JSON(data!)
+        
+        let api = PlayAPI.fmPlayData(albumId:self.albumId,trackUid:self.trackUid,uid:self.uid)
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
+                let json = JSON(jsonData)
                 // 从字符串转换为对象实例
                 if let playTrackInfo = JSONDeserializer<PlayTrackInfo>.deserializeFrom(json: json["trackInfo"].description) {
                     self.playTrackInfo = playTrackInfo
@@ -79,24 +76,24 @@ extension PlayViewModel {
     }
     
     // 最小 item 间距
-    func minimumInteritemSpacingForSectionAt(section:Int) ->CGFloat {
+    func minimumInteritemSpacingForSectionAt(section: Int) ->CGFloat {
         return 0
     }
     
     // 最小行间距
-    func minimumLineSpacingForSectionAt(section:Int) ->CGFloat {
+    func minimumLineSpacingForSectionAt(section: Int) ->CGFloat {
         return 0
     }
     
     // item 尺寸
     func sizeForItemAt(indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0{
-            return CGSize.init(width:ScreenWidth,height:ScreenHeight * 0.7)
-        }else if indexPath.section == 3{
+            return CGSize.init(width: ScreenWidth, height: ScreenHeight * 0.7)
+        } else if indexPath.section == 3{
             let textHeight = height(for: self.playCommentInfo?[indexPath.row])+100
-            return CGSize.init(width:ScreenWidth,height:textHeight)
-        }else{
-            return CGSize.init(width:ScreenWidth,height:140)
+            return CGSize.init(width: ScreenWidth, height: textHeight)
+        } else {
+            return CGSize.init(width: ScreenWidth, height: 140)
         }
     }
     

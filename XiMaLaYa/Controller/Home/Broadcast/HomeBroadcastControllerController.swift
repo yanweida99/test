@@ -37,7 +37,7 @@ class HomeBroadcastController: UIViewController {
         collection.register(RadioSquareResultsCell.self, forCellWithReuseIdentifier: RadioSquareResultsCellID)
         
         collection.uHead = URefreshHeader { [weak self] in
-            self?.setupLoadData()
+            self?.loadData()
         }
         return collection
     }()
@@ -58,10 +58,10 @@ class HomeBroadcastController: UIViewController {
             make.height.equalToSuperview()
         }
         self.collectionView.uHead.beginRefreshing()
-        setupLoadData()
+        loadData()
     }
     
-    func setupLoadData() {
+    func loadData() {
         // 加载数据
         viewModel.updateBlock = { [unowned self] in
             self.collectionView.uHead.endRefreshing()
@@ -184,7 +184,7 @@ extension HomeBroadcastController: UICollectionViewDelegate, UICollectionViewDat
             headerView.backgroundColor = UIColor.white
             headerView.titStr = viewModel.titleArray[indexPath.section - 2]
             return headerView
-        }else {
+        } else {
             let footerView: RadioFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: RadioFooterViewID, for: indexPath) as! RadioFooterView
             return footerView
             
@@ -208,7 +208,7 @@ extension HomeBroadcastController: RadioSquareResultsCellDelegate {
             
         } else {
             // 截取参数
-            var split = url.components(separatedBy: ".com")
+            let split = url.components(separatedBy: ".com")
             let string = split[1]
             let vc = HomeBroadcastListController(url: string, categoryId: 0, isMoreCategory: false)
             vc.title = title

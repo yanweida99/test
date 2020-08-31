@@ -7,15 +7,12 @@
 //
 
 import UIKit
-import LTScrollView
-import SwiftyJSON
-import HandyJSON
 
 class PlayDetailSimilarController: UIViewController, LTTableViewProtocal {
-    private var albumResults:[ClassifyVerticalModel]?
+    private var albumResults: [ClassifyVerticalModel]?
     private let PlayDetailSimilarCellID = "PlayDetailSimilarCell"
     private lazy var tableView: UITableView = {
-        let tableView = tableViewConfig(CGRect(x: 0, y: 0, width:ScreenWidth, height: ScreenHeight), self, self, nil)
+        let tableView = tableViewConfig(CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight), self, self, nil)
         tableView.register(PlayDetailSimilarCell.self, forCellReuseIdentifier: PlayDetailSimilarCellID)
         tableView.uHead = URefreshHeader{ [weak self] in self?.setupLoadData() }
         return tableView
@@ -36,11 +33,10 @@ class PlayDetailSimilarController: UIViewController, LTTableViewProtocal {
         setupLoadData()
     }
     func setupLoadData(){
-        PlayDetailProvider.request(.playDetailLikeList(albumId:12825974)) { result in
-            if case let .success(response) = result {
-                // 解析数据
-                let data = try? response.mapJSON()
-                let json = JSON(data!)
+        let api = PlayDetailAPI.playDetailLikeList(albumId:12825974)
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
+                let json = JSON(jsonData)
                 if let mappedObject = JSONDeserializer<ClassifyVerticalModel>.deserializeModelArrayFrom(json: json["albums"].description) {
                     self.albumResults = mappedObject as? [ClassifyVerticalModel]
                     self.tableView.uHead.endRefreshing()
@@ -51,7 +47,7 @@ class PlayDetailSimilarController: UIViewController, LTTableViewProtocal {
     }
 }
 
-extension PlayDetailSimilarController : UITableViewDelegate, UITableViewDataSource {
+extension PlayDetailSimilarController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.albumResults?.count ?? 0
     }

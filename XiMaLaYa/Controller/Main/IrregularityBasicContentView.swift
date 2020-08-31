@@ -20,8 +20,8 @@ class IrregularityBasicContentView: BouncesContentView {
         highlightIconColor = UIColor.init(red: 254 / 255.0, green: 73 / 255.0, blue: 42 / 255.0, alpha: 1.0)
     }
     
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
 
 }
@@ -47,8 +47,8 @@ class IrregularityContentView: ESTabBarItemContentView {
         highlightBackdropColor = .clear
     }
     
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {

@@ -35,12 +35,12 @@ class VIPHotCell: UICollectionViewCell {
     
     func setUpLayout(){
         self.addSubview(self.imageView)
-        self.imageView.snp.makeConstraints { (make) in
+        self.imageView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
             make.bottom.equalToSuperview().offset(-60)
         }
         self.addSubview(self.titleLabel)
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.top.equalTo(self.imageView.snp.bottom).offset(10)
             make.height.equalTo(40)

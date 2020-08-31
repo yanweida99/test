@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import HandyJSON
 
 // 趣配音 Model
 struct FindDudModel: HandyJSON {

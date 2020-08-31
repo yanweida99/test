@@ -21,7 +21,7 @@ class RecommendLiveCell: UICollectionViewCell {
         return label
     }()
     // 子标题
-    private var subLabel : UILabel = {
+    private var subLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor.gray
@@ -53,14 +53,14 @@ class RecommendLiveCell: UICollectionViewCell {
         self.addSubview(self.imageView)
         self.imageView.layer.masksToBounds = true
         self.imageView.layer.cornerRadius = 8
-        self.imageView.snp.makeConstraints { (make) in
+        self.imageView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
             make.bottom.equalToSuperview().offset(-60)
         }
         self.imageView.addSubview(self.category)
         self.category.layer.masksToBounds = true
         self.category.layer.cornerRadius = 4
-        self.category.snp.makeConstraints { (make) in
+        self.category.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-5)
             make.bottom.equalToSuperview().offset(-5)
             make.width.equalTo(30)
@@ -68,14 +68,14 @@ class RecommendLiveCell: UICollectionViewCell {
         }
         
         self.addSubview(self.titleLabel)
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.top.equalTo(self.imageView.snp.bottom)
             make.height.equalTo(20)
         }
         
         self.addSubview(self.subLabel)
-        self.subLabel.snp.makeConstraints { (make) in
+        self.subLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.top.equalTo(self.titleLabel.snp.bottom)
             make.height.equalTo(40)
@@ -83,7 +83,7 @@ class RecommendLiveCell: UICollectionViewCell {
         }
         
         self.imageView.addSubview(self.replicatorLayer)
-        self.replicatorLayer.snp.makeConstraints { (make) in
+        self.replicatorLayer.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(10)
             make.bottom.equalToSuperview().offset(-10)
             make.width.equalTo(20)
@@ -94,7 +94,7 @@ class RecommendLiveCell: UICollectionViewCell {
     var recommendliveData: LivesModel? {
         didSet{
             guard let model = recommendliveData else { return }
-            if (model.coverMiddle != nil) {
+            if model.coverMiddle != nil {
                 self.imageView.kf.setImage(with: URL(string: model.coverMiddle!))
             }
             self.titleLabel.text = model.nickname
@@ -106,7 +106,7 @@ class RecommendLiveCell: UICollectionViewCell {
     var liveData:LivesModel? {
         didSet{
             guard let model = liveData else { return }
-            if (model.coverMiddle != nil) {
+            if model.coverMiddle != nil {
                 self.imageView.kf.setImage(with: URL(string: model.coverMiddle!))
             }
             self.titleLabel.text = model.nickname
@@ -115,7 +115,7 @@ class RecommendLiveCell: UICollectionViewCell {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
 }

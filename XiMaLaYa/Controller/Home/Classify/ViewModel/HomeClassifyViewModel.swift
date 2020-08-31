@@ -7,25 +7,20 @@
 //
 
 import UIKit
-import SwiftyJSON
-import HandyJSON
 
 class HomeClassifyViewModel: NSObject {
     var classifyModel: [ClassifyModel]?
     // 数据源更新
-    typealias AddDataBlock = () -> Void
     var updateBlock: AddDataBlock?
 }
 
 extension HomeClassifyViewModel {
     func refreshDataSource() {
         // 首页分类接口请求
-        HomeClassifyProvider.request(.classifyList) { result in
-            if case let .success(responce) = result {
-                // 解析数据
-                let data = try? responce.mapJSON()
-                let json = JSON(data!)
-                // 从字符串转换为对象实例
+        let api = HomeCategoryAPI.classifyList
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
+                let json = JSON(jsonData)
                 if let mappedObject = JSONDeserializer<HomeClassifyModel>.deserializeFrom(json: json.description) {
                     self.classifyModel = mappedObject.list
                 }
@@ -50,12 +45,12 @@ extension HomeClassifyViewModel {
     }
     
     // 最小 item 间距
-    func minimumInteritemSpacingForSectionAt(section:Int) ->CGFloat {
+    func minimumInteritemSpacingForSectionAt(section: Int) ->CGFloat {
         return 0
     }
     
     // 最小行间距
-    func minimumLineSpacingForSectionAt(section:Int) ->CGFloat {
+    func minimumLineSpacingForSectionAt(section: Int) ->CGFloat {
         return 2
     }
     
@@ -63,7 +58,7 @@ extension HomeClassifyViewModel {
     func sizeForItemAt(indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 || indexPath.section == 1 || indexPath.section == 2 {
             return CGSize.init(width:(ScreenWidth - 10) / 4,height:40)
-        }else {
+        } else {
             return CGSize.init(width:(ScreenWidth - 7.5) / 3,height:40)
         }
     }
@@ -72,7 +67,7 @@ extension HomeClassifyViewModel {
     func referenceSizeForHeaderInSection(section: Int) -> CGSize {
         if section == 0 || section == 1 || section == 2 {
             return .zero
-        }else {
+        } else {
             return CGSize.init(width: ScreenHeight, height:30)
         }
     }

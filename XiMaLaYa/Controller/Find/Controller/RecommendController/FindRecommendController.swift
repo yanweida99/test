@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import LTScrollView
 
 class FindRecommendController: UIViewController, LTTableViewProtocal {
 
@@ -35,11 +34,11 @@ class FindRecommendController: UIViewController, LTTableViewProtocal {
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
-        setupLoadData()
+        loadData()
     }
     
     // 加载数据
-    func setupLoadData() {
+    func loadData() {
         viewModel.updateBlock = { [unowned self] in
             self.tableView.reloadData() // 更新列表数据
         }

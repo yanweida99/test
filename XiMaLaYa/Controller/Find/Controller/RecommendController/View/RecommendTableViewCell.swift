@@ -84,7 +84,7 @@ class RecommendTableViewCell: UITableViewCell {
         self.picView.image = UIImage(named: "news.png")
         self.picView.layer.masksToBounds = true
         self.picView.layer.cornerRadius = 20
-        self.picView.snp.makeConstraints { (make) in
+        self.picView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(15)
             make.top.equalToSuperview().offset(10)
             make.width.height.equalTo(40)
@@ -92,7 +92,7 @@ class RecommendTableViewCell: UITableViewCell {
         
         self.addSubview(self.nameLabel)
         self.nameLabel.text = "喜马拉雅好声音"
-        self.nameLabel.snp.makeConstraints { (make) in
+        self.nameLabel.snp.makeConstraints { make in
             make.left.equalTo(self.picView.snp.right).offset(8)
             make.width.equalTo(200)
             make.height.equalTo(30)
@@ -101,7 +101,7 @@ class RecommendTableViewCell: UITableViewCell {
         
         self.addSubview(self.desLabel)
         self.desLabel.text = "啦啦啦啦啦啦啦啦四六级发送到了解放塑料袋就分手发熟练度家纺"
-        self.desLabel.snp.makeConstraints { (make) in
+        self.desLabel.snp.makeConstraints { make in
             make.left.equalTo(self.picView)
             make.top.equalTo(self.picView.snp.bottom).offset(8)
             make.right.equalToSuperview().offset(-15)
@@ -110,7 +110,7 @@ class RecommendTableViewCell: UITableViewCell {
         
         self.addSubview(self.dateLabel)
         self.dateLabel.text = "一天前"
-        self.dateLabel.snp.makeConstraints { (make) in
+        self.dateLabel.snp.makeConstraints { make in
             make.left.equalTo(self.picView)
             make.bottom.equalToSuperview().offset(-15)
             make.width.equalTo(100)
@@ -119,7 +119,7 @@ class RecommendTableViewCell: UITableViewCell {
         
         self.addSubview(self.commetLabel)
         self.commetLabel.text = "94"
-        self.commetLabel.snp.makeConstraints { (make) in
+        self.commetLabel.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-5)
             make.height.equalTo(20)
             make.width.equalTo(40)
@@ -128,7 +128,7 @@ class RecommendTableViewCell: UITableViewCell {
         
         self.addSubview(self.commentImageView)
         self.commentImageView.image = UIImage(named: "评论")
-        self.commentImageView.snp.makeConstraints { (make) in
+        self.commentImageView.snp.makeConstraints { make in
             make.right.equalTo(self.commetLabel.snp.left).offset(-5)
             make.centerY.equalTo(self.commetLabel)
             make.width.height.equalTo(25)
@@ -136,7 +136,7 @@ class RecommendTableViewCell: UITableViewCell {
         
         self.addSubview(self.zanLabel)
         self.zanLabel.text = "20.4万"
-        self.zanLabel.snp.makeConstraints { (make) in
+        self.zanLabel.snp.makeConstraints { make in
             make.right.equalTo(self.commentImageView.snp.left).offset(-10)
             make.width.equalTo(40)
             make.height.equalTo(20)
@@ -145,14 +145,14 @@ class RecommendTableViewCell: UITableViewCell {
         
         self.addSubview(self.zanImageView)
         self.zanImageView.image = UIImage(named: "点赞")
-        self.zanImageView.snp.makeConstraints { (make) in
+        self.zanImageView.snp.makeConstraints { make in
             make.right.equalTo(self.zanLabel.snp.left).offset(-5)
             make.width.height.equalTo(20)
             make.centerY.equalTo(self.zanLabel)
         }
         
         self.addSubview(self.collectionView)
-        self.collectionView.snp.makeConstraints { (make) in
+        self.collectionView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
             make.top.equalTo(self.desLabel.snp.bottom).offset(5)
@@ -216,7 +216,7 @@ class RecommendTableViewCell: UITableViewCell {
         //时间戳为毫秒级要 ／ 1000， 秒就不用除1000，参数带没带000
         let timeSta:TimeInterval = TimeInterval(timeStamp / 1000)
         //时间差
-        let reduceTime : TimeInterval = currentTime - timeSta
+        let reduceTime: TimeInterval = currentTime - timeSta
         //时间差小于60秒
         if reduceTime < 60 {
             return "刚刚"

@@ -71,7 +71,7 @@ class WRCustomNavigationBar: UIView
 {
     var onClickLeftButton:(()->())?
     var onClickRightButton:(()->())?
-    var title:String? {
+    var title: String? {
         willSet {
             titleLabel.isHidden = false
             titleLabel.text = newValue
@@ -151,7 +151,7 @@ class WRCustomNavigationBar: UIView
             return UIScreen.main.bounds.equalTo(CGRect(x: 0, y: 0, width: 375, height: 812))
         }
     }
-    fileprivate static var navBarBottom:Int {
+    fileprivate static var navBarBottom: Int {
         get {
             return isIphoneX ? 88 : 64
         }
@@ -162,12 +162,14 @@ class WRCustomNavigationBar: UIView
         let frame = CGRect(x: 0, y: 0, width: WRScreenWidth, height: CGFloat(navBarBottom))
         return WRCustomNavigationBar(frame: frame)
     }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
     }
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
         setupView()
     }
     
@@ -225,7 +227,7 @@ extension WRCustomNavigationBar
     func wr_setLeftButton(image:UIImage) {
         wr_setLeftButton(normal: image, highlighted: image, title: nil, titleColor: nil)
     }
-    func wr_setLeftButton(title:String, titleColor:UIColor) {
+    func wr_setLeftButton(title: String, titleColor:UIColor) {
         wr_setLeftButton(normal: nil, highlighted: nil, title: title, titleColor: titleColor)
     }
     
@@ -235,20 +237,20 @@ extension WRCustomNavigationBar
     func wr_setRightButton(image:UIImage) {
         wr_setRightButton(normal: image, highlighted: image, title: nil, titleColor: nil)
     }
-    func wr_setRightButton(title:String, titleColor:UIColor) {
+    func wr_setRightButton(title: String, titleColor:UIColor) {
         wr_setRightButton(normal: nil, highlighted: nil, title: title, titleColor: titleColor)
     }
     
     
     // 左右按钮私有方法
-    private func wr_setLeftButton(normal:UIImage?, highlighted:UIImage?, title:String?, titleColor:UIColor?) {
+    private func wr_setLeftButton(normal:UIImage?, highlighted:UIImage?, title: String?, titleColor:UIColor?) {
         leftButton.isHidden = false
         leftButton.setImage(normal, for: .normal)
         leftButton.setImage(highlighted, for: .highlighted)
         leftButton.setTitle(title, for: .normal)
         leftButton.setTitleColor(titleColor, for: .normal)
     }
-    private func wr_setRightButton(normal:UIImage?, highlighted:UIImage?, title:String?, titleColor:UIColor?) {
+    private func wr_setRightButton(normal:UIImage?, highlighted:UIImage?, title: String?, titleColor:UIColor?) {
         rightButton.isHidden = false
         rightButton.setImage(normal, for: .normal)
         rightButton.setImage(highlighted, for: .highlighted)

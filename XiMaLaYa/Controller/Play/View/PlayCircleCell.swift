@@ -15,20 +15,20 @@ class PlayCircleCell: UICollectionViewCell {
         return imageView
     }()
     //昵称
-    lazy var nameLabel : UILabel = {
+    lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         return label
     }()
     //关注
-    lazy var attentionLabel : UILabel = {
+    lazy var attentionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
         label.textColor = UIColor.gray
         return label
     }()
     //    // 言论
-    lazy var desLabel : UILabel = {
+    lazy var desLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = 0
@@ -58,7 +58,7 @@ class PlayCircleCell: UICollectionViewCell {
     func setUpUI(){
         self.addSubview(self.picView)
         self.picView.image = UIImage(named: "news.png")
-        self.picView.snp.makeConstraints { (make) in
+        self.picView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(15)
             make.top.equalToSuperview().offset(10)
             make.width.height.equalTo(40)
@@ -66,7 +66,7 @@ class PlayCircleCell: UICollectionViewCell {
         
         self.addSubview(self.nameLabel)
         self.nameLabel.text = "喜马拉雅好"
-        self.nameLabel.snp.makeConstraints { (make) in
+        self.nameLabel.snp.makeConstraints { make in
             make.left.equalTo(self.picView.snp.right).offset(10)
             make.width.equalTo(200)
             make.height.equalTo(20)
@@ -74,13 +74,13 @@ class PlayCircleCell: UICollectionViewCell {
         }
         self.addSubview(self.attentionLabel)
         self.attentionLabel.text = "成员 793   帖子 46"
-        self.attentionLabel.snp.makeConstraints { (make) in
+        self.attentionLabel.snp.makeConstraints { make in
             make.left.width.height.equalTo(self.nameLabel)
             make.top.equalTo(self.nameLabel.snp.bottom).offset(5)
         }
         
         self.addSubview(self.bgImageView)
-        self.bgImageView.snp.makeConstraints { (make) in
+        self.bgImageView.snp.makeConstraints { make in
             make.top.equalTo(self.picView.snp.bottom).offset(15)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
@@ -89,7 +89,7 @@ class PlayCircleCell: UICollectionViewCell {
         
         self.bgImageView.addSubview(self.desLabel)
         self.desLabel.text = "四六级发送到"
-        self.desLabel.snp.makeConstraints { (make) in
+        self.desLabel.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(15)
             make.right.bottom.equalToSuperview().offset(-15)
         }
@@ -97,7 +97,7 @@ class PlayCircleCell: UICollectionViewCell {
         self.addSubview(self.joinBtn)
         self.joinBtn.layer.masksToBounds = true
         self.joinBtn.layer.cornerRadius = 15
-        self.joinBtn.snp.makeConstraints { (make) in
+        self.joinBtn.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-15)
             make.width.equalTo(50)
             make.height.equalTo(30)

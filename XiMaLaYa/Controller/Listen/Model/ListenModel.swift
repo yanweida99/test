@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import HandyJSON
 
 /// 订阅 Model
 struct AlbumResultsModel: HandyJSON {
@@ -106,7 +105,7 @@ struct ChannelInfosModel: HandyJSON{
 struct ChannelClassInfoModel: HandyJSON {
     var className: String?
     var classId: Int = 0
-    var channelInfos:[ChannelInfosModel]?
+    var channelInfos: [ChannelInfosModel]?
 }
 
 

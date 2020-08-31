@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import LTScrollView
 
 class PlayDetailIntroduceController: UIViewController, LTTableViewProtocal {
     private var playDetailAlbum:PlayDetailAlbumModel?
@@ -16,7 +15,7 @@ class PlayDetailIntroduceController: UIViewController, LTTableViewProtocal {
     private let PlayContentIntroduceCellID = "PlayContentIntroduceCell"
     private let PlayAnchorIntroduceCellID  = "PlayAnchorIntroduceCell"
     private lazy var tableView: UITableView = {
-        let tableView = tableViewConfig(CGRect(x: 0, y: 0, width:ScreenWidth, height: ScreenHeight), self, self, nil)
+        let tableView = tableViewConfig(CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight), self, self, nil)
         tableView.register(PlayContentIntroduceCell.self, forCellReuseIdentifier: PlayContentIntroduceCellID)
         tableView.register(PlayAnchorIntroduceCell.self, forCellReuseIdentifier: PlayAnchorIntroduceCellID)
         return tableView
@@ -57,7 +56,7 @@ class PlayDetailIntroduceController: UIViewController, LTTableViewProtocal {
     }
 }
 
-extension PlayDetailIntroduceController : UITableViewDelegate, UITableViewDataSource {
+extension PlayDetailIntroduceController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -76,7 +75,7 @@ extension PlayDetailIntroduceController : UITableViewDelegate, UITableViewDataSo
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.playDetailAlbumModel = self.playDetailAlbum
             return cell
-        }else {
+        } else {
             let cell:PlayAnchorIntroduceCell = tableView.dequeueReusableCell(withIdentifier: PlayAnchorIntroduceCellID, for: indexPath) as! PlayAnchorIntroduceCell
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.playDetailUserModel = self.playDetailUser

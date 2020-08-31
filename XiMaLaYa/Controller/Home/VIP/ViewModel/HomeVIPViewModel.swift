@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
-import HandyJSON
 
 class HomeVIPViewModel: NSObject {
     
@@ -17,7 +15,6 @@ class HomeVIPViewModel: NSObject {
     var categoryList: [CategoryList]?
     var categoryButtonList: [CategoryButtonModel]?
     // 数据源更新
-    typealias AddDataBlock = () -> Void
     var updateBlock: AddDataBlock?
     
     // 每个分区显示item数量
@@ -46,19 +43,19 @@ class HomeVIPViewModel: NSObject {
     }
     
     // header高度
-    func heightForHeaderInSection(section:Int) ->CGFloat {
+    func heightForHeaderInSection(section: Int) ->CGFloat {
         if section == HomeVIPSectionBanner || section == HomeVIPSectionGrid {
             return 0.0
-        }else {
+        } else {
             return 50
         }
     }
     
     // footer 高度
-    func heightForFooterInSection(section:Int) ->CGFloat {
+    func heightForFooterInSection(section: Int) ->CGFloat {
         if section == HomeVIPSectionBanner {
             return 0.0
-        }else {
+        } else {
             return 10
         }
     }
@@ -68,11 +65,10 @@ class HomeVIPViewModel: NSObject {
 extension HomeVIPViewModel {
     func refreshDataSource() {
         // 首页vip接口请求
-        HomeVIPAPIProvider.request(.homeVIPList) { result in
-            if case let .success(response) = result {
-                //解析数据
-                let data = try? response.mapJSON()
-                let json = JSON(data!)
+        let api = HomeVIPAPI.homeVIPList
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
+                let json = JSON(jsonData)
                 if let mappedObject = JSONDeserializer<HomeVipModel>.deserializeFrom(json: json.description) {
                     self.homeVIPData = mappedObject
                     self.focusImages = mappedObject.focusImages?.data

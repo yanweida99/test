@@ -7,37 +7,35 @@
 //
 
 import Foundation
-import Moya
-
-let HomeVIPAPIProvider = MoyaProvider<HomeVIPAPI>()
+import UIKit
 
 // 请求分类
-public enum HomeVIPAPI {
+enum HomeVIPAPI {
     case homeVIPList
 }
 
 // 请求配置
-extension HomeVIPAPI: TargetType {
+extension HomeVIPAPI {
     // 服务器地址
-    public var baseURL: URL {
+    var baseURL: String {
         switch self {
         case .homeVIPList:
-            return URL(string: "https://mobile.ximalaya.com")!
+            return "https://mobile.ximalaya.com"
         }
     }
     
     // 各个请求的具体路径
-    public var path: String {
+    var path: String {
         switch self {
         case .homeVIPList:
             return "/product/v4/category/recommends/ts-1532592638951"
         }
     }
     
-    public var method: Moya.Method { return .get }
-    public var task: Task {
-        let parameters = [
-            "appid":0,
+    var parameters: [String: Any]? {
+        switch self {
+        case .homeVIPList:
+            return ["appid":0,
             "categoryId":33,
             "contentType":"album",
             "inreview":false,
@@ -48,12 +46,11 @@ extension HomeVIPAPI: TargetType {
             "device":"iPhone",
             "version":"6.5.3",
             "xt": Int32(Date().timeIntervalSince1970),
-            "deviceId": UIDevice.current.identifierForVendor!.uuidString
-            ] as [String : Any]
-        return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+            "deviceId": UIDevice.current.identifierForVendor!.uuidString]
+        }
     }
     
-    public var sampleData: Data { return "".data(using: String.Encoding.utf8)! }
-    public var headers: [String : String]? { return nil }
-    
+    var url: String {
+        return baseURL + path
+    }
 }

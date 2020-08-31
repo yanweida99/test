@@ -10,7 +10,7 @@ import UIKit
 
 // 麦克风雷达动画效果
 class RadarLayerView: UIView {
-    var pulseLayer : CAShapeLayer!  //定义图层
+    var pulseLayer: CAShapeLayer!  //定义图层
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,8 +64,8 @@ class RadarLayerView: UIView {
         pulseLayer.add(groupAnimation, forKey: nil)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     // Only override draw() if you perform custom drawing.

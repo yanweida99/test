@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import LTScrollView
 
 class SubscribeController: UIViewController, LTTableViewProtocal {
     
@@ -43,10 +42,10 @@ class SubscribeController: UIViewController, LTTableViewProtocal {
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
-        setupLoadData()
+        loadData()
     }
     
-    func setupLoadData() {
+    func loadData() {
         // 加载数据
         viewModel.updateBlock = { [unowned self] in
             self.tableView.reloadData()

@@ -7,10 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
-import HandyJSON
-
-typealias AddDataBlock = () -> Void
 
 class ListenSubscribeViewModel: NSObject {
     var albumResults: [AlbumResultsModel]?

@@ -10,12 +10,12 @@ import UIKit
 
 // 添加cell点击代理方法
 protocol HomeVIPCategoriesCellDelegate: NSObjectProtocol {
-    func homeVIPCategoriesCellItemClick(id:String,url:String,title:String)
+    func homeVIPCategoriesCellItemClick(id: String,url: String,title: String)
 }
 
 
 class HomeVIPCategoriesCell: UITableViewCell {
-    weak var delegate : HomeVIPCategoriesCellDelegate?
+    weak var delegate: HomeVIPCategoriesCellDelegate?
     
     private var categoryButtonList: [CategoryButtonModel]?
     // MARK: - 懒加载九宫格分类按钮
@@ -24,7 +24,7 @@ class HomeVIPCategoriesCell: UITableViewCell {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
-        layout.itemSize = CGSize(width:ScreenWidth / 5, height:80)
+        layout.itemSize = CGSize(width: ScreenWidth / 5, height:80)
         layout.scrollDirection = UICollectionView.ScrollDirection.horizontal
         let collectionView = UICollectionView.init(frame:.zero, collectionViewLayout: layout)
         collectionView.contentSize = CGSize.init(width: ScreenWidth, height: 80)
@@ -41,7 +41,7 @@ class HomeVIPCategoriesCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         self.addSubview(self.collectionView)
-        self.collectionView.snp.makeConstraints { (make) in
+        self.collectionView.snp.makeConstraints { make in
             make.left.right.height.width.equalToSuperview()
         }
     }
@@ -51,7 +51,7 @@ class HomeVIPCategoriesCell: UITableViewCell {
         super.init(coder: coder)
     }
     
-    var categoryBtnModel : [CategoryButtonModel]? {
+    var categoryBtnModel: [CategoryButtonModel]? {
         didSet {
             guard let model = categoryBtnModel else {return}
             self.categoryButtonList = model
@@ -85,7 +85,7 @@ extension HomeVIPCategoriesCell: UICollectionViewDataSource, UICollectionViewDel
     }
     
     
-    func getUrlCategoryId(url:String) -> String {
+    func getUrlCategoryId(url: String) -> String {
         // 判断是否有参数
         if !url.contains("?") {
             return ""
@@ -102,8 +102,8 @@ extension HomeVIPCategoriesCell: UICollectionViewDataSource, UICollectionViewDel
             for keyValuePair in urlComponents {
                 // 生成Key/Value
                 let pairComponents = keyValuePair.split(separator: "=")
-                let key:String = String(pairComponents[0])
-                let value:String = String(pairComponents[1])
+                let key: String = String(pairComponents[0])
+                let value: String = String(pairComponents[1])
                 
                 params[key] = value
             }
@@ -115,8 +115,8 @@ extension HomeVIPCategoriesCell: UICollectionViewDataSource, UICollectionViewDel
                 return "nil"
             }
             
-            let key:String = String(pairComponents[0])
-            let value:String = String(pairComponents[1])
+            let key: String = String(pairComponents[0])
+            let value: String = String(pairComponents[1])
             params[key] = value as AnyObject
         }
         return params["category_id"] as! String

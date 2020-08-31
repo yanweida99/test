@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import HandyJSON
+
 // 首页VIP数据模型
 struct HomeVipModel: HandyJSON {
     var msg: String?
@@ -18,7 +18,7 @@ struct HomeVipModel: HandyJSON {
 }
 
 struct FocusImagesModel: HandyJSON {
-    var data:[FocusImagesData]?
+    var data: [FocusImagesData]?
     var responseId: Int = 0
     var ret: Int = 0
 }
@@ -56,7 +56,7 @@ struct CategoryContentsModel: HandyJSON {
 struct CategoryButtonModel: HandyJSON {
     var bubbleText: String?
     var contentType: String?
-    var contentUpdatedAt:Int = 0
+    var contentUpdatedAt: Int = 0
     var coverPath: String?
     var displayClass: String?
     var enableShare: Bool = false
@@ -66,13 +66,13 @@ struct CategoryButtonModel: HandyJSON {
     var subtitle: String?
     var title: String?
     var url: String?
-    var properties : CategoryPropertiesModel?
+    var properties: CategoryPropertiesModel?
 }
 
 struct CategoryPropertiesModel:HandyJSON {
     var isPaid:Bool = false
-    var type:String?
-    var uri:String?
+    var type: String?
+    var uri: String?
 }
 
 struct CategoryList: HandyJSON {

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
-import HandyJSON
 
 class LiveCategoryListController: UIViewController {
     private var liveList: [LivesModel]?
@@ -43,7 +41,7 @@ class LiveCategoryListController: UIViewController {
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(self.collectionView)
-        self.collectionView.snp.makeConstraints { (make) in
+        self.collectionView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(15)
             make.top.bottom.equalToSuperview()
             make.right.equalToSuperview().offset(-15)
@@ -53,12 +51,11 @@ class LiveCategoryListController: UIViewController {
     }
     
     func setupLoadData(){
-           // 首页广播接口请求
-        HomeLiveAPIProvider.request(.categoryLiveList(channelId:self.channelId)) { result in
-            if case let .success(response) = result {
-                //解析数据
-                let data = try? response.mapJSON()
-                let json = JSON(data!)
+        // 首页广播接口请求
+        let api = HomeLiveAPI.categoryLiveList(channelId:self.channelId)
+        AF.request(api.url, method: .get, parameters: api.parameters, headers: nil).validate().responseJSON { response in
+            if case let Result.success(jsonData) = response.result {
+                let json = JSON(jsonData)
                 if let mappedObject = JSONDeserializer<LivesModel>.deserializeModelArrayFrom(json: json["data"]["homePageVo"]["lives"].description) {
                     self.liveList = mappedObject as? [LivesModel]
                 }

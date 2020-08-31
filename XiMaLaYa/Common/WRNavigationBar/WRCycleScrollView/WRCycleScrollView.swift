@@ -14,9 +14,9 @@ private let KEndlessScrollTimes = 128
 @objc protocol WRCycleScrollViewDelegate
 {
     /// 点击图片回调
-    @objc optional func cycleScrollViewDidSelect(at index:Int, cycleScrollView:WRCycleScrollView)
+    @objc optional func cycleScrollViewDidSelect(at index: Int, cycleScrollView:WRCycleScrollView)
     /// 图片滚动回调
-    @objc optional func cycleScrollViewDidScroll(to index:Int, cycleScrollView:WRCycleScrollView)
+    @objc optional func cycleScrollViewDidScroll(to index: Int, cycleScrollView:WRCycleScrollView)
 }
 
 class WRCycleScrollView: UIView
@@ -27,8 +27,8 @@ class WRCycleScrollView: UIView
     weak var delegate:WRCycleScrollViewDelegate?
     
 /// 数据相关
-    var imgsType:ImgType = .SERVER
-    var localImgArray :[String]? {
+    var imgsType: ImgType = .SERVER
+    var localImgArray: [String]? {
         didSet {
             if let local = localImgArray {
                 proxy = Proxy(type: .LOCAL, array: local)
@@ -36,7 +36,7 @@ class WRCycleScrollView: UIView
             }
         }
     }
-    var serverImgArray:[String]? {
+    var serverImgArray: [String]? {
         didSet {
             if let server = serverImgArray {
                 proxy = Proxy(type: .SERVER, array: server)
@@ -44,7 +44,7 @@ class WRCycleScrollView: UIView
             }
         }
     }
-    var descTextArray :[String]?
+    var descTextArray: [String]?
     
 /// WRCycleCell相关
     var descLabelFont: UIFont?
@@ -113,16 +113,16 @@ class WRCycleScrollView: UIView
 //=======================================================
 // MARK: 内部属性
 //=======================================================
-    fileprivate var imgsCount:Int {
+    fileprivate var imgsCount: Int {
         return (isEndlessScroll == true) ? (itemsInSection / KEndlessScrollTimes) : itemsInSection
     }
-    fileprivate var itemsInSection:Int {
+    fileprivate var itemsInSection: Int {
         guard let imgs = proxy?.imgArray else {
             return 0
         }
         return (isEndlessScroll == true) ? (imgs.count * KEndlessScrollTimes) : imgs.count
     }
-    fileprivate var firstItem:Int {
+    fileprivate var firstItem: Int {
         return (isEndlessScroll == true) ? (itemsInSection / 2) : 0
     }
     fileprivate var canChangeCycleCell:Bool {
@@ -133,7 +133,7 @@ class WRCycleScrollView: UIView
         }
         return true
     }
-    fileprivate var indexOnPageControl:Int {
+    fileprivate var indexOnPageControl: Int {
         var curIndex = Int((collectionView!.contentOffset.x + flowLayout!.itemSize.width * 0.5) / flowLayout!.itemSize.width)
         curIndex = max(0, curIndex)
         return curIndex % imgsCount
@@ -155,10 +155,10 @@ class WRCycleScrollView: UIView
     ///
     /// - Parameters:
     ///   - frame: frame
-    ///   - type:  ImagesType                         default:Server
+    ///   - type:  ImagesType                         default: Server
     ///   - imgs:  localImgArray / serverImgArray     default:nil
     ///   - descs: descTextArray                      default:nil
-    init(frame: CGRect, type:ImgType = .SERVER, imgs:[String]? = nil, descs:[String]? = nil)
+    init(frame: CGRect, type: ImgType = .SERVER, imgs: [String]? = nil, descs: [String]? = nil)
     {
         super.init(frame: frame)
         setupCollectionView()
@@ -180,8 +180,8 @@ class WRCycleScrollView: UIView
         reloadData()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     deinit {
@@ -317,7 +317,7 @@ extension WRCycleScrollView
         let pageH:CGFloat = 20
         let pageX = bounds.origin.x
         let pageY = bounds.height -  pageH
-        self.pageControl?.frame = CGRect(x:pageX, y:pageY, width:pageW, height:pageH)
+        self.pageControl?.frame = CGRect(x: pageX, y: pageY, width: pageW, height: pageH)
     }
 }
 

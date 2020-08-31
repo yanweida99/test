@@ -80,7 +80,7 @@ class ListenTRecommendableViewCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     func setUpLayout(){
@@ -152,7 +152,7 @@ class ListenTRecommendableViewCell: UITableViewCell {
             self.subLabel.text = model.recReason
             self.tracksLabel.text = "\(model.tracks)集"
             
-            var tagString:String?
+            var tagString: String?
             if model.playsCounts > 100000000 {
                 tagString = String(format: "%.1f亿", Double(model.playsCounts) / 100000000)
             } else if model.playsCounts > 10000 {

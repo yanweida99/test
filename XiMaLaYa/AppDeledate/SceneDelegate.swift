@@ -8,8 +8,8 @@
 
 import UIKit
 import ESTabBarController_swift
-import SwiftMessages
 
+@available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?

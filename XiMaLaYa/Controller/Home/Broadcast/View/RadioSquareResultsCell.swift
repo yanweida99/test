@@ -13,16 +13,16 @@ protocol RadioSquareResultsCellDelegate: NSObjectProtocol {
 }
 
 class RadioSquareResultsCell: UICollectionViewCell {
-    weak var delegate : RadioSquareResultsCellDelegate?
+    weak var delegate: RadioSquareResultsCellDelegate?
     
-    private var radioSquareResults:[RadioSquareResultsModel]?
+    private var radioSquareResults: [RadioSquareResultsModel]?
     // 懒加载九宫格分类按钮
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout.init()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
-        layout.itemSize = CGSize(width:ScreenWidth/5, height:self.frame.size.height)
+        layout.itemSize = CGSize(width: ScreenWidth/5, height:self.frame.size.height)
         let collectionView = UICollectionView.init(frame:.zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -35,17 +35,17 @@ class RadioSquareResultsCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(self.collectionView)
-        self.collectionView.snp.makeConstraints { (make) in
+        self.collectionView.snp.makeConstraints { make in
             make.left.right.height.width.equalToSuperview()
         }
     }
     
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
-    var radioSquareResultsModel : [RadioSquareResultsModel]? {
+    var radioSquareResultsModel: [RadioSquareResultsModel]? {
         didSet {
             guard let model = radioSquareResultsModel else {return}
             self.radioSquareResults = model
@@ -67,13 +67,13 @@ extension RadioSquareResultsCell: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let uriString:String = (self.radioSquareResults?[indexPath.row].uri)!
-        let title :String = (self.radioSquareResults?[indexPath.row].title)!
+        let uriString: String = (self.radioSquareResults?[indexPath.row].uri)!
+        let title: String = (self.radioSquareResults?[indexPath.row].title)!
         let url = getUrlAPI(url: uriString)
         delegate?.radioSquareResultsCellItemClick(url: url,title:title)
     }
     
-    func getUrlAPI(url:String) -> String {
+    func getUrlAPI(url: String) -> String {
         // 判断是否有参数
         if !url.contains("?") {
             return ""
@@ -90,8 +90,8 @@ extension RadioSquareResultsCell: UICollectionViewDataSource, UICollectionViewDe
             for keyValuePair in urlComponents {
                 // 生成Key/Value
                 let pairComponents = keyValuePair.split(separator: "=")
-                let key:String = String(pairComponents[0])
-                let value:String = String(pairComponents[1])
+                let key: String = String(pairComponents[0])
+                let value: String = String(pairComponents[1])
                 
                 params[key] = value
             }
@@ -103,11 +103,11 @@ extension RadioSquareResultsCell: UICollectionViewDataSource, UICollectionViewDe
                 return "nil"
             }
             
-            let key:String = String(pairComponents[0])
-            let value:String = String(pairComponents[1])
+            let key: String = String(pairComponents[0])
+            let value: String = String(pairComponents[1])
             params[key] = value as AnyObject
         }
-        guard let api = params["api"] else{return ""}
+        guard let api = params["api"] else {return ""}
         return api as! String
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class ClassifySubModuleType20Cell: UICollectionViewCell {
-    private var albums:[ClassifyModuleType20List]?
+    private var albums: [ClassifyModuleType20List]?
     // 图片
     private lazy var imageView:UIImageView = {
         let imageView = UIImageView()
@@ -58,7 +58,7 @@ class ClassifySubModuleType20Cell: UICollectionViewCell {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
         self.addSubview(self.imageView)
-        self.imageView.snp.makeConstraints { (make) in
+        self.imageView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-15)
@@ -66,14 +66,14 @@ class ClassifySubModuleType20Cell: UICollectionViewCell {
         }
         
         self.imageView.addSubview(self.titleLabel)
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleLabel.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
             make.height.equalTo(30)
         }
         
         self.imageView.addSubview(self.moreBtn)
-        self.moreBtn.snp.makeConstraints { (make) in
+        self.moreBtn.snp.makeConstraints { make in
             make.top.equalTo(self.titleLabel.snp.bottom).offset(10)
             make.width.equalTo(150)
             make.height.equalTo(30)
@@ -81,7 +81,7 @@ class ClassifySubModuleType20Cell: UICollectionViewCell {
         }
         
         self.addSubview(self.collectionView)
-        self.collectionView.snp.makeConstraints { (make) in
+        self.collectionView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
             make.top.equalTo(self.imageView.snp.bottom).offset(15)
         }
@@ -97,8 +97,8 @@ class ClassifySubModuleType20Cell: UICollectionViewCell {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     
