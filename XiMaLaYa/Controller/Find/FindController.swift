@@ -9,9 +9,9 @@
 import UIKit
 
 class FindController: UIViewController {
-
+    
     private lazy var categoryView: CategoryView = {
-        let view = CategoryView.init(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: 190))
+        let view = CategoryView.init(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 190))
         view.backgroundColor = UIColor.white
         return view
     }()
@@ -41,25 +41,13 @@ class FindController: UIViewController {
     }()
     
     private lazy var advancedManager: LTAdvancedManager = {
-//        if #available(iOS 13.0, *) {
-//            let statusBarHeight = self.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-//        } else {
-//            let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
-//        }
         let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
-        let advancedManager = LTAdvancedManager(frame: CGRect(x: 0, y: NavBarHeight, width: ScreenWidth, height: ScreenHeight - NavBarHeight), viewControllers: viewControllers, titles: titles, currentViewController: self, layout: layout, headerViewHandle: { [weak self] in
+        let advancedManager = LTAdvancedManager(frame: CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight), viewControllers: viewControllers, titles: titles, currentViewController: self, layout: layout, headerViewHandle: { [weak self] in
             guard let strongSelf = self else { return UIView() }
             let headerView = strongSelf.categoryView
             return headerView
         })
-        // 设置代理 监听滚动
         advancedManager.delegate = self
-        // 设置悬停位置
-        //        advancedManager.hoverY = navigationBarHeight
-        // 点击切换滚动过程动画
-        //        advancedManager.isClickScrollAnimation = true
-        // 代码设置滚动到第几个位置
-        //        advancedManager.scrollToIndex(index: viewControllers.count - 1)
         return advancedManager
     }()
     
@@ -83,14 +71,8 @@ class FindController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.white
-//        if #available(iOS 11.0, *) {
-//            self.tableView.contentInsetAdjustmentBehavior = .never
-//        } else {
-            self.automaticallyAdjustsScrollViewInsets = false
-//        }
+        self.automaticallyAdjustsScrollViewInsets = false
         view.addSubview(advancedManager)
         advancedManagerConfigure()
         
@@ -108,27 +90,13 @@ class FindController: UIViewController {
     @objc func rightBarButtonClick() {
         
     }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension FindController: LTAdvancedScrollViewDelegate {
-    // 具体使用请参考以下
     private func advancedManagerConfigure() {
         // 选中事件
         advancedManager.advancedDidSelectIndexHandle = {
-            print("选中了 -> \($0)")
+            print("选中了 -> \(self.titles[$0])")
         }
     }
     

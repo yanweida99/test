@@ -40,10 +40,10 @@ class ClassifySubModuleType20Cell: UICollectionViewCell {
         layout.sectionInset = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 15)
         layout.minimumInteritemSpacing = 5
         layout.minimumLineSpacing = 5
-        layout.itemSize = CGSize(width:(ScreenWidth - 40) / 3, height:180)
+        layout.itemSize = CGSize(width:(kScreenWidth - 40) / 3, height:180)
         layout.scrollDirection = UICollectionView.ScrollDirection.horizontal
         let collectionView = UICollectionView.init(frame:.zero, collectionViewLayout: layout)
-        collectionView.contentSize = CGSize.init(width: ScreenWidth - 40, height: 180)
+        collectionView.contentSize = CGSize.init(width: kScreenWidth - 40, height: 180)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = UIColor.white

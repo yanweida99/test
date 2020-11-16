@@ -30,10 +30,10 @@ class MineSetController: UIViewController {
     
     // 懒加载TableView
     private lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame:CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight), style: UITableView.Style.plain)
+        let tableView = UITableView.init(frame:CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight), style: UITableView.Style.plain)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = DownColor
+        tableView.backgroundColor = kBackgroundColor
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return tableView
     }()
@@ -45,15 +45,6 @@ class MineSetController: UIViewController {
         self.navigationItem.title = "设置"
         self.view.addSubview(self.tableView)
     }
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    
 }
 
 extension MineSetController: UITableViewDelegate, UITableViewDataSource {
@@ -87,7 +78,7 @@ extension MineSetController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView()
-        footerView.backgroundColor = DownColor
+        footerView.backgroundColor = kBackgroundColor
         return footerView
     }
 }

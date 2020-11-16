@@ -57,7 +57,7 @@ class ClassifySubHeaderCell: UICollectionViewCell {
             make.top.equalTo(self.pagerView.snp.bottom)
             make.height.equalTo(80)
         }
-        self.pagerView.itemSize = CGSize.init(width: ScreenWidth - 60, height: 140)
+        self.pagerView.itemSize = CGSize.init(width: kScreenWidth - 60, height: 140)
     }
     
     var focusModel:FocusModel? {
@@ -140,14 +140,14 @@ extension ClassifySubHeaderCell:UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let num: Int = (self.classifyCategoryContentsList?.list?.count)!
         if num <= 6 {
-            return CGSize.init(width: ScreenWidth / CGFloat(num), height: 80)
+            return CGSize.init(width: kScreenWidth / CGFloat(num), height: 80)
         } else if num < 10 {
-            return CGSize.init(width: ScreenWidth / 6, height: 80)
+            return CGSize.init(width: kScreenWidth / 6, height: 80)
         } else {
             self.gridView.snp.updateConstraints { (make) in
                 make.height.equalTo(160)
             }
-            return CGSize.init(width: ScreenWidth / 5, height: 80)
+            return CGSize.init(width: kScreenWidth / 5, height: 80)
         }
     }
 }

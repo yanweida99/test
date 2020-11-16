@@ -96,17 +96,17 @@ extension RecommendViewModel {
         let count = self.homeRecommendList?[indexPath.section].list?.count
         let moduleType = self.homeRecommendList?[indexPath.section].moduleType
         if moduleType == "focus" {
-            return CGSize.init(width: ScreenWidth, height: 360)//test
+            return CGSize.init(width: kScreenWidth, height: 360)//test
         } else if moduleType == "square" || moduleType == "topBuzz" {
             return CGSize.zero
         } else if moduleType == "guessYouLike" || moduleType == "paidCategory" || moduleType == "categoriesForLong" || moduleType == "cityCategory" || moduleType == "live"{
-            return CGSize.init(width: ScreenWidth, height: CGFloat(HeaderAndFooterHeight + 180 * itemNums))
+            return CGSize.init(width: kScreenWidth, height: CGFloat(HeaderAndFooterHeight + 180 * itemNums))
         } else if moduleType == "categoriesForShort" || moduleType == "playlist" || moduleType == "categoriesForExplore"{
-            return CGSize.init(width: ScreenWidth, height: CGFloat(HeaderAndFooterHeight+120*count!))
+            return CGSize.init(width: kScreenWidth, height: CGFloat(HeaderAndFooterHeight+120*count!))
         } else if moduleType == "ad" {
-            return CGSize.init(width: ScreenWidth, height: 240)
+            return CGSize.init(width: kScreenWidth, height: 240)
         } else if moduleType == "oneKeyListen" {
-            return CGSize.init(width: ScreenWidth, height: 180)
+            return CGSize.init(width: kScreenWidth, height: 180)
         } else {
             return .zero
         }
@@ -118,7 +118,7 @@ extension RecommendViewModel {
         if moduleType == "focus" || moduleType == "square" || moduleType == "topBuzz" || moduleType == "ad" || section == 18 {
             return CGSize.zero
         } else {
-            return CGSize.init(width: ScreenHeight, height:40)
+            return CGSize.init(width: kScreenHeight, height:40)
         }
     }
     
@@ -128,7 +128,7 @@ extension RecommendViewModel {
         if moduleType == "focus" || moduleType == "square" {
             return CGSize.zero
         } else {
-            return CGSize.init(width: ScreenWidth, height: 10.0)
+            return CGSize.init(width: kScreenWidth, height: 10.0)
         }
     }
 }

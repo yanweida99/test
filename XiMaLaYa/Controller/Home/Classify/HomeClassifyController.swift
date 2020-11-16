@@ -23,7 +23,7 @@ class HomeClassifyController: UIViewController {
         collection.register(HomeClassifyHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeClassifyHeaderViewID)
         collection.register(HomeClassifyFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: HomeClassifyFooterViewID)
         
-        collection.backgroundColor = DownColor
+        collection.backgroundColor = kBackgroundColor
         return collection
     }()
     

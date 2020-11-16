@@ -101,26 +101,26 @@ extension ClassifySubRecommendViewModel {
         if moduleType == 14 {
             let num: Int = (self.classifyCategoryContentsList?[indexPath.section].list?.count)!
             if num >= 10 { // 这里是判断推荐页面滚动banner下面的分类按钮的高度
-                return CGSize.init(width: ScreenWidth, height: 310)
+                return CGSize.init(width: kScreenWidth, height: 310)
             } else {
-                return CGSize.init(width: ScreenWidth, height: 230)
+                return CGSize.init(width: kScreenWidth, height: 230)
             }
         } else if moduleType == 3 || moduleType == 5 || moduleType == 18{
             if cardClass == "horizontal" {
-                return CGSize.init(width:(ScreenWidth - 50) / 3,height:180)
+                return CGSize.init(width:(kScreenWidth - 50) / 3,height:180)
             } else {
-                return CGSize.init(width: ScreenWidth, height: 120)
+                return CGSize.init(width: kScreenWidth, height: 120)
             }
         } else if moduleType == 20{
-            return CGSize.init(width: ScreenWidth, height: 300)
+            return CGSize.init(width: kScreenWidth, height: 300)
         } else if moduleType == 19{
-            return CGSize.init(width: ScreenWidth, height: 200)
+            return CGSize.init(width: kScreenWidth, height: 200)
         } else if moduleType == 17{
-            return CGSize.init(width: ScreenWidth, height: 180)
+            return CGSize.init(width: kScreenWidth, height: 180)
         } else if moduleType == 16{
-            return CGSize.init(width:(ScreenWidth - 50) / 3,height:180)
+            return CGSize.init(width:(kScreenWidth - 50) / 3,height:180)
         } else if moduleType == 4{
-            return CGSize.init(width: ScreenWidth, height: 120)
+            return CGSize.init(width: kScreenWidth, height: 120)
         } else {
             return .zero
         }
@@ -132,12 +132,12 @@ extension ClassifySubRecommendViewModel {
         if moduleType == 14 || moduleType == 17 || moduleType == 20{
             return .zero
         }
-        return CGSize.init(width: ScreenWidth, height: 40)
+        return CGSize.init(width: kScreenWidth, height: 40)
     }
     
     // 分区尾视图size
     func referenceSizeForFooterInSection(section: Int) -> CGSize {
-        return CGSize.init(width: ScreenWidth, height: 10)
+        return CGSize.init(width: kScreenWidth, height: 10)
     }
 }
 

@@ -8,13 +8,7 @@
 
 import UIKit
 
-// 添加按钮点击代理方法
-protocol ProfileViewDelegate: NSObjectProtocol {
-    func shopViewButtonClick(tag: Int)
-}
-
 class ProfileView: UIView {
-    weak var delegate: ProfileViewDelegate?
     // 上下浮动的vip标签view
     private lazy var animationView: VIPAnimationView = {
         let view = VIPAnimationView()
@@ -155,9 +149,9 @@ class ProfileView: UIView {
     
     // 我的页面顶部视图的购买等按钮
     func setUpShopView() {
-        let margin: CGFloat = ScreenWidth / 10
+        let margin: CGFloat = kScreenWidth / 10
         let titleArray = ["已购", "优惠券", "喜点", "直播喜钻", "我的钱包"]
-        let dataArray = ["10", "2", "88", "66", "钱包"]
+        let dataArray = ["10", "2", "88", "66", "wallet"]
         for index in 0..<5 {
             let button = UIButton.init(frame: CGRect(x: margin * CGFloat(index) * 2 + margin / 2, y: 10, width: margin, height: margin))
             if index == 4 {
@@ -181,7 +175,6 @@ class ProfileView: UIView {
                 make.top.equalTo(button.snp.bottom).offset(10)
             })
             button.tag = index
-            button.addTarget(self, action: #selector(gridBtnClick(button:)), for: UIControl.Event.touchUpInside)
         }
     }
     
@@ -198,10 +191,6 @@ class ProfileView: UIView {
     // 停止动画
     func stopAnimationViewAnimation() {
         self.animationView.layer.removeAllAnimations()
-    }
-    // 购买等按钮点击事件
-    @objc func gridBtnClick(button: UIButton) {
-        delegate?.shopViewButtonClick(tag: button.tag)
     }
     
     required init?(coder: NSCoder) {

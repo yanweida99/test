@@ -126,13 +126,11 @@ extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollect
         } else if moduleType == "guessYouLike" || moduleType == "paidCategory" || moduleType == "categoriesForLong" || moduleType == "cityCategory"{
             // 横式排列布局cell
             let cell:RecommendGuessLikeCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendGuessLikeCellID, for: indexPath) as! RecommendGuessLikeCell
-            cell.delegate = self
             cell.recommendListData = viewModel.homeRecommendList?[indexPath.section].list
             return cell
         } else if moduleType == "categoriesForShort" || moduleType == "playlist" || moduleType == "categoriesForExplore"{
             // 竖式排列布局cell
             let cell: HotAudiobookCell = collectionView.dequeueReusableCell(withReuseIdentifier: HotAudiobookCellID, for: indexPath) as! HotAudiobookCell
-            cell.delegate = self
             cell.recommendListData = viewModel.homeRecommendList?[indexPath.section].list
             return cell
         } else if moduleType == "ad" {
@@ -206,7 +204,7 @@ extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollect
                     let vc = HomeGuessYouLikeMoreController()
                     self?.navigationController?.pushViewController(vc, animated: true)
                 } else if moduleType == "paidCategory" {
-                    let vc = HomeVIPController(isRecommendPush:true)
+                    let vc = HomeVIPController()
                     vc.title = "精品"
                     self?.navigationController?.pushViewController(vc, animated: true)
                 } else if moduleType == "live"{
@@ -236,7 +234,7 @@ extension HomeRecommendController:RecommendHeaderCellDelegate {
     func recommendHeaderBannerClick(url: String) {
         
         let status2 = MessageView.viewFromNib(layout: .statusLine)
-        status2.backgroundView.backgroundColor = ButtonColor
+        status2.backgroundView.backgroundColor = kButtonColor
         status2.bodyLabel?.textColor = UIColor.white
         status2.configureContent(body: "暂时没有点击功能")
         var status2Config = SwiftMessages.defaultConfig
@@ -271,25 +269,3 @@ extension HomeRecommendController:RecommendHeaderCellDelegate {
         }
     }
 }
-// - 点击猜你喜欢cell代理方法
-extension HomeRecommendController:RecommendGuessLikeCellDelegate {
-    func recommendGuessLikeCellItemClick(model: RecommendListModel) {
-        let vc = PlayDetailController(albumId: model.albumId)
-        self.navigationController?.pushViewController(vc, animated: true)
-        print("点击猜你喜欢")
-    }
-}
-
-// - 点击热门有声书等cell代理方法
-extension HomeRecommendController:HotAudiobookCellDelegate {
-    func hotAudiobookCellItemClick(model: RecommendListModel) {
-        let vc = PlayDetailController(albumId: model.albumId)
-        self.navigationController?.pushViewController(vc, animated: true)
-        print("点击热门有声书")
-    }
-}
-
-
-
-
-

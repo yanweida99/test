@@ -156,7 +156,7 @@ class AttentionTableViewCell: UITableViewCell {
             make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
             make.top.equalTo(self.desLabel.snp.bottom).offset(5)
-            make.height.equalTo((ScreenWidth - 30) / 3 + 20)
+            make.height.equalTo((kScreenWidth - 30) / 3 + 20)
         }
     }
     
@@ -191,7 +191,7 @@ class AttentionTableViewCell: UITableViewCell {
             } else if picNum > 6 {
                 num = 3
             }
-            let OnePicHeight = CGFloat((ScreenWidth - 30) / 3)
+            let OnePicHeight = CGFloat((kScreenWidth - 30) / 3)
             let picHeight = num * OnePicHeight
             self.collectionView.snp.updateConstraints { make in
                 make.height.equalTo(picHeight + 20)
@@ -207,7 +207,7 @@ class AttentionTableViewCell: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: 15)
         label.numberOfLines = 0
         label.text = model.text
-        height += label.sizeThatFits(CGSize(width: ScreenWidth - 30, height: CGFloat.infinity)).height
+        height += label.sizeThatFits(CGSize(width: kScreenWidth - 30, height: CGFloat.infinity)).height
         return height
     }
     
@@ -284,7 +284,7 @@ extension AttentionTableViewCell: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: (ScreenWidth - 30) / 3, height:(ScreenWidth - 30) / 3)
+        return CGSize.init(width: (kScreenWidth - 30) / 3, height:(kScreenWidth - 30) / 3)
     }
     
 }

@@ -8,13 +8,7 @@
 
 import UIKit
 
-// 添加cell点击代理方法
-protocol HotAudiobookCellDelegate: NSObjectProtocol {
-    func hotAudiobookCellItemClick(model: RecommendListModel)
-}
-
 class HotAudiobookCell: UICollectionViewCell {
-    weak var delegate: HotAudiobookCellDelegate?
     
     private var recommendList: [RecommendListModel]?
     
@@ -22,7 +16,7 @@ class HotAudiobookCell: UICollectionViewCell {
     private lazy var changeBtn:UIButton = {
         let button = UIButton.init(type: UIButton.ButtonType.custom)
         button.setTitle("换一批", for: UIControl.State.normal)
-        button.setTitleColor(ButtonColor, for: UIControl.State.normal)
+        button.setTitleColor(kButtonColor, for: UIControl.State.normal)
         button.backgroundColor = UIColor.init(red: 254/255.0, green: 232/255.0, blue: 227/255.0, alpha: 1)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 5.0
@@ -85,9 +79,6 @@ extension HotAudiobookCell: UICollectionViewDelegate, UICollectionViewDataSource
         cell.recommendData = self.recommendList?[indexPath.row]
         return cell
     }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.hotAudiobookCellItemClick(model: (self.recommendList?[indexPath.row])!)
-    }
     
     //每个分区的内边距
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -106,6 +97,6 @@ extension HotAudiobookCell: UICollectionViewDelegate, UICollectionViewDataSource
     
     //item 的尺寸
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: ScreenWidth - 30,height:120)
+        return CGSize.init(width: kScreenWidth - 30,height:120)
     }
 }

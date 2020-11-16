@@ -48,7 +48,7 @@ extension FindRecommendViewModel {
         } else if picNum > 6 {
             num = 3
         }
-        let onePictureHeight = CGFloat((ScreenWidth - 30) / 3)
+        let onePictureHeight = CGFloat((kScreenWidth - 30) / 3)
         let pictureHeight = num * onePictureHeight
         let textHeight: CGFloat = height(for: self.streamList?[indexPath.row])
         return 60 + 50 + pictureHeight + textHeight
@@ -61,7 +61,7 @@ extension FindRecommendViewModel {
         label.font = UIFont.systemFont(ofSize: 15)
         label.numberOfLines = 0
         label.text = model.content
-        height += label.sizeThatFits(CGSize(width: ScreenWidth - 30, height: CGFloat.infinity)).height + 10
+        height += label.sizeThatFits(CGSize(width: kScreenWidth - 30, height: CGFloat.infinity)).height + 10
         return height
     }
 }

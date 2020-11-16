@@ -57,9 +57,9 @@ extension HomeClassifyViewModel {
     // item 尺寸
     func sizeForItemAt(indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 || indexPath.section == 1 || indexPath.section == 2 {
-            return CGSize.init(width:(ScreenWidth - 10) / 4,height:40)
+            return CGSize.init(width:(kScreenWidth - 10) / 4,height:40)
         } else {
-            return CGSize.init(width:(ScreenWidth - 7.5) / 3,height:40)
+            return CGSize.init(width:(kScreenWidth - 7.5) / 3,height:40)
         }
     }
     
@@ -68,13 +68,13 @@ extension HomeClassifyViewModel {
         if section == 0 || section == 1 || section == 2 {
             return .zero
         } else {
-            return CGSize.init(width: ScreenHeight, height:30)
+            return CGSize.init(width: kScreenHeight, height:30)
         }
     }
     
     // 分区尾视图size
     func referenceSizeForFooterInSection(section: Int) -> CGSize {
-        return CGSize.init(width: ScreenWidth, height: 8.0)
+        return CGSize.init(width: kScreenWidth, height: 8.0)
     }
 }
 

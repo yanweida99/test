@@ -23,7 +23,6 @@ class RecommendHeaderCell: UICollectionViewCell {
     weak var delegate: RecommendHeaderCellDelegate?
     
     private lazy var pagerView: FSPagerView = {
-        
         let pagerView = FSPagerView()
         pagerView.delegate = self
         pagerView.dataSource = self
@@ -71,7 +70,7 @@ class RecommendHeaderCell: UICollectionViewCell {
             make.top.equalTo(self.pagerView.snp.bottom)
             make.height.equalTo(50)
         }
-        self.pagerView.itemSize = CGSize.init(width: ScreenWidth - 60, height: 140)
+        self.pagerView.itemSize = CGSize.init(width: kScreenWidth - 60, height: 140)
     }
     
     required init?(coder: NSCoder) {
@@ -102,7 +101,7 @@ class RecommendHeaderCell: UICollectionViewCell {
     }
 }
 
-extension RecommendHeaderCell:FSPagerViewDelegate,FSPagerViewDataSource{
+extension RecommendHeaderCell: FSPagerViewDelegate,FSPagerViewDataSource{
     func numberOfItems(in pagerView: FSPagerView) -> Int {
         return self.focus?.data?.count ?? 0
     }
@@ -130,7 +129,7 @@ extension RecommendHeaderCell: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if  indexPath.section == 0 {
+        if indexPath.section == 0 {
             let cell:RecommendGridCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendGridCell", for: indexPath) as! RecommendGridCell
             cell.square = self.square?[indexPath.row]
             return cell
@@ -143,9 +142,9 @@ extension RecommendHeaderCell: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0{
-            return CGSize.init(width: (ScreenWidth - 5)/5, height:80)
+            return CGSize.init(width: (kScreenWidth - 5)/5, height:80)
         } else {
-            return CGSize.init(width: ScreenWidth, height: 50)
+            return CGSize.init(width: kScreenWidth, height: 50)
         }
     }
     

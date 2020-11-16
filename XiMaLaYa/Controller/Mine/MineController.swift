@@ -9,35 +9,32 @@
 import UIKit
 
 class MineController: UIViewController {
-    private let makeTableViewCellID = "MakeTableViewCell"
+    private let mineTableViewCellID = "MineTableViewCell"
     
     private lazy var dataSource: Array = {
         return [
-            [["icon": "钱数", "title": "分享赚钱"],
-             ["icon":"沙漏", "title": "免流量服务"]],
-            [["icon":"扫一扫", "title": "扫一扫"],
-             ["icon":"月亮", "title": "夜间模式"]],
-            [["icon":"意见反馈", "title": "帮助与反馈"]]
+            [["icon": "coin", "title": "分享赚钱"], ["icon": "hourglass", "title": "免流量服务"]],
+            [["icon": "scan", "title": "扫一扫"], ["icon": "moon", "title": "夜间模式"]],
+            [["icon": "feedback", "title": "帮助与反馈"]]
         ]
     }()
     
     // 懒加载顶部头视图
     private lazy var profileView: ProfileView = {
-        let view = ProfileView.init(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: 300))
-        view.delegate = self
+        let view = ProfileView.init(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 300))
         return view
     }()
     
     // 懒加载TableView
     private lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight), style: UITableView.Style.plain)
+        let tableView = UITableView.init(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight), style: UITableView.Style.plain)
         tableView.contentInset = UIEdgeInsets(top: -CGFloat(kNavBarBottom), left: 0, bottom: 0, right: 0)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = DownColor
+        tableView.backgroundColor = kBackgroundColor
         tableView.tableHeaderView = profileView
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.register(MakeTableViewCell.self, forCellReuseIdentifier: makeTableViewCellID)
+        tableView.register(MineTableViewCell.self, forCellReuseIdentifier: mineTableViewCellID)
         return tableView
     }()
     
@@ -96,16 +93,6 @@ class MineController: UIViewController {
         let setVC = MineSetController()
         self.navigationController?.pushViewController(setVC, animated: true)
     }
-    
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    
 }
 
 // 委托
@@ -131,7 +118,7 @@ extension MineController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell: MakeTableViewCell = tableView.dequeueReusableCell(withIdentifier: makeTableViewCellID, for: indexPath) as! MakeTableViewCell
+            let cell: MineTableViewCell = tableView.dequeueReusableCell(withIdentifier: mineTableViewCellID, for: indexPath) as! MineTableViewCell
             cell.selectionStyle = .none
             return cell
         } else {
@@ -141,12 +128,7 @@ extension MineController: UITableViewDelegate, UITableViewDataSource {
             let dict: [String: String] = sectionArray[indexPath.row]
             cell.imageView?.image =  UIImage(named: dict["icon"] ?? "")
             cell.textLabel?.text = dict["title"]
-            if indexPath.section == 3 && indexPath.row == 1 {
-                let cellSwitch = UISwitch.init()
-                cell.accessoryView = cellSwitch
-            } else {
-                cell.accessoryType = .disclosureIndicator
-            }
+            cell.accessoryType = .disclosureIndicator
             return cell
         }
     }
@@ -157,7 +139,7 @@ extension MineController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView()
-        footerView.backgroundColor = DownColor
+        footerView.backgroundColor = kBackgroundColor
         return footerView
     }
     
@@ -170,25 +152,7 @@ extension MineController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
-        headerView.backgroundColor = DownColor
+        headerView.backgroundColor = kBackgroundColor
         return headerView
-    }
-    
-    // 控制向上滚动显示导航栏标题和左右按钮
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        if offsetY > 0 {
-            let alpha = offsetY / CGFloat(kNavBarBottom)
-            navBarBackgroundAlpha = alpha
-        } else {
-            navBarBackgroundAlpha = 0
-        }
-    }
-}
-
-// shopView按钮点击代理方法
-extension MineController: ProfileViewDelegate {
-    func shopViewButtonClick(tag: Int) {
-        
     }
 }

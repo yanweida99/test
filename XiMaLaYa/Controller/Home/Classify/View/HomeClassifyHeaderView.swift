@@ -12,7 +12,7 @@ class HomeClassifyHeaderView: UICollectionReusableView {
     
     lazy var view: UIView = {
         let view = UIView()
-        view.backgroundColor = ButtonColor
+        view.backgroundColor = kButtonColor
         return view
     }()
     
@@ -24,7 +24,7 @@ class HomeClassifyHeaderView: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = DownColor
+        self.backgroundColor = kBackgroundColor
         self.addSubview(self.view)
         self.view.snp.makeConstraints { make in
             make.left.equalTo(10)

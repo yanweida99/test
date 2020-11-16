@@ -9,11 +9,13 @@
 import UIKit
 import ESTabBarController_swift
 
-class IrregularityBasicContentView: BouncesContentView {
+
+class IrregularityBasicContentView: ESTabBarItemContentView {
+    
+    public var duration = 0.3
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         textColor = UIColor.init(white: 175.0 / 255.0, alpha: 1.0)
         highlightTextColor = UIColor.init(red: 254 / 255.0, green: 73 / 255.0, blue: 42 / 255.0, alpha: 1.0)
         iconColor = UIColor.init(white: 175.0 / 255.0, alpha: 1.0)
@@ -23,13 +25,29 @@ class IrregularityBasicContentView: BouncesContentView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-
-}
-class IrregularityContentView: ESTabBarItemContentView {
     
+    override func selectAnimation(animated: Bool, completion: (() -> ())?) {
+        self.bounceAnimation()
+        completion?()
+    }
+    
+    override func reselectAnimation(animated: Bool, completion: (() -> ())?) {
+        self.bounceAnimation()
+        completion?()
+    }
+    
+    func bounceAnimation() {
+        let impliesAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+        impliesAnimation.values = [1.0 ,1.4, 0.9, 1.15, 0.95, 1.02, 1.0]
+        impliesAnimation.duration = duration * 2
+        impliesAnimation.calculationMode = CAAnimationCalculationMode.cubic
+        imageView.layer.add(impliesAnimation, forKey: nil)
+    }
+}
+
+class IrregularityContentView: ESTabBarItemContentView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         self.imageView.backgroundColor = UIColor.init(red: 250 / 255.0, green: 48 / 255.0, blue: 32 / 255.0, alpha: 1.0)
         self.imageView.layer.borderWidth = 2.0
         self.imageView.layer.borderColor = UIColor.init(white: 235 / 255.0, alpha: 1.0).cgColor
@@ -49,11 +67,6 @@ class IrregularityContentView: ESTabBarItemContentView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-    }
-    
-    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        let p = CGPoint.init(x: point.x - imageView.frame.origin.x, y: point.y - imageView.frame.origin.y)
-        return sqrt(pow(imageView.bounds.size.width / 2.0 - p.x, 2) + pow(imageView.bounds.size.height / 2.0 - p.y, 2)) < imageView.bounds.size.width / 2.0
     }
     
     override func updateLayout() {

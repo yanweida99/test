@@ -62,9 +62,9 @@ class ClassifySubMenuController: UIViewController {
         style.isShowBottomLine = true
         style.titleSelectedColor = UIColor.black
         style.titleColor = UIColor.gray
-        style.bottomLineColor = ButtonColor
+        style.bottomLineColor = kButtonColor
         style.bottomLineHeight = 2
-        style.titleViewBackgroundColor = DownColor
+        style.titleViewBackgroundColor = kBackgroundColor
         
         // 创建每一页对应的controller
         var viewControllers = [UIViewController]()
@@ -81,7 +81,7 @@ class ClassifySubMenuController: UIViewController {
         for vc in viewControllers{
             self.addChild(vc)
         }
-        let pageView = PageView(frame: CGRect(x: 0, y: NavBarHeight, width: ScreenWidth, height: ScreenHeight - NavBarHeight), style: style, titles: nameArray as! [String], childViewControllers: viewControllers)
+        let pageView = PageView(frame: CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight), style: style, titles: nameArray as! [String], childViewControllers: viewControllers)
         view.addSubview(pageView)
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 fileprivate let WRDefaultTitleSize:CGFloat = 18
 fileprivate let WRDefaultTitleColor = UIColor.black
 fileprivate let WRDefaultBackgroundColor = UIColor.white
-fileprivate let WRScreenWidth = UIScreen.main.bounds.size.width
+fileprivate let WRkScreenWidth = UIScreen.main.bounds.size.width
 
 
 // MARK: - Router
@@ -159,7 +159,7 @@ class WRCustomNavigationBar: UIView
     
     // init
     class func CustomNavigationBar() -> WRCustomNavigationBar {
-        let frame = CGRect(x: 0, y: 0, width: WRScreenWidth, height: CGFloat(navBarBottom))
+        let frame = CGRect(x: 0, y: 0, width: WRkScreenWidth, height: CGFloat(navBarBottom))
         return WRCustomNavigationBar(frame: frame)
     }
     
@@ -197,9 +197,9 @@ class WRCustomNavigationBar: UIView
         backgroundView.frame = self.bounds
         backgroundImageView.frame = self.bounds
         leftButton.frame = CGRect(x: margin, y: top, width: buttonWidth, height: buttonHeight)
-        rightButton.frame = CGRect(x: WRScreenWidth-buttonWidth-margin, y: top, width: buttonWidth, height: buttonHeight)
-        titleLabel.frame = CGRect(x: (WRScreenWidth-titleLabelWidth)/2.0, y: top, width: titleLabelWidth, height: titleLabelHeight)
-        bottomLine.frame = CGRect(x: 0, y: bounds.height-0.5, width: WRScreenWidth, height: 0.5)
+        rightButton.frame = CGRect(x: WRkScreenWidth-buttonWidth-margin, y: top, width: buttonWidth, height: buttonHeight)
+        titleLabel.frame = CGRect(x: (WRkScreenWidth-titleLabelWidth)/2.0, y: top, width: titleLabelWidth, height: titleLabelHeight)
+        bottomLine.frame = CGRect(x: 0, y: bounds.height-0.5, width: WRkScreenWidth, height: 0.5)
     }
 }
 

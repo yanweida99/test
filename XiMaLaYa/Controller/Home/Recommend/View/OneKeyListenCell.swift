@@ -13,7 +13,7 @@ class OneKeyListenCell: UICollectionViewCell {
     private lazy var changeBtn:UIButton = {
         let button = UIButton.init(type: UIButton.ButtonType.custom)
         button.setTitle("换一批", for: UIControl.State.normal)
-        button.setTitleColor(ButtonColor, for: UIControl.State.normal)
+        button.setTitleColor(kButtonColor, for: UIControl.State.normal)
         button.backgroundColor = UIColor.init(red: 254/255.0, green: 232/255.0, blue: 227/255.0, alpha: 1)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 5.0
@@ -26,7 +26,7 @@ class OneKeyListenCell: UICollectionViewCell {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
-        layout.itemSize = CGSize(width: (ScreenWidth - 45) / 3, height:120)
+        layout.itemSize = CGSize(width: (kScreenWidth - 45) / 3, height:120)
         let collectionView = UICollectionView.init(frame:.zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self

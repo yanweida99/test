@@ -11,7 +11,7 @@ import UIKit
 class HomeClassifyFooterView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = DownColor
+        self.backgroundColor = kBackgroundColor
     }
     
     required init?(coder: NSCoder) {

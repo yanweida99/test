@@ -12,8 +12,6 @@ class HomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.white
         setupPageStyle()
     }
@@ -26,10 +24,6 @@ class HomeController: UIViewController {
         style.isTitleScaleEnabled = true
         style.titleSelectedColor = UIColor.red
         style.titleColor = UIColor.gray
-        // 标题下划线
-        // style.isShowBottomLine = true
-        // style.bottomLineColor = ButtonColor
-        // style.bottomLineHeight = 2
         
         let titles = ["推荐", "分类", "VIP", "直播", "广播"]
         let viewControllers: [UIViewController] = [HomeRecommendController(),
@@ -40,20 +34,8 @@ class HomeController: UIViewController {
         for vc in viewControllers {
             self.addChild(vc)
         }
-        let pageView = PageView(frame: CGRect(x: 0, y: NavBarHeight, width: ScreenWidth, height: ScreenHeight - NavBarHeight - 44), style: style, titles: titles, childViewControllers: viewControllers)
+        let pageView = PageView(frame: CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight - 44), style: style, titles: titles, childViewControllers: viewControllers)
         pageView.contentView.backgroundColor = UIColor.red
         view.addSubview(pageView)
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

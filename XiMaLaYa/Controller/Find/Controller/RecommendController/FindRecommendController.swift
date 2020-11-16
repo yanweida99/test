@@ -13,7 +13,7 @@ class FindRecommendController: UIViewController, LTTableViewProtocal {
     private let RecommendTableViewCellID = "RecommendTableViewCell"
     
     private lazy var tableView: UITableView = {
-        let tableView = tableViewConfig(CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight - NavBarHeight - TabBarHeight), self, self, nil)
+        let tableView = tableViewConfig(CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - kNavBarHeight - kTabBarHeight), self, self, nil)
         tableView.register(RecommendTableViewCell.self, forCellReuseIdentifier: RecommendTableViewCellID)
         return tableView
     }()

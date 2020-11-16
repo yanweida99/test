@@ -760,8 +760,8 @@ extension UIViewController: WRAwakeProtocol
     {
         let viewFrame = view.frame
         let maxFrame = UIScreen.main.bounds
-        let middleFrame = CGRect(x: 0, y: WRNavigationBar.navBarBottom(), width: WRNavigationBar.screenWidth(), height: WRNavigationBar.screenHeight()-WRNavigationBar.navBarBottom())
-        let minFrame = CGRect(x: 0, y: WRNavigationBar.navBarBottom(), width: WRNavigationBar.screenWidth(), height: WRNavigationBar.screenHeight()-WRNavigationBar.navBarBottom()-WRNavigationBar.tabBarHeight())
+        let middleFrame = CGRect(x: 0, y: WRNavigationBar.navBarBottom(), width: WRNavigationBar.kScreenWidth(), height: WRNavigationBar.kScreenHeight()-WRNavigationBar.navBarBottom())
+        let minFrame = CGRect(x: 0, y: WRNavigationBar.navBarBottom(), width: WRNavigationBar.kScreenWidth(), height: WRNavigationBar.kScreenHeight()-WRNavigationBar.navBarBottom()-WRNavigationBar.kTabBarHeight())
         // 蝙蝠🦇
         let isBat = viewFrame.equalTo(maxFrame) || viewFrame.equalTo(middleFrame) || viewFrame.equalTo(minFrame)
         if self.navigationController != nil && isBat == true {
@@ -932,13 +932,13 @@ extension WRNavigationBar
     class func navBarBottom() -> Int {
         return self.isIphoneX() ? 88 : 64;
     }
-    class func tabBarHeight() -> Int {
+    class func kTabBarHeight() -> Int {
         return self.isIphoneX() ? 83 : 49;
     }
-    class func screenWidth() -> Int {
+    class func kScreenWidth() -> Int {
         return Int(UIScreen.main.bounds.size.width)
     }
-    class func screenHeight() -> Int {
+    class func kScreenHeight() -> Int {
         return Int(UIScreen.main.bounds.size.height)
     }
 }

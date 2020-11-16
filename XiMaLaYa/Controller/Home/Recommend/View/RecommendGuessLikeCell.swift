@@ -8,22 +8,14 @@
 
 import UIKit
 
-// 添加cell点击代理方法
-protocol RecommendGuessLikeCellDelegate: NSObjectProtocol {
-    func recommendGuessLikeCellItemClick(model:RecommendListModel)
-}
-
 class RecommendGuessLikeCell: UICollectionViewCell {
-    
-    weak var delegate: RecommendGuessLikeCellDelegate?
-    
     private var recommendList: [RecommendListModel]?
     
     private let GuessYouLikeCellID = "GuessYouLikeCell"
     private lazy var changeBtn:UIButton = {
         let button = UIButton.init(type: UIButton.ButtonType.custom)
         button.setTitle("换一批", for: UIControl.State.normal)
-        button.setTitleColor(ButtonColor, for: UIControl.State.normal)
+        button.setTitleColor(kButtonColor, for: UIControl.State.normal)
         button.backgroundColor = UIColor.init(red: 254/255.0, green: 232/255.0, blue: 227/255.0, alpha: 1)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 5.0
@@ -105,11 +97,7 @@ extension RecommendGuessLikeCell: UICollectionViewDelegate, UICollectionViewData
         cell.recommendData = self.recommendList?[indexPath.row]
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.recommendGuessLikeCellItemClick(model: (self.recommendList?[indexPath.row])!)
-    }
-    
+
     //每个分区的内边距
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0);
@@ -127,7 +115,7 @@ extension RecommendGuessLikeCell: UICollectionViewDelegate, UICollectionViewData
     
     //item 的尺寸
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width:(ScreenWidth - 55) / 3,height:180)
+        return CGSize.init(width:(kScreenWidth - 55) / 3,height:180)
     }
 }
 

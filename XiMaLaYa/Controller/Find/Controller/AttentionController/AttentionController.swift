@@ -13,7 +13,7 @@ class AttentionController: UIViewController, LTTableViewProtocal {
     private let AttentionTableViewCellID = "AttentionTableViewCell"
     
     private lazy var tableView: UITableView = {
-        let tableView = tableViewConfig(CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight - NavBarHeight - TabBarHeight), self, self, nil)
+        let tableView = tableViewConfig(CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - kNavBarHeight - kTabBarHeight), self, self, nil)
         tableView.register(AttentionTableViewCell.self, forCellReuseIdentifier: AttentionTableViewCellID)
         return tableView
     }()

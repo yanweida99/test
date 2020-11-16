@@ -78,18 +78,9 @@ class VIPAnimationView: UIView {
             make.width.height.equalTo(20)
             make.top.equalTo(20)
         }
-        
-        
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    
 }

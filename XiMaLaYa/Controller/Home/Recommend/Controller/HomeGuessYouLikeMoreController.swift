@@ -11,7 +11,7 @@ import UIKit
 class HomeGuessYouLikeMoreController: UIViewController {
     var guessYouLikeList: [GuessYouLikeModel]?
     
-    let HotAudiobookCellID = "HotAudiobookCell"
+    let LBHotAudiobookCellID = "LBHotAudiobookCellID"
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout.init()
         let collectionView = UICollectionView.init(frame:.zero, collectionViewLayout: layout)
@@ -19,7 +19,7 @@ class HomeGuessYouLikeMoreController: UIViewController {
         collectionView.dataSource = self
         collectionView.backgroundColor = UIColor.white
         collectionView.alwaysBounceVertical = true
-        collectionView.register(HotAudiobookCell.self, forCellWithReuseIdentifier: HotAudiobookCellID)
+        collectionView.register(LBHotAudiobookCell.self, forCellWithReuseIdentifier: LBHotAudiobookCellID)
         return collectionView
     }()
     
@@ -56,7 +56,7 @@ extension HomeGuessYouLikeMoreController: UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell:LBHotAudiobookCell = collectionView.dequeueReusableCell(withReuseIdentifier: HotAudiobookCellID, for: indexPath) as! LBHotAudiobookCell
+        let cell:LBHotAudiobookCell = collectionView.dequeueReusableCell(withReuseIdentifier: LBHotAudiobookCellID, for: indexPath) as! LBHotAudiobookCell
         cell.guessYouLikeModel = self.guessYouLikeList?[indexPath.row]
         return cell
     }
@@ -78,6 +78,6 @@ extension HomeGuessYouLikeMoreController: UICollectionViewDelegate, UICollection
     
     // item 的尺寸
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: ScreenWidth - 30,height:120)
+        return CGSize.init(width: kScreenWidth - 30,height:120)
     }
 }

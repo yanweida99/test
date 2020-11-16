@@ -14,7 +14,7 @@ class HomeRecommendLiveCell: UICollectionViewCell {
     private lazy var changeBtn:UIButton = {
         let button = UIButton.init(type: UIButton.ButtonType.custom)
         button.setTitle("换一批", for: UIControl.State.normal)
-        button.setTitleColor(ButtonColor, for: UIControl.State.normal)
+        button.setTitleColor(kButtonColor, for: UIControl.State.normal)
         button.backgroundColor = UIColor.init(red: 254/255.0, green: 232/255.0, blue: 227/255.0, alpha: 1)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 5.0
@@ -118,6 +118,6 @@ extension HomeRecommendLiveCell: UICollectionViewDelegate, UICollectionViewDataS
     
     //item 的尺寸
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width:(ScreenWidth - 55) / 3,height:180)
+        return CGSize.init(width:(kScreenWidth - 55) / 3,height:180)
     }
 }

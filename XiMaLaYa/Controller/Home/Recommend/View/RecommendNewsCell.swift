@@ -30,10 +30,10 @@ class RecommendNewsCell: UICollectionViewCell {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
-        layout.itemSize = CGSize(width: (ScreenWidth - 150), height:40)
-        let collectionView = UICollectionView.init(frame:CGRect(x:80,y:5, width: ScreenWidth-150, height:40), collectionViewLayout: layout)
+        layout.itemSize = CGSize(width: (kScreenWidth - 150), height:40)
+        let collectionView = UICollectionView.init(frame:CGRect(x:80,y:5, width: kScreenWidth-150, height:40), collectionViewLayout: layout)
         layout.scrollDirection = UICollectionView.ScrollDirection.vertical
-        collectionView.contentSize = CGSize(width: (ScreenWidth - 150), height: 40)
+        collectionView.contentSize = CGSize(width: (kScreenWidth - 150), height: 40)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = UIColor.white

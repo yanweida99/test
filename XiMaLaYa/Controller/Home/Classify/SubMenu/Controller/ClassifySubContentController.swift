@@ -28,7 +28,7 @@ class ClassifySubContentController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
-        layout.itemSize = CGSize(width: ScreenWidth - 15, height:120)
+        layout.itemSize = CGSize(width: kScreenWidth - 15, height:120)
         let collection = UICollectionView.init(frame:.zero, collectionViewLayout: layout)
         collection.delegate = self
         collection.dataSource = self
@@ -78,12 +78,6 @@ extension ClassifySubContentController: UICollectionViewDelegate, UICollectionVi
         let cell:ClassifySubVerticalCell = collectionView.dequeueReusableCell(withReuseIdentifier: ClassifySubVerticalCellID, for: indexPath) as! ClassifySubVerticalCell
         cell.classifyVerticalModel = self.classifyVerticallist?[indexPath.row]
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let albumId = self.classifyVerticallist?[indexPath.row].albumId ?? 0
-        let vc = PlayController(albumId:albumId)
-        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

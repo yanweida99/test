@@ -69,7 +69,7 @@ extension RecommendForYouCell: UICollectionViewDelegate, UICollectionViewDataSou
     
     //item 的尺寸
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: ScreenWidth - 30,height:100)
+        return CGSize.init(width: kScreenWidth - 30,height:100)
     }
 }
 
