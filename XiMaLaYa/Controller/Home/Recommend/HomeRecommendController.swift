@@ -47,22 +47,19 @@ class HomeRecommendController: UIViewController {
         collection.register(RecommendHeaderCell.self, forCellWithReuseIdentifier: RecommendHeaderCellID)
         // 猜你喜欢
         collection.register(RecommendGuessLikeCell.self, forCellWithReuseIdentifier: RecommendGuessLikeCellID)
-        // 热门有声书
-        collection.register(HotAudiobookCell.self, forCellWithReuseIdentifier: HotAudiobookCellID)
         // 广告
         collection.register(AdvertCell.self, forCellWithReuseIdentifier: AdvertCellID)
-        // 懒人电台
-        collection.register(OneKeyListenCell.self, forCellWithReuseIdentifier: OneKeyListenCellID)
         // 为你推荐
         collection.register(RecommendForYouCell.self, forCellWithReuseIdentifier: RecommendForYouCellID)
         // 推荐直播
         collection.register(HomeRecommendLiveCell.self, forCellWithReuseIdentifier: HomeRecommendLiveCellID)
-        collection.uHead = URefreshHeader{ [weak self] in self?.setupLoadData() }
         return collection
     }()
+    
     lazy var viewModel: RecommendViewModel = {
         return RecommendViewModel()
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // 添加滑动视图
@@ -71,7 +68,6 @@ class HomeRecommendController: UIViewController {
             make.width.height.equalToSuperview()
             make.center.equalToSuperview()
         }
-        self.collectionView.uHead.beginRefreshing()
         setupLoadData()
         setupLoadRecommendAdData()
     }
@@ -79,12 +75,12 @@ class HomeRecommendController: UIViewController {
     func setupLoadData(){
         // 加载数据
         viewModel.updateDataBlock = { [unowned self] in
-            self.collectionView.uHead.endRefreshing()
             // 更新列表数据
             self.collectionView.reloadData()
         }
         viewModel.refreshDataSource()
     }
+    
     func setupLoadRecommendAdData() {
         // 首页穿插广告接口请求
         let api = HomeRecommendAPI.recommendAdList
@@ -103,7 +99,6 @@ class HomeRecommendController: UIViewController {
 }
 
 extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.numberOfSections(collectionView:collectionView)
     }
@@ -121,31 +116,19 @@ extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollect
             cell.focusModel = viewModel.focus
             cell.squareList = viewModel.squareList
             cell.topBuzzListData = viewModel.topBuzzList
-            cell.delegate = self
             return cell
-        } else if moduleType == "guessYouLike" || moduleType == "paidCategory" || moduleType == "categoriesForLong" || moduleType == "cityCategory"{
+        } else if moduleType == "guessYouLike"{
+            // 横式排列布局cell
+            let cell:RecommendGuessLikeCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendGuessLikeCellID, for: indexPath) as! RecommendGuessLikeCell
+            cell.recommendListData = viewModel.recommendList
+            return cell
+        } else if moduleType == "paidCategory"{
             // 横式排列布局cell
             let cell:RecommendGuessLikeCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendGuessLikeCellID, for: indexPath) as! RecommendGuessLikeCell
             cell.recommendListData = viewModel.homeRecommendList?[indexPath.section].list
             return cell
-        } else if moduleType == "categoriesForShort" || moduleType == "playlist" || moduleType == "categoriesForExplore"{
-            // 竖式排列布局cell
-            let cell: HotAudiobookCell = collectionView.dequeueReusableCell(withReuseIdentifier: HotAudiobookCellID, for: indexPath) as! HotAudiobookCell
-            cell.recommendListData = viewModel.homeRecommendList?[indexPath.section].list
-            return cell
         } else if moduleType == "ad" {
             let cell:AdvertCell = collectionView.dequeueReusableCell(withReuseIdentifier: AdvertCellID, for: indexPath) as! AdvertCell
-            if indexPath.section == 7 {
-                cell.adModel = self.recommnedAdvertList?[0]
-            } else if indexPath.section == 13 {
-                cell.adModel = self.recommnedAdvertList?[1]
-                // } else if indexPath.section == 17 {
-                // cell.adModel = self.recommnedAdvertList?[2]
-            }
-            return cell
-        } else if moduleType == "oneKeyListen" {
-            let cell:OneKeyListenCell = collectionView.dequeueReusableCell(withReuseIdentifier: OneKeyListenCellID, for: indexPath) as! OneKeyListenCell
-            cell.oneKeyListenList = viewModel.oneKeyListenList
             return cell
         } else if moduleType == "live" {
             let cell: HomeRecommendLiveCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeRecommendLiveCellID, for: indexPath) as! HomeRecommendLiveCell
@@ -154,15 +137,7 @@ extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollect
         } else {
             let cell:RecommendForYouCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendForYouCellID, for: indexPath) as! RecommendForYouCell
             return cell
-            
         }
-        //        let cell:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        //        return cell
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
     }
     
     // 每个分区的内边距
@@ -211,13 +186,6 @@ extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollect
                     let vc = HomeLiveController()
                     vc.title = "直播"
                     self?.navigationController?.pushViewController(vc, animated: true)
-                } else {
-                    guard let categoryId = self?.viewModel.homeRecommendList?[indexPath.section].target?.categoryId else {return}
-                    if categoryId != 0 {
-                        let vc = ClassifySubMenuController(categoryId:categoryId,isVipPush:false)
-                        vc.title = self?.viewModel.homeRecommendList?[indexPath.section].title
-                        self?.navigationController?.pushViewController(vc, animated: true)
-                    }
                 }
             }
             return headerView
@@ -226,46 +194,5 @@ extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollect
             return footerView
         }
         return UICollectionReusableView()
-    }
-}
-// - 点击顶部分类按钮进入相对应界面
-extension HomeRecommendController:RecommendHeaderCellDelegate {
-    
-    func recommendHeaderBannerClick(url: String) {
-        
-        let status2 = MessageView.viewFromNib(layout: .statusLine)
-        status2.backgroundView.backgroundColor = kButtonColor
-        status2.bodyLabel?.textColor = UIColor.white
-        status2.configureContent(body: "暂时没有点击功能")
-        var status2Config = SwiftMessages.defaultConfig
-        status2Config.presentationContext = .window(windowLevel: UIWindow.Level.normal)
-        status2Config.preferredStatusBarStyle = .lightContent
-        SwiftMessages.show(config: status2Config, view: status2)
-        
-    }
-    
-    func recommendHeaderBtnClick(categoryId: String,title: String,url: String){
-        if url == ""{
-            if categoryId == "0"{
-                let warning = MessageView.viewFromNib(layout: .cardView)
-                warning.configureTheme(.warning)
-                warning.configureDropShadow()
-                
-                let iconText = ["🤔", "😳", "🙄", "😶"].sm_random()!
-                warning.configureContent(title: "Warning", body: "暂时没有数据!!!", iconText: iconText)
-                warning.button?.isHidden = true
-                var warningConfig = SwiftMessages.defaultConfig
-                warningConfig.presentationContext = .window(windowLevel: UIWindow.Level.statusBar)
-                SwiftMessages.show(config: warningConfig, view: warning)
-            } else {
-                let vc = ClassifySubMenuController(categoryId: Int(categoryId)!)
-                vc.title = title
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-        } else {
-            let vc = WebViewController(url:url)
-            vc.title = title
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
     }
 }

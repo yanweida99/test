@@ -9,18 +9,10 @@
 import UIKit
 import FSPagerView
 
-// 添加按钮点击代理方法
-protocol RecommendHeaderCellDelegate:NSObjectProtocol {
-    func recommendHeaderBtnClick(categoryId: String,title: String,url: String)
-    func recommendHeaderBannerClick(url: String)
-}
-
 class RecommendHeaderCell: UICollectionViewCell {
     private var focus: FocusModel?
     private var square: [SquareModel]?
     private var topBuzzList: [TopBuzzModel]?
-    
-    weak var delegate: RecommendHeaderCellDelegate?
     
     private lazy var pagerView: FSPagerView = {
         let pagerView = FSPagerView()
@@ -51,7 +43,7 @@ class RecommendHeaderCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        /// 设置布局
+        // 设置布局
         setupLayOut()
     }
     
@@ -113,7 +105,6 @@ extension RecommendHeaderCell: FSPagerViewDelegate,FSPagerViewDataSource{
     
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
         let url: String = self.focus?.data?[index].link ?? ""
-        delegate?.recommendHeaderBannerClick(url: url)
     }
 }
 extension RecommendHeaderCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -146,20 +137,6 @@ extension RecommendHeaderCell: UICollectionViewDelegate, UICollectionViewDataSou
         } else {
             return CGSize.init(width: kScreenWidth, height: 50)
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let string = self.square?[indexPath.row].properties?.uri else {
-            let categoryId: String = "0"
-            let title: String = self.square?[indexPath.row].title ?? ""
-            let url: String = self.square?[indexPath.row].url ?? ""
-            delegate?.recommendHeaderBtnClick(categoryId:categoryId,title:title,url:url)
-            return
-        }
-        let categoryId: String = getUrlCategoryId(url:string)
-        let title: String = self.square?[indexPath.row].title ?? ""
-        let url: String = self.square?[indexPath.row].url ?? ""
-        delegate?.recommendHeaderBtnClick(categoryId:categoryId,title:title,url:url)
     }
     
     func getUrlCategoryId(url: String) -> String {

@@ -49,7 +49,7 @@ class HomeClassifyCell: UICollectionViewCell {
         }
     }
     
-    // 前三个分区第一个item的字体较小
+    // 带icon带item字体较小
     var indexPath: IndexPath? {
         didSet {
             guard let indexPath = indexPath else { return }

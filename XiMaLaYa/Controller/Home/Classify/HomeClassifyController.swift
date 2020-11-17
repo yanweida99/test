@@ -75,16 +75,6 @@ extension HomeClassifyController: UICollectionViewDelegateFlowLayout, UICollecti
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
-        let categoryId: Int = viewModel.classifyModel?[indexPath.section].itemList![indexPath.row].itemDetail?.categoryId ?? 0
-        let title = viewModel.classifyModel?[indexPath.section].itemList![indexPath.row].itemDetail?.title ?? ""
-        let vc = ClassifySubMenuController(categoryId: categoryId)
-        vc.title = title
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
     //每个分区的内边距
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return viewModel.insetForSectionAt(section: section)

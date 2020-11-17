@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		029018A92562703F00182688 /* RecommendList.json in Resources */ = {isa = PBXBuildFile; fileRef = 029018A825626ED800182688 /* RecommendList.json */; };
 		04817787A61F8FAAEAB27541 /* Pods_XiMaLaYa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6119E8ABDF2978A00C76CA9 /* Pods_XiMaLaYa.framework */; };
 		4332BAF224E4DE7F007EE662 /* FindController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BAF124E4DE7F007EE662 /* FindController.swift */; };
 		4332BAF524E4E37C007EE662 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332BAF424E4E37C007EE662 /* CategoryView.swift */; };
@@ -42,24 +43,6 @@
 		438C37FE24F34EAC0003F691 /* HomeClassifyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C37FD24F34EAC0003F691 /* HomeClassifyHeaderView.swift */; };
 		438C380024F34F150003F691 /* HomeClassifyFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C37FF24F34F150003F691 /* HomeClassifyFooterView.swift */; };
 		438C380224F34F660003F691 /* HomeClassifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C380124F34F660003F691 /* HomeClassifyCell.swift */; };
-		438C380A24F350260003F691 /* HomeClassifySubMenuAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C380924F350260003F691 /* HomeClassifySubMenuAPI.swift */; };
-		438C380C24F350F10003F691 /* ClassifySubMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C380B24F350F10003F691 /* ClassifySubMenuModel.swift */; };
-		438C380E24F351700003F691 /* ClassifySubRecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C380D24F351700003F691 /* ClassifySubRecommendViewModel.swift */; };
-		438C381024F351F70003F691 /* ClassifySubMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C380F24F351F70003F691 /* ClassifySubMenuController.swift */; };
-		438C381224F352350003F691 /* ClassifySubContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C381124F352350003F691 /* ClassifySubContentController.swift */; };
-		438C381424F352680003F691 /* ClassifySubRecommendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C381324F352680003F691 /* ClassifySubRecommendController.swift */; };
-		438C381624F352C00003F691 /* ClassifySubHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C381524F352C00003F691 /* ClassifySubHeaderView.swift */; };
-		438C381824F352E30003F691 /* ClassifySubFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C381724F352E30003F691 /* ClassifySubFooterView.swift */; };
-		438C381A24F353390003F691 /* ClassifySubCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C381924F353390003F691 /* ClassifySubCategoryCell.swift */; };
-		438C381C24F353C50003F691 /* ClassifySubHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C381B24F353C50003F691 /* ClassifySubHorizontalCell.swift */; };
-		438C381F24F353FB0003F691 /* ClassifySubVerticalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C381E24F353FB0003F691 /* ClassifySubVerticalCell.swift */; };
-		438C382124F3544B0003F691 /* ClassifySubModuleType20Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C382024F3544B0003F691 /* ClassifySubModuleType20Cell.swift */; };
-		438C382324F3545A0003F691 /* ClassifySubModuleType19Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C382224F3545A0003F691 /* ClassifySubModuleType19Cell.swift */; };
-		438C382524F3546B0003F691 /* ClassifySubModuleType17Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C382424F3546B0003F691 /* ClassifySubModuleType17Cell.swift */; };
-		438C382724F354760003F691 /* ClassifySubModuleType4Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C382624F354760003F691 /* ClassifySubModuleType4Cell.swift */; };
-		438C382924F3547F0003F691 /* ClassifySubModuleType16Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C382824F3547F0003F691 /* ClassifySubModuleType16Cell.swift */; };
-		438C382B24F354870003F691 /* ClassifySubModuleType23Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C382A24F354870003F691 /* ClassifySubModuleType23Cell.swift */; };
-		438C382D24F3549B0003F691 /* ClassifySubHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C382C24F3549B0003F691 /* ClassifySubHeaderCell.swift */; };
 		438C383524F356F40003F691 /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C383424F356F40003F691 /* RecommendViewModel.swift */; };
 		438C383724F357970003F691 /* RecommendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C383624F357960003F691 /* RecommendModel.swift */; };
 		438C383924F358140003F691 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C383824F358140003F691 /* WebViewController.swift */; };
@@ -103,6 +86,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		029018A825626ED800182688 /* RecommendList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecommendList.json; sourceTree = "<group>"; };
 		4332BAF124E4DE7F007EE662 /* FindController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindController.swift; sourceTree = "<group>"; };
 		4332BAF424E4E37C007EE662 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		4332BAF624E4E88D007EE662 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -139,24 +123,6 @@
 		438C37FD24F34EAC0003F691 /* HomeClassifyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeClassifyHeaderView.swift; sourceTree = "<group>"; };
 		438C37FF24F34F150003F691 /* HomeClassifyFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeClassifyFooterView.swift; sourceTree = "<group>"; };
 		438C380124F34F660003F691 /* HomeClassifyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeClassifyCell.swift; sourceTree = "<group>"; };
-		438C380924F350260003F691 /* HomeClassifySubMenuAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeClassifySubMenuAPI.swift; sourceTree = "<group>"; };
-		438C380B24F350F10003F691 /* ClassifySubMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubMenuModel.swift; sourceTree = "<group>"; };
-		438C380D24F351700003F691 /* ClassifySubRecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubRecommendViewModel.swift; sourceTree = "<group>"; };
-		438C380F24F351F70003F691 /* ClassifySubMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubMenuController.swift; sourceTree = "<group>"; };
-		438C381124F352350003F691 /* ClassifySubContentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubContentController.swift; sourceTree = "<group>"; };
-		438C381324F352680003F691 /* ClassifySubRecommendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubRecommendController.swift; sourceTree = "<group>"; };
-		438C381524F352C00003F691 /* ClassifySubHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubHeaderView.swift; sourceTree = "<group>"; };
-		438C381724F352E30003F691 /* ClassifySubFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubFooterView.swift; sourceTree = "<group>"; };
-		438C381924F353390003F691 /* ClassifySubCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubCategoryCell.swift; sourceTree = "<group>"; };
-		438C381B24F353C50003F691 /* ClassifySubHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubHorizontalCell.swift; sourceTree = "<group>"; };
-		438C381E24F353FB0003F691 /* ClassifySubVerticalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubVerticalCell.swift; sourceTree = "<group>"; };
-		438C382024F3544B0003F691 /* ClassifySubModuleType20Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubModuleType20Cell.swift; sourceTree = "<group>"; };
-		438C382224F3545A0003F691 /* ClassifySubModuleType19Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubModuleType19Cell.swift; sourceTree = "<group>"; };
-		438C382424F3546B0003F691 /* ClassifySubModuleType17Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubModuleType17Cell.swift; sourceTree = "<group>"; };
-		438C382624F354760003F691 /* ClassifySubModuleType4Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubModuleType4Cell.swift; sourceTree = "<group>"; };
-		438C382824F3547F0003F691 /* ClassifySubModuleType16Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubModuleType16Cell.swift; sourceTree = "<group>"; };
-		438C382A24F354870003F691 /* ClassifySubModuleType23Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubModuleType23Cell.swift; sourceTree = "<group>"; };
-		438C382C24F3549B0003F691 /* ClassifySubHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubHeaderCell.swift; sourceTree = "<group>"; };
 		438C383424F356F40003F691 /* RecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewModel.swift; sourceTree = "<group>"; };
 		438C383624F357960003F691 /* RecommendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendModel.swift; sourceTree = "<group>"; };
 		438C383824F358140003F691 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -375,7 +341,6 @@
 		438C37F024F349310003F691 /* Classify */ = {
 			isa = PBXGroup;
 			children = (
-				438C380324F34FC40003F691 /* SubMenu */,
 				438C37F624F34A870003F691 /* API */,
 				438C37F524F34A7E0003F691 /* Model */,
 				438C37F424F34A780003F691 /* ViewModel */,
@@ -419,71 +384,6 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		438C380324F34FC40003F691 /* SubMenu */ = {
-			isa = PBXGroup;
-			children = (
-				438C380824F34FF30003F691 /* Model */,
-				438C380724F34FE80003F691 /* API */,
-				438C380624F34FE30003F691 /* Controller */,
-				438C380524F34FDF0003F691 /* ViewModel */,
-				438C380424F34FD70003F691 /* View */,
-			);
-			path = SubMenu;
-			sourceTree = "<group>";
-		};
-		438C380424F34FD70003F691 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				438C381524F352C00003F691 /* ClassifySubHeaderView.swift */,
-				438C381724F352E30003F691 /* ClassifySubFooterView.swift */,
-				438C381924F353390003F691 /* ClassifySubCategoryCell.swift */,
-				438C381B24F353C50003F691 /* ClassifySubHorizontalCell.swift */,
-				438C381E24F353FB0003F691 /* ClassifySubVerticalCell.swift */,
-				438C382024F3544B0003F691 /* ClassifySubModuleType20Cell.swift */,
-				438C382224F3545A0003F691 /* ClassifySubModuleType19Cell.swift */,
-				438C382424F3546B0003F691 /* ClassifySubModuleType17Cell.swift */,
-				438C382624F354760003F691 /* ClassifySubModuleType4Cell.swift */,
-				438C382824F3547F0003F691 /* ClassifySubModuleType16Cell.swift */,
-				438C382A24F354870003F691 /* ClassifySubModuleType23Cell.swift */,
-				438C382C24F3549B0003F691 /* ClassifySubHeaderCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		438C380524F34FDF0003F691 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				438C380D24F351700003F691 /* ClassifySubRecommendViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		438C380624F34FE30003F691 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				438C380F24F351F70003F691 /* ClassifySubMenuController.swift */,
-				438C381124F352350003F691 /* ClassifySubContentController.swift */,
-				438C381324F352680003F691 /* ClassifySubRecommendController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		438C380724F34FE80003F691 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				438C380924F350260003F691 /* HomeClassifySubMenuAPI.swift */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
-		438C380824F34FF30003F691 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				438C380B24F350F10003F691 /* ClassifySubMenuModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		438C382E24F356100003F691 /* Recommend */ = {
 			isa = PBXGroup;
 			children = (
@@ -500,6 +400,7 @@
 		438C382F24F3563C0003F691 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				029018A825626ED800182688 /* RecommendList.json */,
 				43B3E47324F8D726003746B9 /* HomeRecommendAPI.swift */,
 			);
 			path = API;
@@ -762,6 +663,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				029018A92562703F00182688 /* RecommendList.json in Resources */,
 				4332BB4F24EBA963007EE662 /* FindRecommend.json in Resources */,
 				4332BB5024EBA963007EE662 /* FindDubbing.json in Resources */,
 				4332BB2F24E61C03007EE662 /* FindAttention.json in Resources */,
@@ -820,8 +722,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				438C381624F352C00003F691 /* ClassifySubHeaderView.swift in Sources */,
-				438C382724F354760003F691 /* ClassifySubModuleType4Cell.swift in Sources */,
 				4332BBBE24EF71A6007EE662 /* HomeLiveController.swift in Sources */,
 				4332BAF524E4E37C007EE662 /* CategoryView.swift in Sources */,
 				438C385524F3866C0003F691 /* RecommendNewsCell.swift in Sources */,
@@ -830,31 +730,23 @@
 				438C383524F356F40003F691 /* RecommendViewModel.swift in Sources */,
 				4332BB0724E50C68007EE662 /* AttentionTableViewCell.swift in Sources */,
 				4332BB4C24EBA288007EE662 /* DubbingTableViewCell.swift in Sources */,
-				438C382B24F354870003F691 /* ClassifySubModuleType23Cell.swift in Sources */,
-				438C380A24F350260003F691 /* HomeClassifySubMenuAPI.swift in Sources */,
 				4332BB3524E62B7A007EE662 /* RecommendTableViewCell.swift in Sources */,
 				4332BAF224E4DE7F007EE662 /* FindController.swift in Sources */,
 				43B3E47424F8D726003746B9 /* HomeRecommendAPI.swift in Sources */,
-				438C382324F3545A0003F691 /* ClassifySubModuleType19Cell.swift in Sources */,
 				43F7CD7C24E2619A0078D89E /* WRCycleScrollView.swift in Sources */,
 				43F7CD9824E28EC00078D89E /* IrregularityBasicContentView.swift in Sources */,
-				438C381424F352680003F691 /* ClassifySubRecommendController.swift in Sources */,
-				438C381024F351F70003F691 /* ClassifySubMenuController.swift in Sources */,
 				43F7CD6F24E2471A0078D89E /* NavigationController.swift in Sources */,
 				438C384B24F360650003F691 /* LBHotAudiobookCell.swift in Sources */,
 				438C385324F362870003F691 /* GuessYouLikeCell.swift in Sources */,
-				438C381C24F353C50003F691 /* ClassifySubHorizontalCell.swift in Sources */,
 				438C385124F361810003F691 /* RecommendGuessLikeCell.swift in Sources */,
 				438C385724F386A20003F691 /* RecommendGridCell.swift in Sources */,
 				438C387324F398FB0003F691 /* PlayController.swift in Sources */,
 				43B3E43824F7441C003746B9 /* HomeCategoryAPI.swift in Sources */,
 				43F7CD9324E27B880078D89E /* RadarLayerView.swift in Sources */,
-				438C381A24F353390003F691 /* ClassifySubCategoryCell.swift in Sources */,
 				438C384724F35F420003F691 /* AdvertCell.swift in Sources */,
 				43F7CD8124E262820078D89E /* Header.swift in Sources */,
 				4332BBA724EE6124007EE662 /* URefresh.swift in Sources */,
 				438C383724F357970003F691 /* RecommendModel.swift in Sources */,
-				438C382524F3546B0003F691 /* ClassifySubModuleType17Cell.swift in Sources */,
 				4332BB3924E6320C007EE662 /* FindRecommendViewModel.swift in Sources */,
 				43F7CD7A24E261860078D89E /* WRProxy.swift in Sources */,
 				43F7CD8824E265570078D89E /* HomeController.swift in Sources */,
@@ -863,19 +755,16 @@
 				438C384124F35AC90003F691 /* LBRecommendLiveCell.swift in Sources */,
 				438C384924F35FDB0003F691 /* HotAudiobookCell.swift in Sources */,
 				4332BB0A24E50EE6007EE662 /* AttentionViewModel.swift in Sources */,
-				438C382924F3547F0003F691 /* ClassifySubModuleType16Cell.swift in Sources */,
 				438C385D24F3874B0003F691 /* RecommendFooterView.swift in Sources */,
 				438C383F24F359CD0003F691 /* HomeRecommendLiveCell.swift in Sources */,
 				438C380224F34F660003F691 /* HomeClassifyCell.swift in Sources */,
 				4332BBDE24EFA7B9007EE662 /* HomeVIPController.swift in Sources */,
 				4332BB3124E61F3C007EE662 /* FindRecommendController.swift in Sources */,
 				438C38A624F3A7810003F691 /* HomeRecommendController.swift in Sources */,
-				438C381824F352E30003F691 /* ClassifySubFooterView.swift in Sources */,
 				4332BB3E24E63576007EE662 /* DubbingController.swift in Sources */,
 				4332BAFC24E50528007EE662 /* FindRecommendModel.swift in Sources */,
 				4332BB0524E509A3007EE662 /* AttentionPictureCollectionViewCell.swift in Sources */,
 				43F7CD8D24E274A40078D89E /* ProfileView.swift in Sources */,
-				438C380E24F351700003F691 /* ClassifySubRecommendViewModel.swift in Sources */,
 				438C384524F35F040003F691 /* LBOneKeyListenCell.swift in Sources */,
 				438C384F24F361450003F691 /* LBRecommendForYouCell.swift in Sources */,
 				4332BB1E24E51942007EE662 /* AttentionController.swift in Sources */,
@@ -886,16 +775,12 @@
 				438C37F224F34A470003F691 /* HomeClassifyController.swift in Sources */,
 				4332BB3724E62F50007EE662 /* RecommendPictureCollectionViewCell.swift in Sources */,
 				438C384324F35EB50003F691 /* OneKeyListenCell.swift in Sources */,
-				438C381F24F353FB0003F691 /* ClassifySubVerticalCell.swift in Sources */,
-				438C382124F3544B0003F691 /* ClassifySubModuleType20Cell.swift in Sources */,
 				43383E4F24DA9572006647A2 /* AppDelegate.swift in Sources */,
 				43383E5124DA9572006647A2 /* SceneDelegate.swift in Sources */,
 				438C383B24F358AE0003F691 /* HomeGuessYouLikeMoreController.swift in Sources */,
-				438C380C24F350F10003F691 /* ClassifySubMenuModel.swift in Sources */,
 				438C383924F358140003F691 /* WebViewController.swift in Sources */,
 				43F7CD8A24E26FD60078D89E /* MineController.swift in Sources */,
 				4332BB5824EBD41C007EE662 /* ListenController.swift in Sources */,
-				438C381224F352350003F691 /* ClassifySubContentController.swift in Sources */,
 				4332BAFA24E50393007EE662 /* AttentionModel.swift in Sources */,
 				43F7CD7824E2616A0078D89E /* WRCustomNavigationBar.swift in Sources */,
 				438C37FE24F34EAC0003F691 /* HomeClassifyHeaderView.swift in Sources */,
@@ -905,7 +790,6 @@
 				4332BB9924EE4F33007EE662 /* HomeBroadcastControllerController.swift in Sources */,
 				4332BAFE24E50616007EE662 /* DubbingModel.swift in Sources */,
 				438C385B24F387220003F691 /* RecommendHeaderView.swift in Sources */,
-				438C382D24F3549B0003F691 /* ClassifySubHeaderCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

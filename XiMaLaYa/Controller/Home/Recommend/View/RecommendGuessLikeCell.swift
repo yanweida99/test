@@ -43,9 +43,8 @@ class RecommendGuessLikeCell: UICollectionViewCell {
     func setUpLayout(){
         self.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(15)
-            make.top.equalToSuperview()//test
-            make.bottom.equalToSuperview()
+            make.left.top.equalTo(15)
+            make.bottom.equalToSuperview().offset(-50)
             make.right.equalToSuperview().offset(-15)
         }
         
