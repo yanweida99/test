@@ -91,9 +91,7 @@ extension RecommendViewModel {
             return CGSize.init(width: kScreenWidth, height: 210)
         } else if moduleType == "square" || moduleType == "topBuzz" {
             return CGSize.zero
-        } else if moduleType == "guessYouLike" {
-            return CGSize.init(width: kScreenWidth, height: CGFloat(HeaderAndFooterHeight + 180 * itemNums + 200))
-        } else if moduleType == "paidCategory" || moduleType == "categoriesForLong" || moduleType == "cityCategory" || moduleType == "live"{
+        } else if moduleType == "guessYouLike" || moduleType == "paidCategory" || moduleType == "live"{
             return CGSize.init(width: kScreenWidth, height: CGFloat(HeaderAndFooterHeight + 180 * itemNums))
         } else if moduleType == "ad" {
             return CGSize.init(width: kScreenWidth, height: 240)

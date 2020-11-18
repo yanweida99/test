@@ -117,12 +117,7 @@ extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollect
             cell.squareList = viewModel.squareList
             cell.topBuzzListData = viewModel.topBuzzList
             return cell
-        } else if moduleType == "guessYouLike"{
-            // 横式排列布局cell
-            let cell:RecommendGuessLikeCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendGuessLikeCellID, for: indexPath) as! RecommendGuessLikeCell
-            cell.recommendListData = viewModel.recommendList
-            return cell
-        } else if moduleType == "paidCategory"{
+        } else if moduleType == "paidCategory" || moduleType == "guessYouLike" {
             // 横式排列布局cell
             let cell:RecommendGuessLikeCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendGuessLikeCellID, for: indexPath) as! RecommendGuessLikeCell
             cell.recommendListData = viewModel.homeRecommendList?[indexPath.section].list
